@@ -534,12 +534,12 @@ video {
   grid-column: span 2 / span 2;
 }
 
-.mt-80 {
-  margin-top: 20rem;
-}
-
 .mb-\[1rem\] {
   margin-bottom: 1rem;
+}
+
+.mt-80 {
+  margin-top: 20rem;
 }
 
 .flex {
@@ -558,6 +558,10 @@ video {
   height: 3.5rem;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -566,12 +570,8 @@ video {
   height: 100vh;
 }
 
-.h-32 {
-  height: 8rem;
-}
-
-.h-48 {
-  height: 12rem;
+.h-2\/3 {
+  height: 66.666667%;
 }
 
 .w-2\/3 {
@@ -584,6 +584,34 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[20rem\] {
+  width: 20rem;
+}
+
+.w-\[500px\] {
+  width: 500px;
+}
+
+.grow-\[2\] {
+  flex-grow: 2;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.grow-0 {
+  flex-grow: 0;
+}
+
+.grow-\[1\] {
+  flex-grow: 1;
+}
+
+.grow-\[2rem\] {
+  flex-grow: 2rem;
 }
 
 .grid-cols-1 {
@@ -627,8 +655,9 @@ video {
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\.\.\/resources\/Uhu-muc\.jpg\'\)\] {
-  background-image: url('../resources/Uhu-muc.jpg');
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-cover {
@@ -643,18 +672,9 @@ video {
   padding-left: 1rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.font-bold {
-  font-weight: 700;
 }
 
 .uppercase {
