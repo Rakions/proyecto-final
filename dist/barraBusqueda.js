@@ -18,16 +18,15 @@ barraBusqueda.addEventListener("keyup", function (event) {
         //por cada elemento de menuItems...
         menuItems.forEach(function (menuItem) {
             const menuItemText = menuItem.textContent.toLowerCase();
-            if (menuItemText.indexOf(palabraClave) !== -1) {
+            if (menuItemText.indexOf(palabraClave) !== -1) { //comprueba si la palabra clave es un elemento del menu, si no lo es la funcion devuelve -1
                 divResult = menuItem.parentNode;
-                divResult.style.width = "200px"
-                divResult.style.height = "170px"
-                results.push(menuItem.parentNode);
+                divResult.classList.add("searchResult")
+                results.push(divResult);
             }
         });
-        if(results.length == 0){
+        if (results.length == 0) {
             tablaOpciones.innerHTML = "No coincide ningun elemento"
-        }else{
+        } else {
             displayResults(results);
         }
     }
