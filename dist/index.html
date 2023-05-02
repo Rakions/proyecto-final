@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="output.css" />
     <link rel="stylesheet" href="estilos.css" />
+    <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <section>
@@ -26,10 +27,30 @@
             id="search-input"
           />
           <div
-            class="w-full h-48 rounded-md bg-green-500 overflow-hidden flex gap-4"
+            class="w-full h-48 rounded-md bg-green-500 overflow-y-scroll flex flex-col"
             style="visibility: hidden"
             id="search-results"
           ></div>
+        </div>
+      </div>
+    </section>
+    <section class="w-full h-auto bg-slate-400 flex items-center justify-center flex-col p-[3rem]">
+      <h1 class="text-[1.5rem] sm:text-[2rem] mb-4">Top Categories</h1>
+      <div class="w-[100%] h-[1000px] md:h-[350px] grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="tarjetas_categorias">
+          <h1>CATEGORIA</h1>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+        <div class="tarjetas_categorias">
+          <h1>CATEGORIA</h1>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+        <div class="tarjetas_categorias">
+          <h1>CATEGORIA</h1>
+          <p>Lorem ipsum dolor sit amet.</p>
+          <div class="fondo_tarjetas"></div>
         </div>
       </div>
     </section>
