@@ -35,9 +35,9 @@ barraBusqueda.addEventListener("keyup", function (event) {
 
 function displayResults(results) {
     results.forEach(function (result) {
-        const clon = result.cloneNode(true);
-        clon.classList.add("searchResult")
-        clon.insertAdjacentHTML('beforeend', '<button class="btnAddCesta" onclick="">Añadir al carrito</button>')
+        const clon = result.cloneNode(true); //clona los divs que le mada la funcion anterior
+        clon.classList.add("searchResult") //les añade la clase
+        clon.insertAdjacentHTML('beforeend', '<button class="btnAddCesta" onclick="">Añadir al carrito</button>') //añade un boton
         tablaOpciones.appendChild(clon);
     });
 }
