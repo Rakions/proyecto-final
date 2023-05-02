@@ -33,15 +33,6 @@ barraBusqueda.addEventListener("keyup", function (event) {
 });
 
 function displayResults(results) {
-<<<<<<< HEAD
-    results.forEach(function (result) {
-        const clon = result.cloneNode(true); //clona los divs que le mada la funcion anterior
-        clon.classList.add("searchResult") //les añade la clase
-        clon.insertAdjacentHTML('beforeend', '<button class="btnAddCesta" onclick="">Añadir al carrito</button>') //añade un boton
-        tablaOpciones.appendChild(clon);
-    });
-}
-=======
   results.forEach(function (result) {
     const clon = result.cloneNode(true);
     clon.classList.add("searchResult");
@@ -52,4 +43,3 @@ function displayResults(results) {
     tablaOpciones.appendChild(clon);
   });
 }
->>>>>>> 7624b0f417d09dbbee9bac614906313e6dacd82e
