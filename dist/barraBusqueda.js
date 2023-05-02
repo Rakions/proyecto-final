@@ -20,7 +20,6 @@ barraBusqueda.addEventListener("keyup", function (event) {
             const menuItemText = menuItem.textContent.toLowerCase();
             if (menuItemText.indexOf(palabraClave) !== -1) { //comprueba si la palabra clave es un elemento del menu, si no lo es la funcion devuelve -1
                 divResult = menuItem.parentNode;
-                divResult.classList.add("searchResult")
                 results.push(divResult);
             }
         });
@@ -37,6 +36,8 @@ barraBusqueda.addEventListener("keyup", function (event) {
 function displayResults(results) {
     results.forEach(function (result) {
         const clon = result.cloneNode(true);
+        clon.classList.add("searchResult")
+        clon.insertAdjacentHTML('beforeend', '<button class="btnAddCesta" onclick="">Añadir al carrito</button>')
         tablaOpciones.appendChild(clon);
     });
 }
