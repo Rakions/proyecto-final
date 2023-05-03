@@ -209,3 +209,14 @@ footer a:hover {
     padding: 0.5rem;
   }
 }
+.opciones-carta {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.opciones-carta img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
