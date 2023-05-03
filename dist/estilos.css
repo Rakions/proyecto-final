@@ -18,6 +18,10 @@ header ul>a:hover {
   transition: all 0.3s;
 }
 
+.logo{
+  transform: scale(2);
+}
+
 @media (max-width: 768px) {
   .links {
     display: none;
@@ -93,7 +97,8 @@ footer a:hover {
 
 .top_products button {
   margin-inline: 1rem;
-  background-color: aliceblue;
+  border: 1px solid var(--color-texto);
+  background-color: var(--color-fondo);
   border-radius: 0.5rem;
   padding: 0.3rem 1rem;
   transition: all 0.5s;
@@ -159,9 +164,9 @@ footer a:hover {
   left: 0;
   content: '';
   width: 200px;
-  height: 200px;
-  background-color: blue;
-  transform: translate(-120px,205px);
+  height: 300px;
+  background-color: var(--color-texto);
+  transform: translate(-120px,305px);
   z-index: 1000;
   transition: all 0.3s;
   border-radius: 0.5rem;
@@ -169,4 +174,38 @@ footer a:hover {
 
 .boton-login:hover .formulario-login{
   opacity: 1;
+}
+
+.formulario-login form{
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.formulario-login input {
+  width: 100%;
+  height: 3rem;
+  background: none;
+  border-bottom: 1px solid var(--color-oscuro);
+  margin-bottom: 1rem;
+}
+
+.formulario-login input::placeholder{
+  color: var(--color-secundario);
+}
+
+.formulario-login a{
+  color: blue;
+  border-bottom: 1px solid blue;
+}
+
+.formulario-login a:hover{
+  color: #fefefe;
+  border-bottom: 1px solid #fefefe;
+}
+
+@media (max-width: 640px) {
+  .formulario-login {
+    padding: 0.5rem;
+  }
 }

@@ -14,8 +14,8 @@
 
 <body>
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
-    <div class="w-20 h-full bg-blue-600 mr-4">
-      <img src="#" alt="" />
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo"/>
     </div>
     <div class="flex items-center">
       <nav>
@@ -39,7 +39,16 @@
       </nav>
       <div
         class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center boton-login">
-        <div class="formulario-login"></div>
+        <div class="formulario-login">
+          <form action="" method="POST" class="h-full text-jus">
+            <label for="username">Username: </label>
+            <input type="text" name="username" placeholder="Username...">
+            <label for="password">Password: </label>
+            <input type="password" name="password" placeholder="Password...">
+            <button type="submit">LOGIN</button>
+            <p>Don't have an account? <a href="#">Register</a></p>
+          </form>
+        </div>
         <button class="w-full h-full ">LOGIN</button>
       </div>
     </div>
@@ -132,7 +141,9 @@
   </section>
   <footer
     class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
-    <h1 class="absolute top-0 left-4 md:left-10 md:text-[3rem]">LOGO</h1>
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo"/>
+    </div>
     <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
       <div class="items-end">
         <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
