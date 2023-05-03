@@ -1,86 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="output.css" />
-    <link rel="stylesheet" href="estilos.css" />
-    <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
-      <div class="w-20 h-full bg-blue-600 mr-4">
-        <img src="#" alt="" />
-      </div>
-      <div class="flex items-center">
-        <nav>
-          <ul class="flex text-[var(--color-texto)]">
-            <a href="#"><li class="inline-block mx-4 links">INICIO</li></a>
-            <a href="#"><li class="inline-block mx-4 links">CARTA</li></a>
-            <a href="#"><li class="inline-block mx-4 links">CONTACTO</li></a>
-            <a href="#"><li class="inline-block mx-4 links">AYUDA</li></a>
-            <li class="mx-4 hidden menu w-6 h-6">
-              <img src="../resources/bars-solid.svg" alt="" />
-            </li>
-          </ul>
-        </nav>
-        <div
-          class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center"
-        >
-          <button class="w-full h-full">LOGIN</button>
-        </div>
-      </div>
-    </header>
 
-    <section class="h-screen w-full bg-green-300 flex items-center justify-center">
-      <div class="bg-red-300 flex h-[20rem] max-w-[40%] w-full rounded-lg">
-        <form
-          action=""
-          method="POST"
-          class="justify-center items-center flex flex-col h-full w-full form-login"
-        >
-          <label for="username" class="text-[1rem] md:text-[1.5rem]">Username: </label>
-          <input type="text" name="username" placeholder="Username..." />
-          <label for="pssword" class="text-[1rem] md:text-[1.5rem]">Password: </label>
-          <input type="password" name="password" placeholder="Password..." />
-          <button
-            type="submit"
-            class="bg-[var(--color-texto)] w-[5rem] md:w-[7rem] rounded-md hover:bg-[var(--color-fondo)] transition-all"
-          >
-            SUBMIT
-          </button>
-        </form>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="estilos.css" />
+  <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
+</head>
 
-    <footer
-      class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]"
-    >
-      <h1 class="absolute top-0 left-4 md:left-10 md:text-[3rem]">LOGO</h1>
-      <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
-        <div class="items-end">
-          <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-          <ul class="text-right mr-1">
-            <a href=""><li>Inicio</li></a>
-            <a href=""><li>Carta</li></a>
-            <a href=""><li>Contacto</li></a>
-            <a href=""><li>Ayuda</li></a>
-          </ul>
+<body>
+  <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
+    </div>
+    <div class="flex items-center">
+      <nav>
+        <ul class="flex text-[var(--color-texto)]">
+          <a href="index.html">
+            <li class="inline-block mx-4 links">INICIO</li>
+          </a>
+          <a href="carta.html">
+            <li class="inline-block mx-4 links">CARTA</li>
+          </a>
+          <a href="#">
+            <li class="inline-block mx-4 links">CONTACTO</li>
+          </a>
+          <a href="#">
+            <li class="inline-block mx-4 links">AYUDA</li>
+          </a>
+          <li class="mx-4 hidden menu w-6 h-6">
+            <img src="../resources/bars-solid.svg" alt="" />
+          </li>
+        </ul>
+      </nav>
+      <div
+        class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center boton-login">
+        <div class="formulario-login">
+          <form action="" method="POST" class="h-full text-jus">
+            <label for="username">Username: </label>
+            <input type="text" name="username" placeholder="Username...">
+            <label for="password">Password: </label>
+            <input type="password" name="password" placeholder="Password...">
+            <button type="submit">LOGIN</button>
+            <p>Don't have an account? <a href="login.html">Register</a></p>
+          </form>
         </div>
-        <div class="items-end">
-          <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-          <ul class="text-right mr-1">
-            <a href=""><li>Inicio</li></a>
-            <a href=""><li>Carta</li></a>
-            <a href=""><li>Contacto</li></a>
-            <a href=""><li>Ayuda</li></a>
-          </ul>
-        </div>
+        <button class="w-full h-full ">LOGIN</button>
       </div>
-    </footer>
-    <script src="./barraBusqueda.js"></script>
-  </body>
+    </div>
+  </header>
+
+  <section class="h-screen w-full bg-[var(--color-fondo)] flex items-center justify-center">
+    <div class="bg-[var(--color-texto)] flex h-[30rem] max-w-[40%] w-full rounded-lg">
+      <form action="" method="POST" class="justify-center items-center flex flex-col h-full w-full form-login">
+        <label for="username" class="text-[1rem] md:text-[1.5rem]">Username: </label>
+        <input type="text" name="username" placeholder="Username..." />
+        <label for="email" class="text-[1rem] md:text-[1.5rem]">Email: </label>
+        <input type="email" name="email" placeholder="Email...">
+        <label for="password" class="text-[1rem] md:text-[1.5rem]">Password: </label>
+        <input type="password" name="password" placeholder="Password..." />
+        <label for="password2" class="text-[1rem] md:text-[1.5rem]">Repeat password: </label>
+        <input type="password" name="password2" placeholder="Password..." />
+        <button type="submit"
+          class="bg-[var(--color-texto)] w-[5rem] md:w-[7rem] rounded-md hover:bg-[var(--color-fondo)] transition-all">
+          SUBMIT
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <footer
+    class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
+    <h1 class="absolute top-0 left-4 md:left-10 md:text-[3rem]">LOGO</h1>
+    <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="./barraBusqueda.js"></script>
+</body>
+
 </html>

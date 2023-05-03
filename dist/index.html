@@ -15,12 +15,12 @@
 <body>
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
-      <img src="../resources/logo.png" alt="" class="logo" />
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
     </div>
     <div class="flex items-center">
       <nav>
         <ul class="flex text-[var(--color-texto)]">
-          <a href="#">
+          <a href="index.html">
             <li class="inline-block mx-4 links">INICIO</li>
           </a>
           <a href="carta.html">
@@ -46,7 +46,7 @@
             <label for="password">Password: </label>
             <input type="password" name="password" placeholder="Password...">
             <button type="submit">LOGIN</button>
-            <p>Don't have an account? <a href="#">Register</a></p>
+            <p>Don't have an account? <a href="login.html">Register</a></p>
           </form>
         </div>
         <button class="w-full h-full ">LOGIN</button>
@@ -57,11 +57,11 @@
   <section>
     <div
       class="bg-[var(--color-fondo)] w-full h-screen md:relative bg-cover flex md:block items-center justify-center p-4">
-      <div class="w-[50rem] h-48 md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
+      <div class="w-[50rem] h-[300px] md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
         <p class="text-xl uppercase mb-[1rem] float-right w-full md:w-[29rem]">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, numquam
         </p>
-        <input type="text" placeholder="BUSCAR..." class="float-right w-full md:w-[29rem] h-[3.5rem] rounded-md pl-4"
+        <input type="text" placeholder="BUSCAR..." class="float-right w-full md:w-[29rem] h-[3.5rem] pl-4"
           id="search-input" />
         <div class="w-full h-48 rounded-md bg-[var(--color-texto)] overflow-y-scroll flex flex-col"
           style="visibility: hidden" id="search-results"></div>
