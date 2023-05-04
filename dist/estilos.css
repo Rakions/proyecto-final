@@ -18,6 +18,34 @@ header ul>a:hover {
   transition: all 0.3s;
 }
 
+.header-movil {
+  z-index: 1000;
+  position: absolute;
+  top: 10;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s;
+}
+
+.header-movil.active {
+  transform: translate(0%);
+}
+
+.header-movil ul {
+  width: 100%;
+}
+
+.movil-links {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.movil-links:hover {
+  color: var(--color-fondo);
+}
+
 footer>div {
   max-width: 300px;
   width: 100%;
