@@ -32,11 +32,14 @@
           <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
             <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
           </li>
+          <li>
+            <a href="#"><img src="../resources/cart-shopping-solid.svg" class="w-[30px] h-[30px]" alt=""></a>
+          </li>
         </ul>
       </nav>
-      <div
-        class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center boton-login">
-        <div class="formulario-login">
+      <div class=" flex items-center justify-center boton-login">
+
+        <div class="formulario-login-header">
           <form action="" method="POST" class="h-full text-jus">
             <label for="username">Username: </label>
             <input type="text" name="username" placeholder="Username...">
@@ -46,7 +49,8 @@
             <p>Don't have an account? <a href="login.html">Register</a></p>
           </form>
         </div>
-        <button class="w-full h-full ">LOGIN</button>
+        <button
+          class="w-full h-full border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all ml-[6px] boton-login">LOGIN</button>
       </div>
     </div>
   </header>

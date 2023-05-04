@@ -175,7 +175,7 @@ footer a:hover {
   position: relative;
 }
 
-.formulario-login {
+.formulario-login-header {
   display: none;
   position: absolute;
   bottom: 0;
@@ -183,32 +183,31 @@ footer a:hover {
   content: '';
   width: 200px;
   height: 300px;
-  background-color: var(--color-texto);
-  transform: translate(-120px, 302px);
+  background-color: var(--color-secundario);
+  transform: translate(-110px, 302px);
   z-index: 1000;
   transition: all 0.3s;
   border-radius: 0.5rem;
 }
 
-.boton-login:hover .formulario-login {
+.boton-login:hover .formulario-login-header {
   display: block;
 }
 
-.formulario-login form {
+.formulario-login-header form {
   display: flex;
   flex-direction: column;
   padding: 2rem;
 }
 
-.formulario-login input {
+.formulario-login-header input {
   margin-bottom: 1rem;
   background: none;
   border-bottom: 1px solid var(--color-oscuro);
 }
 
 .form-login {
-  gap: 1rem;
-  padding: 2rem;
+  padding: 0rem 2rem;
 }
 
 .form-login input {
@@ -220,18 +219,23 @@ footer a:hover {
   margin-bottom: 1rem;
 }
 
-.formulario-login input::placeholder {
+.form-login button:hover {
+  background-color: var(--color-fondo);
+  transform: scale(1.1);
+}
+
+.formulario-login-header input::placeholder {
   color: var(--color-secundario);
 }
 
-.formulario-login a {
+.formulario-login-header a {
   color: blue;
   border-bottom: 1px solid blue;
 }
 
-.formulario-login a:hover {
-  color: #fefefe;
-  border-bottom: 1px solid #fefefe;
+.formulario-login-header a:hover {
+  color: var(--color-fondo);
+  border-bottom: 1px solid var(--color-fondo);
 }
 
 @media (max-width: 640px) {
