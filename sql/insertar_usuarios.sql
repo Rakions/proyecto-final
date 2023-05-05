@@ -1,0 +1,2 @@
+INSERT into Cafe_users values (1,'Omar','Gomez','ogmohammed004@gmail.com','123456','Rakions',636723224,to_date('05/05/2023' , 'dd/mm/yyyy'));
+insert into EMPLOYEES (EMPLOYEE_ID,salary,hire_date,POSITION,USER_ID) values (1,1500, to_date('05/05/2023' , 'dd/mm/yyyy'),'admin',1);
