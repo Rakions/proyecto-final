@@ -828,6 +828,14 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.bg-\[url\(\.\.\/resources\/foto_categorias1\.jpg\)\] {
+  background-image: url(../resources/foto_categorias1.jpg);
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
