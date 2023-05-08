@@ -1,0 +1,19 @@
+ALTER TABLE orders DROP CONSTRAINT fk_orders_shopId;
+ALTER TABLE orders DROP CONSTRAINT fk_orders_userId;
+ALTER TABLE orders_employees DROP CONSTRAINT fk_orders_employees_employeeId;
+ALTER TABLE orders_employees DROP CONSTRAINT fk_order_employees_orderId;
+ALTER TABLE order_details DROP CONSTRAINT fk_order_details_orderId;
+ALTER TABLE products DROP CONSTRAINT fk_products_categoryId;
+ALTER TABLE shop_products DROP CONSTRAINT fk_shop_products_shopId;
+ALTER TABLE shop_products DROP CONSTRAINT fk_shop_products_productId;
+
+
+DROP TABLE CAFE_USERS;
+DROP TABLE CATEGORIES;
+DROP TABLE EMPLOYEES;
+DROP TABLE ORDER_DETAILS;
+DROP TABLE ORDERS;
+DROP TABLE ORDERS_EMPLOYEES;
+DROP TABLE PRODUCTS;
+DROP TABLE SHOP_PRODUCTS;
+DROP TABLE SHOPS;
