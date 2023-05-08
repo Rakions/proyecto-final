@@ -22,7 +22,7 @@ create table Orders(
   user_id number,
   order_date date,
   address varchar2(100),
-  total_prize int
+  total_price int
 );
 
 create table Order_details(
