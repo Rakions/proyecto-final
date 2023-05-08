@@ -38,7 +38,7 @@ create table orders_employees(
 create table shops(
   shop_id number not null PRIMARY KEY,
   shop_name varchar2(100),
-  locatin varchar2(50),
+  location varchar2(50),
   address varchar2(100),
   phone varchar2(20),
   email varchar2(100)
@@ -60,9 +60,9 @@ create table products(
   product_name varchar2(20),
   product_description varchar2(200),
   stock number,
-  valorations number,
+  reviews number,
   category_id number,
-  prize number
+  price number
 );
 
 create table categories(
