@@ -62,7 +62,8 @@ create table products(
   stock number,
   reviews number,
   category_id number,
-  price number
+  price number,
+  image_url varchar2(100)
 );
 
 create table categories(
