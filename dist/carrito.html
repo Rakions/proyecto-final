@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,76 @@
   <title>Document</title>
   <link rel="stylesheet" href="estilos.css">
   <link rel="stylesheet" href="output.css">
+
+
 </head>
+
 <body>
   <!---------------------------------CARRITO--------------------------------->
-  <section class="w-full h-screen bg-slate-400 flex">
+  <section class="w-full h-screen bg-slate-400">
     <div class="flex items-center justify-center w-full h-[200px] bg-red-300">
       <h1 class="text-4xl">YOUR CART</h1>
     </div>
+    <div class="h-full w-full flex bg-green-300 md:flex-row flex-col">
+      <div class="h-[70%] md:h-full  md:w-[70%] bg-blue-300">
+        <div class="w-full h-[50px] bg-slate-200 grid grid-cols-3 carrito_indicadores">
+          <div>
+            <h1>Products</h1>
+          </div>
+          <div>
+            <h1>Price</h1>
+            <h1>Quantity</h1>
+          </div>
+          <div>
+            <h1>Total</h1>
+            <h1 class="opacity-0">ignore</h1>
+          </div>
+        </div>
+        <div class="w-full bg-yellow-300">
+          <ul class="carrito-lista h-full w-full justify-center flex flex-col gap-4">
+            <li class="grid grid-cols-3 w-full px-4 cart_item list1">
+              <div class="flex items-center">
+                <img src="../resources/cafe-con-leche.jpg" alt="">
+                <p class="max-w-[100px] ml-4">Lorem, ipsum dolor.</p>
+              </div>
+              <div class="flex items-center justify-evenly">
+                <h1 class="item_price1">2,50€</h1>
+                <div>
+                  <button class="w-4" onclick="incrementar('.product_amount1','.item_price1')">+</button>
+                  <span class="product_amount1">1</span>
+                  <button class="w-4" onclick="restar('.product_amount1','.item_price1')">-</button>
+                </div>
+              </div>
+              <div class="flex items-center justify-evenly">
+                <h1 class="item_totalprice1">2.50€</h1>
+                <button onclick="eliminar('.list1')">X</button>
+              </div>
+            </li>
+            <li class="grid grid-cols-3 w-full px-4 cart_item list2">
+              <div class="flex items-center">
+                <img src="../resources/cafe-con-leche.jpg" alt="">
+                <p class="max-w-[100px] ml-4">asdasd, ipsum dolor.</p>
+              </div>
+              <div class="flex items-center justify-evenly">
+                <h1 class="item_price2">2.50€</h1>
+                <div>
+                  <button class="w-4" onclick="incrementar('.product_amount2','.item_price2')">+</button>
+                  <span class="product_amount2">1</span>
+                  <button class="w-4" onclick="restar('.product_amount2','.item_price2')">-</button>
+                </div>
+              </div>
+              <div class="flex items-center justify-evenly">
+                <h1 class="item_totalprice2">2,50€</h1>
+                <button onclick="eliminar('.list2')">X</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="h-[30%] md:h-full md:w-[30%]"></div>
+    </div>
   </section>
+  <script src="carrito.js"></script>
 </body>
+
 </html>

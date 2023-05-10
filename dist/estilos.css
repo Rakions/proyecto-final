@@ -319,3 +319,41 @@ footer a:hover {
     display: block;
   }
 }
+
+.carrito-lista{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carrito-lista img{
+  width: 150px;
+  height: 120px;
+}
+
+.carrito_indicadores > div{
+  display: flex;
+  align-items: center;
+}
+
+.carrito_indicadores > div:first-child{
+  justify-content: center;
+}
+
+.carrito_indicadores > div:last-child{
+  justify-content: space-evenly;
+}
+
+.carrito_indicadores > div:nth-child(2){
+  justify-content: space-evenly;
+}
+
+.cart_item.delete{
+  display: none;
+}
+
+.cart_item{
+  padding: 1rem 0rem;
+  border: 1px solid var(--color-oscuro);
+}
+
