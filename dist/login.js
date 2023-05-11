@@ -1,7 +1,4 @@
-import { Axios } from "axios";
-const { default: axios } = require("axios");
-
-const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
+// const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
 
 const login = document.querySelector(".login-sign-in");
 const register = document.querySelector(".login-register");
@@ -13,16 +10,22 @@ function switchRegister() {
 
 function comprobarLogin(email, password) {
 
-  Axios.get(conexion("usuarios/buscar", ("id=" + email)).then(Response => {
-    alert(Response)
-    if (Response != null) {
-      console.log("existe")
-    } else {
-      console.log("no existe")
-    }
+  axios.get(conexion("usuarios/buscar", ("id=" + email)).then(function (response){
+    console.log(response.data);
+  }).catch(function(error){
+    console.log(error);
   }))
 
-  // var query = await conexion("usuarios/buscar", ("id="+email));
+  // Axios.get(conexion("usuarios/buscar", ("id=" + email)).then(Response => {
+  //   alert(Response)
+  //   if (Response != null) {
+  //     console.log("existe")
+  //   } else {
+  //     console.log("no existe")
+  //   }
+  // }))
+
+  
 
 }
 
