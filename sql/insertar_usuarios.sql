@@ -2,6 +2,6 @@ INSERT into Cafe_users values (1,'Omar','Gomez','ogmohammed004@gmail.com','12345
 
 select * from cafe_users;
 
-insert into employees values (1,'omar','gomez','ausjdbaujbsd','asydgvavusd','12836192863', 19723,'manager',to_date('05/05/2023' , 'dd/mm/yyyy'));
+insert into employees values (2,'omar','gomez','ausjdbaujbsd','asydgvavusd','12836192863', 19723,'manager',to_date('05/05/2023' , 'dd/mm/yyyy'));
 
 select * from employees;
