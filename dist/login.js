@@ -8,9 +8,21 @@ function switchRegister(){
   register.classList.toggle("hidden")
 }
 
-async function logJSONData(){
-  const response = await fetch("http://localhost:4000/API/cafeusuarios/consultar",{method: 'GET'},{mode: 'no-cors'});
+async function logJSONData(funcion){
+  let url = "http://localhost:4000/API/" + funcion;
+  console.log(url);
+  const response = await fetch(url,{method: 'GET'},{mode: 'no-cors'});
   const jsonData = await response.json();
-  console.log(jsonData[0]['user_name']);
+  return jsonData;
+}
+
+async function requestBDD(){
+  let email = document.getElementById('form_email');
+  let password = document.getElementById('form_password');
+  let respuestaEmail = await logJSONData("usuarios/buscarEmail?email=" + email.value);
+  if (respuestaEmail != null) {
+    alert('logged in');
+    console.log(respuestaEmail);
+  }
 }
 
