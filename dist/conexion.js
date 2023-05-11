@@ -1,3 +1,5 @@
+// import { async } from "postcss-js";
+
 function conexion(ruta, datos) {
 
     const xhr = new XMLHttpRequest();
