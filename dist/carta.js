@@ -1,13 +1,64 @@
+import { logJSONData } from "./login.js";
 let carta_content = document.querySelector(".carta-content");
+let cafes = document.querySelector(".cafes");
+let bebidas_frias = document.querySelector(".bebidas-frias");
+let te = document.querySelector(".te");
 
-let content = `<div class="h-[300px] w-[300px] flex items-center justify-center flex-col">
-<img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt=""
-  class="h-2/3 mb-4" />
-<p>Hola</p>
-</div>`;
+let producto;
+let content;
 
+//Hace una consulta a la base de datos lo primero de todo
+addEventListener("load", () => {
+  getProducto();
+});
 
+//Event listeners para cuando se hace click en los iconos de la barra izquierda
+cafes.addEventListener("click",() =>{
+  cafes = document.querySelector(".cafes");
+  limpiarCarta();
+  renderContent(1);  
+});
+bebidas_frias.addEventListener("click",() =>{
+  bebidas_frias = document.querySelector(".bebidas");
+  limpiarCarta();
+  renderContent(2);  
+});
+te.addEventListener("click",() =>{
+  te = document.querySelector(".te");
+  limpiarCarta();
+  renderContent(3);  
+});
 
-for (let index = 0; index < 10; index++) {
-    carta_content.innerHTML += content;
+//Funcion para limpiar la carta
+function limpiarCarta(){
+  carta_content.innerHTML = "";
 }
+
+//Consulta que devuelve todos los productos
+async function getProducto() {
+  producto = await logJSONData("products/consultar");
+}
+
+//Renderiza los elementos dependiendo de la categoria a la que pertenezcan
+async function renderContent(category_id) {
+  let categoria = category_id;
+  for (let index = 0; index < producto.length; index++) {
+    renderCafes(index,categoria);
+  }
+}
+
+//Renderiza solo los productos con el id de la categoria que se le pasa en la variable 'categoria'
+function renderCafes(index,categoria){
+  if (producto[index]["category_id"] == categoria) {
+    content = `<a href="#"<div class="h-[300px] w-[300px] flex items-center justify-center flex-col">
+    <img src="${producto[index]["image_url"]}" alt=""
+      class="h-2/3 mb-4" />
+    <p>${producto[index]["product_name"]}</p>
+    <p>${producto[index]["price"] + "€"}</p>
+    </div></a>`;
+    carta_content.innerHTML += content;
+  }
+}
+
+
+
