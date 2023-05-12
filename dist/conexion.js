@@ -23,7 +23,7 @@ async function conexion(ruta, datos, method) {
                 'Content-Type': 'application/json'},
             body: JSON.stringify(datos)
         }, { mode: 'no-cors' });
-        const jsonData = await response.json();
+        const jsonData = await response;
         return jsonData;
     }
 

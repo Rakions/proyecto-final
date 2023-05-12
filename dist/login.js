@@ -41,11 +41,12 @@ async function register(name, surname, email, password) {
     "user_surname": surname,
     "email": email,
     "password": password,
-    "username": (name + surname),
+    "username": name,
     "phone": "",
     "last_connection": ""
-  }
-  var data = await conexion("usuarios/crear", datos, "POST")
+  };
+  console.log(datos);
+  var data = await conexion("usuarios/crear", datos, "POST");
 
   console.log(conexion("usuarios/consultar"))
 
