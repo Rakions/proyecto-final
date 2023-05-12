@@ -25,7 +25,7 @@ barraBusqueda.addEventListener("keyup", function (event) {
       }
     });
     if (results.length == 0) {
-      tablaOpciones.innerHTML = "No coincide ningun elemento";
+      tablaOpciones.innerHTML = "No items found";
     } else {
       displayResults(results);
     }

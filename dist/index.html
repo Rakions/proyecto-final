@@ -10,58 +10,60 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
+  <script src="conexion.js"></script>
 </head>
 
 <body>
+  <!----------------------------------HEADER---------------------------------->
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
-      <img src="../resources/logo.png" alt="" class="logo" />
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
     </div>
     <div class="flex items-center">
       <nav>
         <ul class="flex text-[var(--color-texto)]">
-          <a href="#">
+          <a href="index.html">
             <li class="inline-block mx-4 links">INICIO</li>
           </a>
           <a href="carta.html">
             <li class="inline-block mx-4 links">CARTA</li>
           </a>
-          <a href="#">
+          <a href="contact.html">
             <li class="inline-block mx-4 links">CONTACTO</li>
           </a>
-          <a href="#">
-            <li class="inline-block mx-4 links">AYUDA</li>
-          </a>
-          <li class="mx-4 hidden menu w-6 h-6">
-            <img src="../resources/bars-solid.svg" alt="" />
+          <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
+            <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
           </li>
         </ul>
       </nav>
-      <div
-        class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center boton-login">
-        <div class="formulario-login">
-          <form action="" method="POST" class="h-full text-jus">
-            <label for="username">Username: </label>
-            <input type="text" name="username" placeholder="Username...">
-            <label for="password">Password: </label>
-            <input type="password" name="password" placeholder="Password...">
-            <button type="submit">LOGIN</button>
-            <p>Don't have an account? <a href="#">Register</a></p>
-          </form>
-        </div>
-        <button class="w-full h-full ">LOGIN</button>
-      </div>
+      <a href="login.html">
+        <button
+          class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>
+      </a>
     </div>
   </header>
+  <div class="w-full py-4 bg-[var(--color-oscuro)] flex flex-col items-center justify-center header-movil md:hidden">
+    <ul class="flex flex-col gap-[2rem] text-[var(--color-texto)]">
+      <a href="index.html">
+        <li class="inline-block movil-links">INICIO</li>
+      </a>
+      <a href="carta.html">
+        <li class="inline-block movil-links">CARTA</li>
+      </a>
+      <a href="contact.html">
+        <li class="inline-block movil-links">CONTACTO</li>
+      </a>
+    </ul>
+  </div>
 
+  <!----------------------------------BARRA DE BUSQUEDA---------------------------------->
   <section>
-    <div
-      class="bg-[var(--color-fondo)] w-full h-screen md:relative bg-cover flex md:block items-center justify-center p-4">
-      <div class="w-[50rem] h-48 md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
+    <div class="w-full h-screen md:relative flex md:block items-center justify-center p-4">
+      <div class="w-[50rem] h-[300px] md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
         <p class="text-xl uppercase mb-[1rem] float-right w-full md:w-[29rem]">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odit, numquam
         </p>
-        <input type="text" placeholder="BUSCAR..." class="float-right w-full md:w-[29rem] h-[3.5rem] rounded-md pl-4"
+        <input type="text" placeholder="BUSCAR..." class="float-right w-full md:w-[29rem] h-[3.5rem] pl-4"
           id="search-input" />
         <div class="w-full h-48 rounded-md bg-[var(--color-texto)] overflow-y-scroll flex flex-col"
           style="visibility: hidden" id="search-results"></div>
@@ -69,26 +71,29 @@
     </div>
   </section>
 
+  <!----------------------------------TARJETA CATEGORÍAS---------------------------------->
   <section class="w-full h-auto bg-[var(--color-fondo)] flex items-center justify-center flex-col p-[3rem]">
     <h1 class="text-[1.5rem] sm:text-[2rem] mb-4">Top Categories</h1>
     <div class="w-[100%] h-[1000px] md:h-[350px] grid grid-cols-1 md:grid-cols-3 gap-4">
       <div class="tarjetas_categorias">
-        <h1>CATEGORIA</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h1>COFFEES</h1>
+        <p>Our best coffees</p>
         <div class="fondo_tarjetas"></div>
       </div>
       <div class="tarjetas_categorias">
-        <h1>CATEGORIA</h1>
-        <p>Lorem ipsum dolor sit amet.</p>
+        <h1>COLD DRINKS</h1>
+        <p>Perfect for this summer!</p>
         <div class="fondo_tarjetas"></div>
       </div>
       <div class="tarjetas_categorias">
-        <h1>CATEGORIA</h1>
+        <h1></h1>
         <p>Lorem ipsum dolor sit amet.</p>
         <div class="fondo_tarjetas"></div>
       </div>
     </div>
   </section>
+
+  <!----------------------------------TARJETAS PRODUCTOS---------------------------------->
 
   <section class="w-full h-auto bg-[var(--color-fondo)] flex items-center justify-center flex-col p-[3rem]">
     <div class="flex items-center justify-center flex-col top_products">
@@ -103,46 +108,47 @@
       class="w-full grid grid-cols-1 xl:grid-cols-4 lg:px-[7rem] md:grid-cols-2 top_products_content gap-[1rem] mt-[1rem]">
       <div>
         <div class="flex items-center justify-center h-2/3 w-full flex-col">
-          <img class="" src="../resources/Uhu-muc.jpg" />
-          <h1 class="menu-item">Expresso</h1>
+          <img class="" src="../resources/espresso.jpg" />
+          <h1 class="menu-item">Espresso</h1>
           <p>6€</p>
         </div>
-        <div class="w-full h-1/3 flex items-center justify-center">
+        <div class="w-full mt-4 flex items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, dolore?
         </div>
       </div>
       <div>
         <div class="flex items-center justify-center h-2/3 w-full flex-col">
-          <img class="" src="../resources/Uhu-muc.jpg" />
+          <img class="" src="../resources/cortado.jpg" />
           <h1 class="menu-item">Cortado</h1>
           <p>5€</p>
         </div>
-        <div class="w-full h-1/3 flex items-center justify-center">
+        <div class="w-full mt-4 flex items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, dolore?
         </div>
       </div>
       <div>
         <div class="flex items-center justify-center h-2/3 w-full flex-col">
-          <img class="" src="../resources/Uhu-muc.jpg" />
+          <img class="" src="../resources/cafe-con-leche.jpg" />
           <h1 class="menu-item">Cafe con leche</h1>
           <p>10€</p>
         </div>
-        <div class="w-full h-1/3 flex items-center justify-center">
+        <div class="w-full mt-4 flex items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, dolore?
         </div>
       </div>
       <div>
         <div class="flex items-center justify-center h-2/3 w-full flex-col">
-          <img class="" src="../resources/Uhu-muc.jpg" />
+          <img class="" src="../resources/capuccino.jpg" />
           <h1 class="menu-item">Capuccino</h1>
           <p>20€</p>
         </div>
-        <div class="w-full h-1/3 flex items-center justify-center">
+        <div class="w-full mt-4 flex items-center justify-center">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, dolore?
         </div>
       </div>
     </div>
   </section>
+  <!----------------------------------FOOTER---------------------------------->
   <footer
     class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
@@ -185,6 +191,7 @@
       </div>
     </div>
   </footer>
+  <script src="navbar.js"></script>
   <script src="./barraBusqueda.js"></script>
 </body>
 

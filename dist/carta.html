@@ -10,76 +10,84 @@
   <link rel="stylesheet" href="estilos.css" />
   <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
+  <script src="conexion.js"></script>
 </head>
 
 <body>
+  <!----------------------------------HEADER---------------------------------->
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
-      <img src="../resources/logo.png" alt="" class="logo" />
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
     </div>
     <div class="flex items-center">
       <nav>
         <ul class="flex text-[var(--color-texto)]">
-          <a href="#">
+          <a href="index.html">
             <li class="inline-block mx-4 links">INICIO</li>
           </a>
           <a href="carta.html">
             <li class="inline-block mx-4 links">CARTA</li>
           </a>
-          <a href="#">
+          <a href="contact.html">
             <li class="inline-block mx-4 links">CONTACTO</li>
           </a>
-          <a href="#">
-            <li class="inline-block mx-4 links">AYUDA</li>
-          </a>
-          <li class="mx-4 hidden menu w-6 h-6">
-            <img src="../resources/bars-solid.svg" alt="" />
+          <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
+            <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
           </li>
         </ul>
       </nav>
-      <div
-        class="border-black border-2 rounded-md px-4 bg-[var(--color-secundario)] hover:bg-[var(--color-fondo)] transition-all flex items-center justify-center boton-login">
-        <div class="formulario-login">
-          <form action="" method="POST" class="h-full text-jus">
-            <label for="username">Username: </label>
-            <input type="text" name="username" placeholder="Username...">
-            <label for="password">Password: </label>
-            <input type="password" name="password" placeholder="Password...">
-            <button type="submit">LOGIN</button>
-            <p>Don't have an account? <a href="login.html">Register</a></p>
-          </form>
-        </div>
-        <button class="w-full h-full ">LOGIN</button>
-      </div>
+      <a href="login.html">
+        <button
+          class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>
+      </a>
     </div>
   </header>
+  <div class="w-full py-4 bg-[var(--color-oscuro)] flex flex-col items-center justify-center header-movil md:hidden">
+    <ul class="flex flex-col gap-[2rem] text-[var(--color-texto)]">
+      <a href="index.html">
+        <li class="inline-block movil-links">INICIO</li>
+      </a>
+      <a href="carta.html">
+        <li class="inline-block movil-links">CARTA</li>
+      </a>
+      <a href="contact.html">
+        <li class="inline-block movil-links">CONTACTO</li>
+      </a>
+    </ul>
+  </div>
 
+  <!----------------------------------CARTA---------------------------------->
   <section class="w-full h-screen flex md:flex-row flex-col">
+    <!----------------------------------PARTE IZQUIERDA---------------------------------->
     <div class="bg-[var(--color-fondo)] h-[30%] md:h-full w-full md:w-[35%] relative flex items-center justify-center">
       <div class="h-[150px] w-[150px] sm:h-[200px] sm:w-[200px] md:h-[300px] md:w-[300px">
-        <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" class="w-full h-full" alt="">
+        <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" class="w-full h-full"
+          alt="">
       </div>
       <div
         class="absolute bottom-0 md:top-0 right-0 h-[20px] md:h-full w-full md:w-[40px] bg-[var(--color-secundario)] flex items-center justify-center flex-row md:flex-col gap-[1rem] md:gap-[5rem]">
         <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt="" />
+          <img src="../resources/icono_cafe.png" alt="" />
         </div>
         <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt="" />
+          <img src="../resources/icono_bebidas_frias.png" alt="" />
         </div>
         <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt="" />
+          <img src="../resources/icono_te.png" alt="" />
         </div>
         <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
           <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt="" />
         </div>
       </div>
     </div>
-    <div class="bg-[var(--color-texto)] h-[70%] md:h-full w-full md:w-[65%] flex items-center justify-center relative carta-scroll">
+    <!----------------------------------PARTE DERECHA---------------------------------->
+    <div
+      class="bg-[var(--color-texto)] h-[70%] md:h-full w-full md:w-[65%] flex items-center justify-center relative carta-scroll">
       <div
         class="h-full w-full p-[3rem] md:p-[7rem] flex items-center justify-center flex-wrap gap-4 overflow-y-scroll">
         <div class="h-[300px] w-[300px] flex items-center justify-center flex-col">
-          <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt="" class="h-2/3 mb-4" />
+          <img src="../resources/vecteezy_a-cup-of-coffee-with-coffee-beans_10856650_366.png" alt=""
+            class="h-2/3 mb-4" />
           <p>NOMBRE</p>
         </div>
       </div>
@@ -128,7 +136,7 @@
       </div>
     </div>
   </footer>
-  <script src="./barraBusqueda.js"></script>
+  <script src="navbar.js"></script>
 </body>
 
 </html>
