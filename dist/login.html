@@ -77,10 +77,10 @@
               Password?</a>
           </div>
           <button type="button" class="w-full block bg-[var(--color-texto)] hover:bg-[var(--color-secundario)] focus:bg-indigo-400 text-white font-semibold rounded-lg
-              px-4 py-3 mt-6" onclick="comprobarLogin(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value)"
-            >Log
+              px-4 py-3 mt-6"
+            onclick="comprobarLogin(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value)">Log
             In</button>
-            
+
         </form>
         <hr class="my-6 border-gray-300 w-full">
         <p class="mt-8">Need an account?
@@ -127,8 +127,10 @@
             <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
               Password?</a>
           </div>
-          <button type="submit" class="w-full block bg-[var(--color-texto)] hover:bg-[var(--color-secundario)] focus:bg-indigo-400 text-white font-semibold rounded-lg
-              px-4 py-3 mt-6">Log In</button>
+          <button type="button" class="w-full block bg-[var(--color-texto)] hover:bg-[var(--color-secundario)] focus:bg-indigo-400 text-white font-semibold rounded-lg
+              px-4 py-3 mt-6"
+            onclick="register(document.getElementById('registerName'), document.getElementById('registerSurname'), document.getElementById('registerEmail'), document.getElementById('registerPassword'))">
+            Create Account</button>
         </form>
         <hr class="my-6 border-gray-300 w-full">
         <p class="mt-8">Already have an account?

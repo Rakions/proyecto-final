@@ -35,7 +35,18 @@ var token = function () {
 
 //-----------------------------Register------------------------------//
 
-async function register(name, surname, email, password){
-  var data = conexion("usuarios/crear", "email=" + e)
+async function register(name, surname, email, password) {
+  let datos = {
+    "user_name": name,
+    "user_surname": surname,
+    "email": email,
+    "password": password,
+    "username": (name + surname),
+    "phone": "",
+    "last_connection": ""
+  }
+  var data = await conexion("usuarios/crear", datos, "POST")
+
+  console.log(conexion("usuarios/consultar"))
 
 }
