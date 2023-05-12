@@ -8,25 +8,24 @@ function switchRegister() {
   register.classList.toggle("hidden")
 }
 
-function comprobarLogin(email, password) {
 
-  axios.get(conexion("usuarios/buscar", ("id=" + email)).then(function (response){
-    console.log(response.data);
-  }).catch(function(error){
-    console.log(error);
-  }))
 
-  // Axios.get(conexion("usuarios/buscar", ("id=" + email)).then(Response => {
-  //   alert(Response)
-  //   if (Response != null) {
-  //     console.log("existe")
-  //   } else {
-  //     console.log("no existe")
-  //   }
-  // }))
 
-  
+async function comprobarLogin(email, password) {
+  conexion("usuarios/buscarEmail", ("email=" + email))
+    if(data.length > 0) {
+    if (data[0]["password"] == password) {
+      console.log("contraseña correcta")
+    } else {
+      console.log("contraseña incorrecta")
+    }
+  } else {
+    console.log("no existo");
+  }
 
 }
+
+
+
 
 
