@@ -1,35 +1,21 @@
 // ------------------Conexion Omar--------------------//
-async function conexion(ruta, datos) {
+async function conexion(ruta, datos, method) {
+
+    method = (method == null ? method : "GET")
 
     let rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos);
 
-    const response = await fetch(rutaFinal, { method: 'GET' }, { mode: 'no-cors' });
+    const response = await fetch(rutaFinal, {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    }, { mode: 'no-cors' });
     const jsonData = await response.json();
     return jsonData;
 }
 
-// function conexion(ruta, datos, callback) {
-//     try {
-//         let rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos)
 
-//         const xhr = new XMLHttpRequest();
-//         xhr.open("GET", rutaFinal);
-//         xhr.send();
-//         xhr.responseType = "json";
-//         xhr.onload = () => {
-//             if (xhr.readyState == 4 && xhr.status == 200) {
-//                 const data = xhr.response;
-//                 response = data
-//                 // console.log(data)
-//                 // console.log("conexion")
-//                 callback(data);
-//             } else {
-//                 console.log(`Error: ${xhr.status}`);
-//             }
-//         };
-//     } catch (error) {
-//         console.log("NO VA")
-//     }
-// }
 
 
