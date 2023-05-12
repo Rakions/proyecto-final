@@ -12,12 +12,12 @@ function switchRegister() {
 
 
 async function comprobarLogin(email, password) {
-  conexion("usuarios/buscarEmail", ("email=" + email))
+  var data = await conexion("usuarios/buscarEmail", ("email=" + email));
     if(data.length > 0) {
     if (data[0]["password"] == password) {
-      console.log("contraseña correcta")
+      console.log("contraseña correcta");
     } else {
-      console.log("contraseña incorrecta")
+      console.log("contraseña incorrecta");
     }
   } else {
     console.log("no existo");

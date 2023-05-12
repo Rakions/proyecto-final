@@ -1,11 +1,11 @@
 // ------------------Conexion Omar--------------------//
 async function conexion(ruta, datos) {
 
-    let rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos)
+    let rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos);
 
     const response = await fetch(rutaFinal, { method: 'GET' }, { mode: 'no-cors' });
     const jsonData = await response.json();
-    console.log(jsonData);
+    return jsonData;
 }
 
 // function conexion(ruta, datos, callback) {
