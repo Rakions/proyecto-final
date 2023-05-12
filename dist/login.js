@@ -1,10 +1,11 @@
 // const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
 
 
-const login = document.querySelector(".login-sign-in");
-const register = document.querySelector(".login-register");
+
 
 function switchRegister() {
+  const login = document.querySelector(".login-sign-in");
+  const register = document.querySelector(".login-register");
   login.classList.toggle("hidden")
   register.classList.toggle("hidden")
 }
@@ -14,10 +15,11 @@ function switchRegister() {
 
 async function comprobarLogin(email, password) {
   var data = await conexion("usuarios/buscarEmail", ("email=" + email));
-    if(data.length > 0) {
+  if (data.length > 0) {
     if (data[0]["password"] == password) {
       localStorage.clear()
       localStorage.setItem("idToken", token())
+      alert("iniciada sesion")
     } else {
       console.log("contraseña incorrecta");
     }
@@ -28,11 +30,11 @@ async function comprobarLogin(email, password) {
 }
 
 
-var rand = function(){
+var rand = function () {
   return Math.random().toString(36).substr(2);
 };
 
-var token = function(){
+var token = function () {
   return rand() + rand();
 }
 

@@ -11,10 +11,9 @@
   <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
   <script src="conexion.js"></script>
-  <script src="login.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<body>
+<body onload="console.log(conexion('usuarios/consultar'))">
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
       <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
@@ -178,6 +177,8 @@
     </div>
   </footer>
   <script src="navbar.js"></script>
+  <script src="login.js"></script>
+
 </body>
 
 </html>
