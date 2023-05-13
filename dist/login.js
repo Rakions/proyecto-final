@@ -49,8 +49,9 @@ async function register(name, surname, email, password) {
 
   var comprobarCorreo = await conexion("usuarios/buscarEmail", "email=" + email)
 
-  if(comprobarCorreo.length = 0){
-    var data = await conexion("usuarios/crear", datos, "POST");
+  console.log(comprobarCorreo)
+  if(comprobarCorreo.length == 0){
+    await conexion("usuarios/crear", datos, "POST");
   }else{
     console.log("ya existe")
   }
