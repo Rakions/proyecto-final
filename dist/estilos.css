@@ -417,14 +417,6 @@ footer a:hover {
   transform: scale(1.1);
 }
 
-.navegacion_dashboard{
-  transform: translateX(-100%);
-  transition: all 0.5s ease-out;
-}
-
-.navegacion_dashboard.active{
-  transform: translateX(0);
-}
 
 .navegacion_dashboard>ul>a{
   width: 100%;
@@ -438,6 +430,7 @@ footer a:hover {
   position: relative;
   color: var(--color-texto);
 }
+
 
 .navegacion_dashboard>ul>a::before{
   content: '';
@@ -453,4 +446,8 @@ footer a:hover {
 
 .navegacion_dashboard>ul>a:hover::before{
   transform: translateX(0%);
+}
+
+.dashboard_cabecera{
+  border-bottom: 1px solid var(--color-oscuro);
 }

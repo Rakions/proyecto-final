@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,19 +8,59 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
-    
+
 </head>
-<body>
-    <!-- --------------------------------DASHBOARD-------------------------------- -->
-    <section class="w-full h-screen">
-        <button onclick="menuDashboard()"><img src="../resources/menu-left-alt.svg" alt="" class="absolute top-0 left-0 mt-4 ml-4 w-[30px] z-[1000]"></button>
-        <div class="h-full w-[15%] bg-[var(--color-oscuro)] absolute top-0 left-0 navegacion_dashboard z-10 pt-[5rem]">
+
+<body class="flex">
+    <!-- --------------------------------MENU LATERAL-------------------------------- -->
+    <div class="h-screen ">
+        <div
+            class="hidden md:block h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard z-10 pt-[5rem]">
             <ul>
-                <a href="#"><li>Edit products</li></a>
-                <a href="#"><li>Edit users</li></a>
+                <img src="../resources/logo.png" alt="" class="w-full p-4">
+                <a href="#">
+                    <li>Edit products</li>
+                </a>
+                <a href="#">
+                    <li>Add products</li>
+                </a>
+                <a href="#">
+                    <li>Remove products</li>
+                </a>
+                <a href="#">
+                    <li>Edit users</li>
+                </a>
+                <a href="#">
+                    <li>Add users</li>
+                </a>
+                <a href="#">
+                    <li>Remove users</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!-- --------------------------------DASHBOARD-------------------------------- -->
+    <section class="w-full h-screen bg-slate-400 p-4">
+        <div class="w-full h-[50px] flex items-center dashboard_cabecera">
+            <ul class="grid grid-cols-4 justify-items-center w-full bg-red-300">
+                <li>User ID</li>
+                <li>Name</li>
+                <li>Surname</li>
+                <li>Email</li>
+            </ul>
+        </div>
+        <div class="w-full h-[500px] bg-green-300 mt-4 overflow-scroll">
+            <ul class="flex flex-col">
+                <li class="flex w-full items-center gap-[200px]">
+                    <p>1</p>
+                    <p>Omar</p>
+                    <p>Gomez</p>
+                    <p>ogmohammed004@gmail.com</p>
+                </li>
             </ul>
         </div>
     </section>
     <script src="dashboard.js"></script>
 </body>
+
 </html>
