@@ -8,7 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
-
+    
 </head>
 
 <body class="flex">
@@ -41,17 +41,15 @@
     </div>
     <!-- --------------------------------DASHBOARD-------------------------------- -->
     <section class="w-full h-screen bg-slate-400 p-4">
-        <div class="w-full h-[50px] flex items-center dashboard_cabecera">
-            <ul class="grid grid-cols-4 justify-items-center w-full bg-red-300">
+        <div class="w-full h-[500px] bg-green-300 overflow-scroll p-4">
+            <ul class="dashboard_grid uppercase">
                 <li>User ID</li>
                 <li>Name</li>
                 <li>Surname</li>
                 <li>Email</li>
             </ul>
-        </div>
-        <div class="w-full h-[500px] bg-green-300 mt-4 overflow-scroll">
-            <ul class="flex flex-col">
-                <li class="flex w-full items-center gap-[200px]">
+            <ul class="flex flex-col mt-4 dashboard_user_list">
+                <li class="dashboard_grid">
                     <p>1</p>
                     <p>Omar</p>
                     <p>Gomez</p>
@@ -62,5 +60,4 @@
     </section>
     <script src="dashboard.js"></script>
 </body>
-
 </html>
