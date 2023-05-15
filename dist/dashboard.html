@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
     <script type="module" src="dashboard.js"></script>
+    <script type="javascript" src="login.js"></script>
+    <script type="module" src="dashboardEditar.js"></script>
 </head>
 
 <body class="flex">
@@ -28,18 +30,17 @@
                 </a>
             </ul>
         </div>
+        
     </div>
     <!-- --------------------------------DASHBOARD-------------------------------- -->
-    <section class="w-full h-screen bg-slate-400 p-4">
-        <div class="w-full h-full overflow-scroll md:overflow-x-hidden p-4 ">
-            <ul class="dashboard_grid uppercase dashboard_cabecera">
-                <!--LISTA GENERADA DESDE JS-->
-            </ul>
-            <ul class="flex flex-col mt-4 dashboard_list">
-                <!--LISTA GENERADA DESDE LA BASE DE DATOS-->
-            </ul>
-        </div>
+    <section class="w-full h-screen bg-slate-400 p-4 overflow-scroll md:overflow-y-scroll">
+        <table class="w-full overflow-scroll bg-red-300 dashboard_cabecera dashboard_list" >
+
+        </table>
     </section>
+    <div class="modal w-full h-full absolute top-0 left-0 flex items-center justify-center hidden">
+    </div>
+    
 </body>
 
 </html>

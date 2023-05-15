@@ -2,6 +2,7 @@ import { logJSONData } from "./login.js";
 var usuarios;
 var products;
 var categorias;
+var boton = document.querySelector(".primary");
 var lista_content = document.querySelector(".dashboard_list");
 var cabecera = document.querySelector(".dashboard_cabecera");
 var edit_users = document.querySelector(".edit_users");
@@ -11,6 +12,9 @@ var edit_categories = document.querySelector(".edit_categories");
 addEventListener("load", () => {
     clearScreen();
 });
+
+
+
 
 edit_products.addEventListener("click", () => {
     clearScreen();
@@ -39,24 +43,24 @@ function clearScreen() {
 
 function cabeceraCategories(){
     cabecera.innerHTML = `
-    <li>Category ID</li>
-    <li>Name</li>`
+    <th>Category ID</th>
+    <th>Name</th>`
 }
 
 function cabeceraUsers() {
     cabecera.innerHTML = `
-        <li>User ID</li>
-        <li>Name</li>
-        <li>Surname</li>
-        <li>Email</li>`
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>`
 }
 
 function cabeceraProductos() {
     cabecera.innerHTML = `
-        <li>Product ID</li>
-        <li>Name</li>
-        <li>Description</li>
-        <li>Price</li>`
+        <th>Product ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>`
 }
 
 async function renderCategories(){
@@ -64,12 +68,13 @@ async function renderCategories(){
     lista_content = document.querySelector(".dashboard_list");
     for (let index = 0; index < categorias.length; index++) {
         lista_content.innerHTML += `
-            <li class="dashboard_grid">
-                <p>${categorias[index]["category_id"]}</p>
-                <p>${categorias[index]["category_name"]}</p>
-                <button>Edit</button>
-            </li>`
+                <tr>
+                <td>${categorias[index]["category_id"]}</td>
+                <td>${categorias[index]["category_name"]}</td>
+                <td><button value="${categorias[index]["category_id"]}" onclick="getIdCategoria(${categorias[index]["category_id"]})" id="primary">Edit</button></td>
+                </tr>`
     }
+    
 }
 
 async function renderUsers() {
@@ -77,13 +82,14 @@ async function renderUsers() {
     lista_content = document.querySelector(".dashboard_list");
     for (let index = 0; index < usuarios.length; index++) {
         lista_content.innerHTML += `
-            <li class="dashboard_grid">
-                <p>${usuarios[index]["user_id"]}</p>
-                <p>${usuarios[index]["user_name"]}</p>
-                <p>${usuarios[index]["user_surname"]}</p>
-                <p>${usuarios[index]["email"]}</p>
-                <button>Edit</button>
-            </li>`
+                <tr>
+                    <td>${usuarios[index]["user_id"]}</td>
+                    <td>${usuarios[index]["user_name"]}</td>
+                    <td>${usuarios[index]["user_surname"]}</td>
+                    <td>${usuarios[index]["email"]}</td>
+                    <td><button>Edit</button></td>
+                </tr>
+                `
     }
 }
 
@@ -92,12 +98,15 @@ async function renderProducts() {
     lista_content = document.querySelector(".dashboard_list")
     for (let index = 0; index < products.length; index++) {
         lista_content.innerHTML += `
-            <li class="dashboard_grid">
-                <p>${products[index]["products_id"]}</p>
-                <p>${products[index]["product_name"]}</p>
-                <p>${products[index]["product_description"]}</p>
-                <p>${products[index]["price"]}</p>
-                <button>Edit</button>
-            </li>`
+            <tr>
+                <td>${products[index]["products_id"]}</td>
+                <td>${products[index]["product_name"]}</td>
+                <td>${products[index]["product_description"]}</td>
+                <td>${products[index]["price"]}</td>
+                <td><button>Edit</button></td>
+            </tr>`
     }
 }
+
+//------------------------------Editar productos------------------------------\\
+

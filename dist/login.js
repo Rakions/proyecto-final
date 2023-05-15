@@ -8,6 +8,10 @@ function switchRegister() {
   register.classList.toggle("hidden")
 }
 
+function getIdCategoria(id){
+  console.log(id);
+}
+
 export async function logJSONData(funcion){
   let url = "http://localhost:4000/API/" + funcion;
   const response = await fetch(url,{method: 'GET'},{mode: 'no-cors'});
