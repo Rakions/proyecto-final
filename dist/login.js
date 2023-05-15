@@ -45,13 +45,12 @@ async function register(name, surname, email, password) {
     "phone": "",
     "last_connection": ""
   };
-  console.log(datos);
 
   var comprobarCorreo = await conexion("usuarios/buscarEmail", "email=" + email)
 
   console.log(comprobarCorreo)
   if(comprobarCorreo.length == 0){
-    await conexion("usuarios/crear", datos, "POST");
+    await conexionPost("usuarios/crear", datos);
   }else{
     console.log("ya existe")
   }
