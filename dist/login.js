@@ -1,5 +1,5 @@
 // const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
-
+var login = false;
 
 function switchRegister() {
   const login = document.querySelector(".login-sign-in");
@@ -13,9 +13,9 @@ async function comprobarLogin(email, password) {
   var data = await conexion("usuarios/buscarEmail", ("email=" + email));
   if (data.length > 0) {
     if (data[0]["password"] == password) {
-      localStorage.clear()
-      localStorage.setItem("idToken", token())
       alert("iniciada sesion")
+      // login = true;
+      // cambiarIconoLogin()
     } else {
       console.log("contraseña incorrecta");
     }
@@ -48,12 +48,33 @@ async function register(name, surname, email, password) {
 
   var comprobarCorreo = await conexion("usuarios/buscarEmail", "email=" + email)
 
-  if(comprobarCorreo.length == 0){
+  if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
-  }else{
+    // login = true;
+    // cambiarIconoLogin()
+    localStorage.clear()
+    localStorage.setItem("idToken", token())
+
+  } else {
     console.log("ya existe")
   }
 
   console.log(conexion("usuarios/consultar"))
 
 }
+
+
+
+//-----------------------------cambiarIconoLogin------------------------------//
+
+// function cambiarIconoLogin() {
+//   if(login){
+//     document.getElementById("userIcon").style.display = "";
+//     document.getElementById("cartIcon").style.display = "";
+//     document.getElementById("botonLogin").style.display = "none";
+//   }else{
+//     document.getElementById("userIcon").style.display = "none";
+//     document.getElementById("cartIcon").style.display = "none";
+//     document.getElementById("botonLogin").style.display = "";
+//   }
+// }
