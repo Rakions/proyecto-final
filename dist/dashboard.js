@@ -3,6 +3,7 @@ var usuarios;
 var products;
 var categorias;
 var boton = document.querySelector(".primary");
+var modal = document.querySelector(".modal");
 var lista_content = document.querySelector(".dashboard_list");
 var cabecera = document.querySelector(".dashboard_cabecera");
 var edit_users = document.querySelector(".edit_users");
@@ -12,9 +13,6 @@ var edit_categories = document.querySelector(".edit_categories");
 addEventListener("load", () => {
     clearScreen();
 });
-
-
-
 
 edit_products.addEventListener("click", () => {
     clearScreen();
@@ -27,12 +25,6 @@ edit_users.addEventListener("click", () => {
     cabeceraUsers();
     renderUsers();
 });
-
-edit_categories.addEventListener("click", () =>{
-    clearScreen();
-    cabeceraCategories();
-    renderCategories();
-})
 
 function clearScreen() {
     lista_content = document.querySelector(".dashboard_list");
@@ -63,6 +55,12 @@ function cabeceraProductos() {
         <th>Price</th>`
 }
 
+edit_categories.addEventListener("click", () => {
+    clearScreen();
+    cabeceraCategories();
+    renderCategories();
+});
+
 async function renderCategories(){
     categorias = await logJSONData("categorias/consultar");
     lista_content = document.querySelector(".dashboard_list");
@@ -71,10 +69,10 @@ async function renderCategories(){
                 <tr>
                 <td>${categorias[index]["category_id"]}</td>
                 <td>${categorias[index]["category_name"]}</td>
-                <td><button value="${categorias[index]["category_id"]}" onclick="getIdCategoria(${categorias[index]["category_id"]})" id="primary">Edit</button></td>
+                <td><button value="${categorias[index]["category_id"]}" onclick="getIdCategoria(${categorias[index]["category_id"]});toggleModal()" id="primary">Edit</button></td>
                 </tr>`
     }
-    
+
 }
 
 async function renderUsers() {
@@ -108,5 +106,5 @@ async function renderProducts() {
     }
 }
 
-//------------------------------Editar productos------------------------------\\
 
+//------------------------------Editar productos------------------------------\\

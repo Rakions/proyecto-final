@@ -8,13 +8,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
+    <script src="test.js"></script>
     <script type="module" src="dashboard.js"></script>
-    <script type="javascript" src="login.js"></script>
-    <script type="module" src="dashboardEditar.js"></script>
+    <script type="module" src="login.js"></script>
 </head>
 
 <body class="flex">
-    <!-- --------------------------------MENU LATERAL-------------------------------- -->
     <div class="h-screen ">
         <div class="hidden md:block h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard z-10 pt-[5rem]">
             <ul>
@@ -30,17 +29,27 @@
                 </a>
             </ul>
         </div>
-        
+
     </div>
-    <!-- --------------------------------DASHBOARD-------------------------------- -->
     <section class="w-full h-screen bg-slate-400 p-4 overflow-scroll md:overflow-y-scroll">
-        <table class="w-full overflow-scroll bg-red-300 dashboard_cabecera dashboard_list" >
+        <table class="w-full overflow-scroll bg-red-300 dashboard_cabecera dashboard_list">
 
         </table>
     </section>
     <div class="modal w-full h-full absolute top-0 left-0 flex items-center justify-center hidden">
+        <div class="relative w-[500px] h-[300px] bg-green-300 flex items-center justify-center flex-col">
+            <button class="absolute top-0 right-0 mt-4 mr-4" onclick="toggleModal()">
+                X
+            </button>
+            <div class="flex items-center justify-around w-full">
+                <label for="category_name">Category name: </label>
+                <input type="text" name="category_name" class="p-2 rounded-md">
+                <button onclick="updateCategory()">UPDATE</button>
+            </div>
+
+        </div>
     </div>
-    
+
 </body>
 
 </html>

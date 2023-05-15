@@ -14,10 +14,9 @@ function getIdCategoria(id){
 
 export async function logJSONData(funcion){
   let url = "http://localhost:4000/API/" + funcion;
-  const response = await fetch(url,{method: 'GET'},{mode: 'no-cors'});
+  const response = await fetch(url,{method: 'GET'});
   const jsonData = await response.json();
   return jsonData;
-
 }
 
 async function requestBDD(){
