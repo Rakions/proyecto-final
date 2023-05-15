@@ -1,20 +1,27 @@
-// import { async } from "postcss-js";
+// ------------------Conexion Omar--------------------//
+async function conexion(ruta, datos) {
 
-function conexion(ruta, datos) {
+    var rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos);
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:4000/API/" + ruta + "?" + datos);
-    xhr.send();
-    xhr.responseType = "json";
-    xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            const data = xhr.response;
-            console.log(data)
-            return data;
-        } else {
-            console.log(`Error: ${xhr.status}`);
-        }
-    };
+    const response = await fetch(rutaFinal, {
+        method: 'GET',
+    }, { mode: 'no-cors' });
+    const jsonData = await response.json();
+    return jsonData;
 }
+
+async function conexionPost(ruta, datos) {
+var rutaFinal = ("http://localhost:4000/API/" + ruta);
+
+await fetch(rutaFinal, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(datos)
+}, { mode: 'no-cors' });
+}
+
+
 
 
