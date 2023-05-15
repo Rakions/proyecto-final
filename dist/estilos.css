@@ -448,10 +448,6 @@ footer a:hover {
   transform: translateX(0%);
 }
 
-.dashboard_cabecera{
-  border-bottom: 1px solid var(--color-oscuro);
-}
-
 .dashboard_grid{
   display: grid;
   grid-template-columns: repeat(5,300px);
@@ -462,4 +458,26 @@ footer a:hover {
   border: 1px solid var(--color-oscuro);
   width: 100px;
   border-radius: 0.5rem;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 0.5rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

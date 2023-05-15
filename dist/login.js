@@ -10,7 +10,6 @@ function switchRegister() {
 
 export async function logJSONData(funcion){
   let url = "http://localhost:4000/API/" + funcion;
-  console.log(url);
   const response = await fetch(url,{method: 'GET'},{mode: 'no-cors'});
   const jsonData = await response.json();
   return jsonData;
