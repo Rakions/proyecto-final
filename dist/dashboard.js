@@ -1,4 +1,3 @@
-import { logJSONData } from "./login.js";
 var usuarios;
 var products;
 var categorias;
@@ -33,7 +32,7 @@ function clearScreen() {
     lista_content.innerHTML = "";
 }
 
-function cabeceraCategories(){
+function cabeceraCategories() {
     cabecera.innerHTML = `
     <th>Category ID</th>
     <th>Name</th>`
@@ -61,22 +60,22 @@ edit_categories.addEventListener("click", () => {
     renderCategories();
 });
 
-async function renderCategories(){
-    categorias = await logJSONData("categorias/consultar");
+async function renderCategories() {
+    categorias = await conexion("categorias/consultar");
     lista_content = document.querySelector(".dashboard_list");
     for (let index = 0; index < categorias.length; index++) {
         lista_content.innerHTML += `
                 <tr>
                 <td>${categorias[index]["category_id"]}</td>
                 <td>${categorias[index]["category_name"]}</td>
-                <td><button value="${categorias[index]["category_id"]}" onclick="getIdCategoria(${categorias[index]["category_id"]});toggleModal()" id="primary">Edit</button></td>
+                <td><button onclick="getIdCategoria(${categorias[index]["category_id"]});toggleModal(\'categorias\')" id="primary">Edit</button></td>
                 </tr>`
     }
 
 }
 
 async function renderUsers() {
-    usuarios = await logJSONData("usuarios/consultar");
+    usuarios = await conexion("usuarios/consultar");
     lista_content = document.querySelector(".dashboard_list");
     for (let index = 0; index < usuarios.length; index++) {
         lista_content.innerHTML += `
@@ -85,14 +84,14 @@ async function renderUsers() {
                     <td>${usuarios[index]["user_name"]}</td>
                     <td>${usuarios[index]["user_surname"]}</td>
                     <td>${usuarios[index]["email"]}</td>
-                    <td><button>Edit</button></td>
+                    <td><button onclick="getIdUsuario(${usuarios[index]["user_id"]});toggleModal(\'usuarios\')">Edit</button></td>
                 </tr>
                 `
     }
 }
 
 async function renderProducts() {
-    products = await logJSONData("products/consultar");
+    products = await conexion("products/consultar");
     lista_content = document.querySelector(".dashboard_list")
     for (let index = 0; index < products.length; index++) {
         lista_content.innerHTML += `
@@ -101,7 +100,7 @@ async function renderProducts() {
                 <td>${products[index]["product_name"]}</td>
                 <td>${products[index]["product_description"]}</td>
                 <td>${products[index]["price"]}</td>
-                <td><button>Edit</button></td>
+                <td><button onclick="getIdProductos(${products[index]["products_id"]});toggleModal(\'productos\')">Edit</button></td>
             </tr>`
     }
 }
