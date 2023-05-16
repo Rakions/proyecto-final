@@ -101,6 +101,7 @@ async function renderProducts() {
                 <td>${products[index]["product_description"]}</td>
                 <td>${products[index]["price"]}</td>
                 <td><button onclick="getIdProductos(${products[index]["products_id"]});toggleModal(\'productos\')">Edit</button></td>
+                <td><button onclick="borrarProducts(${products[index]["products_id"]})">Delete</button></td>
             </tr>`
     }
 }

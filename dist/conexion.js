@@ -10,6 +10,20 @@ async function conexion(ruta, datos) {
     return jsonData;
 }
 
+async function conexionDelete(ruta,datos) {
+
+    var rutaFinal = ("http://localhost:4000/API/" + ruta);
+    console.log(rutaFinal);
+    await fetch(rutaFinal, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(datos)
+    }, { mode: 'no-cors' });
+}
+
+
 async function conexionPost(ruta, datos) {
     var rutaFinal = ("http://localhost:4000/API/" + ruta);
 
@@ -22,9 +36,8 @@ async function conexionPost(ruta, datos) {
     }, { mode: 'no-cors' });
 }
 
-async function conexionPut(ruta, id , datos) {
+async function conexionPut(ruta, datos) {
     var rutaFinal = ("http://localhost:4000/API/" + ruta);
-
     await fetch(rutaFinal, {
         method: 'PUT',
         headers: {
