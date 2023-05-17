@@ -14,7 +14,6 @@ function eliminarCarrito(product_id, todo) {
   var productos = new Array();
   productos = JSON.parse(localStorage.getItem('carrito'));
   if (!todo) {
-    let eliminado = false;
     productos.splice(productos.indexOf(product_id), 1);
   }else{
     productos = productos.filter(product => product != product_id);
