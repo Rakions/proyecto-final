@@ -4,7 +4,7 @@ const barraBusqueda = document.getElementById("search-input");
 const tablaOpciones = document.getElementById("search-results");
 
 //cuando escribamos ejecuta el codigo
-barraBusqueda.addEventListener("keyup", function (event) {
+barraBusqueda.addEventListener("keyup", async function (event) {
   event.preventDefault(); //evita que se haga submit cada vez que se ejecuta la funcion
   tablaOpciones.innerHTML = "";
   if (barraBusqueda.value == 0) {
@@ -12,18 +12,20 @@ barraBusqueda.addEventListener("keyup", function (event) {
   } else {
     tablaOpciones.style.visibility = "";
     const palabraClave = barraBusqueda.value.toLowerCase(); //recoje lo que hay escrito en la barra de busqueda
-    const menuItems = document.querySelectorAll(".menu-item"); //recoje todos los items con la clase "menu-item"
+    const menuItems = await conexion("products/consultar") //recoje todos los items con la clase "menu-item"
     const results = [];
 
     //por cada elemento de menuItems...
     menuItems.forEach(function (menuItem) {
-      const menuItemText = menuItem.textContent.toLowerCase();
-      if (menuItemText.indexOf(palabraClave) !== -1) {
-        //comprueba si la palabra clave es un elemento del menu, si no lo es la funcion devuelve -1
-        divResult = menuItem.parentNode;
-        results.push(divResult);
-      }
-    });
+        const menuItemText = menuItem["product_name"]
+        if (menuItemText.indexOf(palabraClave) !== -1) {
+          //comprueba si la palabra clave es un elemento del menu, si no lo es la funcion devuelve -1
+          results.push(menuItem);
+        }
+      });
+    
+    console.log(results)
+    console.log(results.length)
     if (results.length == 0) {
       tablaOpciones.innerHTML = "No items found";
     } else {
@@ -34,12 +36,19 @@ barraBusqueda.addEventListener("keyup", function (event) {
 
 function displayResults(results) {
   results.forEach(function (result) {
-    const clon = result.cloneNode(true);
-    clon.classList.add("searchResult");
-    clon.insertAdjacentHTML(
-      "beforeend",
-      '<img src="../resources/cart-plus-solid (1).svg" alt="" class="btnAddCesta" onclick=""/>'
+
+    var div = document.createElement("div");
+    div.innerHTML = result["product_name"];
+    div.innerHTML += "<p>" + result["price"] + "€</p>"
+    div.insertAdjacentHTML(
+      "afterbegin",
+      '<img src="' + result["image_url"] + '"/>'
     );
-    tablaOpciones.appendChild(clon);
+    div.classList.add("searchResult");
+    div.insertAdjacentHTML(
+      "beforeend",
+      '<img src="../resources/cart-plus-solid.svg" alt="" class="btnAddCesta" onclick="agregarCarrito(result[\"product_id\"])"/>'
+    );
+    tablaOpciones.appendChild(div)
   });
 }

@@ -1,3 +1,4 @@
+// ------------------Conexion Omar--------------------//
 async function conexion(ruta, datos) {
 
     var rutaFinal = ("http://localhost:4000/API/" + ruta + "?" + datos);
