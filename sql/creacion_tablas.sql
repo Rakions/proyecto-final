@@ -69,7 +69,7 @@ create table products(
   reviews number,
   category_id number,
   price number,
-  image_url varchar2(100)
+  image_url varchar2(300)
 );
 
 create table categories(
