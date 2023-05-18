@@ -23,7 +23,6 @@ async function conexionDelete(ruta,datos) {
     }, { mode: 'no-cors' });
 }
 
-
 async function conexionPost(ruta, datos) {
     var rutaFinal = ("http://localhost:4000/API/" + ruta);
 
