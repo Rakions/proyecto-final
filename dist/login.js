@@ -9,20 +9,24 @@ function switchRegister() {
 }
 
 //-----------------------------Loging------------------------------//
+
 async function comprobarLogin(email, password) {
+
   var data = await conexion("usuarios/buscarEmail", ("email=" + email));
   if (data.length > 0) {
     if (data[0]["password"] == password) {
-      alert("iniciada sesion")
-      // login = true;
-      // cambiarIconoLogin()
+      localStorage.setItem("login", "true")
+      alert("sesion iniciada")
+      document.getElementById("formLogin").submit();
     } else {
-      console.log("contraseña incorrecta");
+      localStorage.setItem("login", "false")
+      alert("datos incorrectos");
     }
   } else {
+    localStorage.setItem("login", "false")
+    alert("no existo")
     console.log("no existo");
   }
-
 }
 var rand = function () {
   return Math.random().toString(36).substr(2);
@@ -30,6 +34,11 @@ var rand = function () {
 
 var token = function () {
   return rand() + rand();
+}
+
+
+function submit() {
+  window.location.href = "index.html"
 }
 
 

@@ -1,4 +1,3 @@
-import { logJSONData } from "./login.js";
 let carta_content = document.querySelector(".carta-content");
 let cafes = document.querySelector(".cafes");
 let bebidas_frias = document.querySelector(".bebidas-frias");
@@ -36,7 +35,7 @@ function limpiarCarta(){
 
 //Consulta que devuelve todos los productos
 async function getProducto() {
-  producto = await logJSONData("products/consultar");
+  producto = await conexion("products/consultar");
 }
 
 //Renderiza los elementos dependiendo de la categoria a la que pertenezcan
