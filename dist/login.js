@@ -46,7 +46,6 @@ function submit() {
 //-----------------------------Cambiar Loging------------------------------//
 
 function cambiarIconoLogin() {
-  console.log(localStorage.getItem("login"))
   if (localStorage.getItem("login") == "true") {
     document.getElementById("botonLogin").style.display = "none"
     document.getElementById("cartIcon").style.display = ""
