@@ -562,6 +562,7 @@ video {
   z-index: 1000;
 }
 
+
 .float-right {
   float: right;
 }
@@ -599,6 +600,10 @@ video {
 
 .mr-1 {
   margin-right: 0.25rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
 }
 
 .mt-12 {
@@ -639,6 +644,10 @@ video {
 
 .flex {
   display: flex;
+}
+
+.table {
+  display: table;
 }
 
 .grid {
@@ -773,8 +782,16 @@ video {
   width: 35%;
 }
 
+.w-\[500px\] {
+  width: 500px;
+}
+
 .w-\[50rem\] {
   width: 50rem;
+}
+
+.w-\[80\%\] {
+  width: 80%;
 }
 
 .w-full {
@@ -829,6 +846,10 @@ video {
   justify-content: space-between;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .justify-evenly {
   justify-content: space-evenly;
 }
@@ -847,6 +868,10 @@ video {
 
 .gap-\[2rem\] {
   gap: 2rem;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .overflow-y-scroll {
@@ -904,9 +929,32 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.bg-green-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+
+.bg-red-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
+}
+
+.bg-\[var\(--colo-oscuro\)\] {
+  background-color: var(--colo-oscuro);
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-4 {
@@ -1213,6 +1261,10 @@ video {
 
   .md\:gap-\[5rem\] {
     gap: 5rem;
+  }
+
+  .md\:overflow-y-scroll {
+    overflow-y: scroll;
   }
 
   .md\:p-\[7rem\] {

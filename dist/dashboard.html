@@ -7,29 +7,46 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
-    
+
 </head>
-<body>
-    <!-- --------------------------------MENU LATERAL-------------------------------- -->
-    <header>
-        <button onclick="menuDashboard()"><img src="../resources/menu-left-alt.svg" alt="" class="absolute top-0 left-0 mt-4 ml-4 w-[30px] z-[1000]"></button>
-        <div class="h-full w-[250px] bg-[var(--color-oscuro)] absolute top-0 left-0 navegacion_dashboard z-10 pt-[5rem]">
+
+<body class="flex">
+    <div class="h-screen ">
+        <div class="hidden md:block h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard z-10 pt-[5rem]">
             <ul>
-                <a href="#"><li>Edit products</li></a>
-                <a href="#"><li>Add products</li></a>
-                <a href="#"><li>Remove products</li></a>
-                <a href="#"><li>Edit users</li></a>
-                <a href="#"><li>Add users</li></a>
-                <a href="#"><li>Remove users</li></a>
-                <a href="#"><li>Edit orders</li></a>
-                <a href="#"><li>Delete orders</li></a>
+                <img src="../resources/logo.png" alt="" class="w-full p-4">
+                <a href="#" class="edit_products">
+                    <li>Edit products</li>
+                </a>
+                <a href="#" class="edit_users">
+                    <li>Edit users</li>
+                </a>
+                <a href="#" class="edit_categories">
+                    <li>Edit categories</li>
+                </a>
+                <a href="#" class="add_products">
+                    <li>Add products</li>
+                </a>
+                <a href="#" class="add_users">
+                    <li>Add users</li>
+                </a>
+                <a href="#" class="add_categories">
+                    <li>Add categories</li>
+                </a>
             </ul>
         </div>
-    </header>
-    <!-- --------------------------------DASHBOARD-------------------------------- -->
-    <section class="w-full h-screen bg">
 
+    </div>
+    <section class="w-full h-screen bg-[var(--color-oscuro)] p-4 overflow-scroll md:overflow-y-scroll">
+        <table class="w-full overflow-scroll dashboard_cabecera dashboard_list text-[var(--color-texto)]">
+
+        </table>
     </section>
+    <div class="modal w-full h-full absolute top-0 left-0 flex items-center justify-center hidden">
+       
+    </div>
+    <script src="dashboardFunctions.js"></script>
+    <script src="conexion.js"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>
