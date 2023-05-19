@@ -497,3 +497,6 @@ tr,td,th{
 .modal > div button:hover{
   background-color: var(--color-fondo);
 }
+#cartIcon{
+  margin-left: 10px;
+}

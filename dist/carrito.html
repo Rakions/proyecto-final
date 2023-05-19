@@ -11,7 +11,37 @@
 </head>
 
 <body onload="construirCarrito()">
-  <header class="header"></header>
+    <!----------------------------------HEADER---------------------------------->
+    <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between header">
+      <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+        <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
+      </div>
+      <div class="flex items-center">
+        <nav>
+          <ul class="flex text-[var(--color-texto)]">
+            <a href="index.html">
+              <li class="inline-block mx-4 links">INICIO</li>
+            </a>
+            <a href="carta.html">
+              <li class="inline-block mx-4 links">CARTA</li>
+            </a>
+            <a href="contact.html">
+              <li class="inline-block mx-4 links">CONTACTO</li>
+            </a>
+            <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
+              <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
+            </li>
+          </ul>
+        </nav>
+        <a href="" id="userIcon">
+          <img src="../resources/circle-user-solid.svg" class="w-8 h-8">
+        </a>
+        <a href="" id="cartIcon">
+          <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
+        </a>
+      </div>
+    </header>
+    
   <section class="w-full h-screen bg-[var(--color-fondo)]">
     <div class="flex items-center justify-center w-full h-[200px] 0">
       <h1 class="text-4xl">YOUR CART</h1>
@@ -67,4 +97,5 @@
     <script src="navbar.js"></script>
     <script src="carrito.js "></script>
     <script src="conexion.js"></script>
+    <!-- <script src="login.js"></script> -->
   </section>

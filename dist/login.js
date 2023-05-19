@@ -22,6 +22,7 @@ async function comprobarLogin(email, password) {
     alert("no existo")
     console.log("no existo");
   }
+  cambiarIconoLogin();
 }
 var rand = function () {
   return Math.random().toString(36).substr(2);
@@ -34,6 +35,18 @@ var token = function () {
 
 function submit() {
   window.location.href = "index.html"
+}
+
+
+//-----------------------------Cambiar Loging------------------------------//
+
+function cambiarIconoLogin() {
+  if (localStorage.getItem("login") == "false" || localStorage.getItem("login") == null) {
+    document.getElementById("botonLogin").style.display = "block"
+  } else {
+    document.getElementById("cartIcon").style.display = "block"
+    document.getElementById("userIcon").style.display = "block"
+  }
 }
 
 
