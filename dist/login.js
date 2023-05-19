@@ -46,17 +46,13 @@ function submit() {
 //-----------------------------Cambiar Loging------------------------------//
 
 function cambiarIconoLogin() {
-  if (localStorage.getItem("login") == "true") {
-    document.getElementById("botonLogin").style.display = "none"
-    document.getElementById("cartIcon").style.display = ""
-    document.getElementById("userIcon").style.display = ""
+  if (localStorage.getItem("login") == "false" || localStorage.getItem("login") == null) {
+    document.getElementById("botonLogin").style.display = "block"
   } else {
-    document.getElementById("botonLogin").style.display = ""
-    document.getElementById("cartIcon").style.display = "none"
-    document.getElementById("userIcon").style.display = "none"
+    document.getElementById("cartIcon").style.display = "block"
+    document.getElementById("userIcon").style.display = "block"
+  }
 }
-}
-
 
 
 //-----------------------------Register------------------------------//
