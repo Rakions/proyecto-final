@@ -1,12 +1,3 @@
-
-const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
-
-const login = document.querySelector(".login-sign-in");
-const register = document.querySelector(".login-register");
-// const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
-var login = false;
-
-
 function switchRegister() {
   const login = document.querySelector(".login-sign-in");
   const register = document.querySelector(".login-register");

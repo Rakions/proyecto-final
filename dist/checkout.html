@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="output.css">
 </head>
 
-<body onload="construirCarrito()" class="flex justify-center">
+<body class="flex justify-center" onload="getPrecio()">
     <div class="wrapper">
         <div class="container">
+            <div id="precioTotal_checkout" class="precioTotal_checkout">Total:</div>
             <form action="" class="checkoutForm">
                 <h1 class="self-center">
                     <i class="fas fa-shipping-fast"></i>
@@ -71,7 +72,7 @@
         </div>
     </div>
     <script src="navbar.js"></script>
-    <script src="carrito.js "></script>
     <script src="conexion.js"></script>
-
+    <script src="carrito.js"></script>
+    
 </body>

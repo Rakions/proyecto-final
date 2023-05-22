@@ -518,6 +518,16 @@ tr,td,th{
 .container {
   width: 65%;
   padding: 5% 10%;
+  position: relative;
+}
+
+.precioTotal_checkout{
+  position: absolute;
+  top: 55px;
+  right: 150px;
+  width: 100px;
+  height: 30px;
+  border: solid 2px;
 }
 
 .checkoutForm {
@@ -581,8 +591,6 @@ tr,td,th{
   padding-left: 5px;
 }
 
-.unaclase a:nth-child(1)
-
 .btns {
   display: flex;
   flex-direction: column;
@@ -627,9 +635,6 @@ tr,td,th{
     margin-top: 10px;
   }
 
-  .btns {
-    align-items: center;
-  }
   .btns button {
     width: 50%;
   }
@@ -658,6 +663,4 @@ tr,td,th{
 .cc-num {
     text-align: center;
   }
-
-
 }
