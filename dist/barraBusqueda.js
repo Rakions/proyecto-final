@@ -47,7 +47,7 @@ function displayResults(results) {
     div.classList.add("searchResult");
     div.insertAdjacentHTML(
       "beforeend",
-      '<img src="../resources/cart-plus-solid.svg" alt="" class="btnAddCesta" onclick="agregarCarrito(result[\"product_id\"])"/>'
+      `<img src="../resources/cart-plus-solid.svg" alt="" class="btnAddCesta" onclick="agregarCarrito(${result["products_id"]})"/>`
     );
     tablaOpciones.appendChild(div)
   });
