@@ -71,11 +71,9 @@ async function register(name, surname, email, password) {
     // cambiarIconoLogin()
     localStorage.clear()
     localStorage.setItem("idToken", token())
+    comprobarLogin(email, password);
 
   } else {
     console.log("ya existe")
   }
-
-  console.log(conexion("usuarios/consultar"))
-
 }

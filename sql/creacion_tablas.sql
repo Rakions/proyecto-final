@@ -21,12 +21,6 @@ create table cafe_users(
   last_connection date
 );
 
-create table sesiones(
-  sesion_id number not null PRIMARY KEY,
-  user_id number,
-  token varchar2(40)
-);
-
 create table orders(
   orders_id number not null PRIMARY KEY,
   user_id number,
@@ -77,8 +71,11 @@ create table categories(
   category_name varchar2(30)
 );
 
-alter table sesiones add CONSTRAINT fk_sesiones_userId
-FOREIGN key (user_id) REFERENCES cafe_users(user_id);
+create table sessions(
+  user_id number,
+  token varchar2(100)
+);
+
 
 alter table orders add CONSTRAINT fk_orders_shopId
 FOREIGN key (shop_id) REFERENCES shops(shop_id);
@@ -103,3 +100,6 @@ FOREIGN key (shop_id) REFERENCES shops(shop_id);
 
 alter table shop_products add CONSTRAINT fk_shop_products_productId
 FOREIGN KEY (product_id) REFERENCES products(products_id);
+
+alter table sessions add CONSTRAINT fk_sessions_userId
+FOREIGN KEY (user_id) REFERENCES cafe_users(user_id);
