@@ -8,6 +8,17 @@
   --color-oscuro: #232323;
 }
 
+/*Ocultar flecitas en los input type number*/
+/*Google Chrome*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/*Firefox*/
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 nav>ul>a,
 button {
   font-family: "Poppins";
@@ -496,5 +507,28 @@ tr,td,th{
 
 .modal > div button:hover{
   background-color: var(--color-fondo);
+}
+
+.info_obligatoria{
+  padding: 1rem;
+}
+
+.info_obligatoria > div > input{
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+  border: 1px solid var(--color-oscuro);
+  width: 100%;
+}
+
+.user_info{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  padding-top: 7rem;
+}
+
+.div_boton_info_user{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
