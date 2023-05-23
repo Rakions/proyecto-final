@@ -8,12 +8,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
+    <script src="navbar.js"></script>
 </head>
 
 <body>
     <section class="h-screen w-full flex bg-[var(--color-fondo)]">
+        <!-- --------------------------BOTON BARRA LATERAL MOVIL-------------------------- -->
+        <a href="#" class="absolute top-0 left-0 p-4 md:hidden" onclick="navbarDashboard()">
+           asdasd
+        </a>
         <!-- --------------------------BARRA LATERAL-------------------------- -->
-        <div class="hidden md:block h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard z-10 pt-[5rem]">
+        <div class="h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard pt-[5rem]">
             <ul>
                 <img src="../resources/logo.png" alt="" class="w-full p-4">
                 <a href="#">
@@ -28,8 +33,8 @@
             </ul>
         </div>
         <!-- --------------------------INFORMACION-------------------------- -->
-        <div class="w-full h-full user_info relative">
-            <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4">Hello, Omar</h1>
+        <div class="w-full user_info relative">
+            <!-- <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4">Hello, Omar</h1> -->
             <div class="info_obligatoria">
                 <div>
                     <label for="nombre">Name: </label>

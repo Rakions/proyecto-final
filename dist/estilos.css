@@ -14,6 +14,7 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+
 /*Firefox*/
 input[type=number] {
   -moz-appearance: textfield;
@@ -390,22 +391,22 @@ footer a:hover {
   border: 1px solid var(--color-oscuro);
 }
 
-.checkout{
+.checkout {
   border: 1px solid var(--color-oscuro);
   padding: 0.5rem 1rem;
   transition: all 0.2s;
 }
 
-.checkout:hover{
+.checkout:hover {
   background-color: var(--color-fondo);
 }
 
-.carta-content > a{
+.carta-content>a {
   transition: all 0.3s;
   position: relative;
 }
 
-.carta-content > a::after{
+.carta-content>a::after {
   cursor: pointer;
   border-radius: 0.75rem;
   position: absolute;
@@ -421,15 +422,15 @@ footer a:hover {
   transition: all 0.5s;
 }
 
-.carta-content > a:hover::after{
+.carta-content>a:hover::after {
   opacity: 0.6;
 }
 
-.carta-content > a:hover{
+.carta-content>a:hover {
   transform: scale(1.1);
 }
 
-.navegacion_dashboard>ul>a{
+.navegacion_dashboard>ul>a {
   width: 100%;
   height: 5rem;
   display: flex;
@@ -442,7 +443,7 @@ footer a:hover {
   color: var(--color-texto);
 }
 
-.navegacion_dashboard>ul>a::before{
+.navegacion_dashboard>ul>a::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -454,11 +455,15 @@ footer a:hover {
   transition: all 0.4s ease-out;
 }
 
-.navegacion_dashboard>ul>a:hover::before{
+.navegacion_dashboard>ul>a:hover::before {
   transform: translateX(0%);
 }
 
-table button{
+.navegacion_dashboard.active{
+  transform: translateX(0%);
+}
+
+table button {
   border: 1px solid var(--color-oscuro);
   width: 100px;
   border-radius: 0.5rem;
@@ -482,53 +487,66 @@ table button{
   background: #555;
 }
 
-tr,td,th{
+tr,
+td,
+th {
   border: 1px solid var(--color-oscuro);
   padding: 5px 2px;
 }
 
-.modal{
+.modal {
   background-color: #00000067;
 }
 
-.modal > div{
+.modal>div {
   background-color: var(--color-oscuro);
   color: var(--color-texto);
   border: 1px solid var(--color-fondo);
   border-radius: 0.75rem;
 }
 
-.modal > div button{
+.modal>div button {
   border: 1px solid var(--color-texto);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
   transition: all 0.3s;
 }
 
-.modal > div button:hover{
+.modal>div button:hover {
   background-color: var(--color-fondo);
 }
 
-.info_obligatoria{
+.info_obligatoria {
   padding: 1rem;
 }
 
-.info_obligatoria > div > input{
+.info_obligatoria>div>input {
   border-radius: 0.5rem;
   padding-left: 1rem;
   border: 1px solid var(--color-oscuro);
   width: 100%;
 }
 
-.user_info{
+.user_info {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   padding-top: 7rem;
+  max-height: 500px;
 }
 
-.div_boton_info_user{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media (max-width: 600px) {
+  .div_boton_info_user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
+@media (max-width: 768px){
+  .navegacion_dashboard{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-100%);
+  }
+}
