@@ -1,12 +1,3 @@
-
-const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
-
-const login = document.querySelector(".login-sign-in");
-const register = document.querySelector(".login-register");
-// const regexMain = "/^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$/";
-var login = false;
-
-
 function switchRegister() {
   const login = document.querySelector(".login-sign-in");
   const register = document.querySelector(".login-register");
@@ -19,18 +10,17 @@ async function comprobarLogin(email, password) {
   var data = await conexion("usuarios/buscarEmail", ("email=" + email));
   if (data.length > 0) {
     if (data[0]["password"] == password) {
-      localStorage.setItem("login", "true")
       alert("sesion iniciada")
+      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"])) 
       document.getElementById("formLogin").submit();
     } else {
-      localStorage.setItem("login", "false")
       alert("datos incorrectos");
     }
   } else {
-    localStorage.setItem("login", "false")
     alert("no existo")
     console.log("no existo");
   }
+  cambiarIconoLogin();
 }
 var rand = function () {
   return Math.random().toString(36).substr(2);
@@ -43,6 +33,18 @@ var token = function () {
 
 function submit() {
   window.location.href = "index.html"
+}
+
+
+//-----------------------------Cambiar Loging------------------------------//
+
+async function cambiarIconoLogin() {
+  if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length == 0) {
+    document.getElementById("botonLogin").style.display = "block"
+  } else {
+    document.getElementById("cartIcon").style.display = "block"
+    document.getElementById("userIcon").style.display = "block"
+  }
 }
 
 
@@ -63,15 +65,20 @@ async function register(name, surname, email, password) {
 
   if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
+    let user = await conexion("usuarios/buscarEmail", "email=" + email);
     // login = true;
     // cambiarIconoLogin()
     localStorage.clear()
     localStorage.setItem("idToken", token())
+    let tokenKey = localStorage.getItem("idToken");
+    let datosToken = {
+      "user_id": user[0]["user_id"],
+      "token": tokenKey
+    }
+    await conexionPost("sessions/crear", datosToken)
+    comprobarLogin(email, password);
 
   } else {
-    console.log("ya existe")
+    alert.log("este correo ya existe")
   }
-
-  console.log(conexion("usuarios/consultar"))
-
 }

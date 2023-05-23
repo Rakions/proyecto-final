@@ -13,7 +13,7 @@
   <script src="conexion.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<body onload="console.log(conexion('usuarios/consultar'))">
+<body onload="cambiarIconoLogin()">
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
       <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
@@ -35,6 +35,8 @@
           </li>
         </ul>
       </nav>
+      <img src="../resources/circle-user-solid.svg" class="w-8 h-8 hidden" id="userIcon">
+      <img src="../resources/cart-plus-solid.svg" class="w-8 h-8 hidden" id="cartIcon">
       <a href="login.html" id="botonLogin">
         <button
           class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>

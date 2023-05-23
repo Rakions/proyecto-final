@@ -10,20 +10,6 @@ function agregarCarrito(product_id) {
   localStorage.setItem('carrito', JSON.stringify(productos));
 }
 
-function eliminarCarrito(product_id, todo) {
-  var productos = new Array();
-  productos = JSON.parse(localStorage.getItem('carrito'));
-  if (!todo) {
-    productos.splice(productos.indexOf(product_id), 1);
-  }else{
-    productos = productos.filter(product => product != product_id);
-  }
-  if(productos.indexOf(product_id) == -1){
-    document.getElementById("product" + product_id).style.display = "none"
-  }
-  localStorage.setItem('carrito', JSON.stringify(productos));
-}
-
 
 async function construirCarrito() {
 
@@ -65,25 +51,63 @@ async function construirCarrito() {
         document.getElementById("cantidad" + product_id).innerHTML = parseInt(document.getElementById("cantidad" + product_id).innerHTML) + 1;
         document.getElementById("precio-total" + product_id).innerHTML = result[0]["price"] * document.getElementById("cantidad" + product_id).innerHTML
       }
-      document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + result[0]["price"] + "€";
-      document.getElementById("Total").innerHTML = document.getElementById("subtotal").innerHTML
+      precioTotal(result[0]["price"]);
     });
   }
 }
-
-
-function modificarCantidad(product, action) {
-  var cantidad = document.getElementById("cantidad" + product);
-  if(action > 0){
-    agregarCarrito(product);
-  }else if(action < 0){
-    eliminarCarrito(product, false)
-  }else{
-    eliminarCarrito(product, true)
-  }
-  cantidad.innerHTML = parseInt(cantidad.innerHTML) + action;
+var precio_Total; 
+function precioTotal(precio, action){
+  console.log("hola")
+  document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + precio + "€";
+  document.getElementById("Total").innerHTML = document.getElementById("subtotal").innerHTML
+  precio_Total = document.getElementById("Total").innerHTML;
 }
 
 
+async function modificarCantidad(product, action) {
+  var result = await conexion("products/buscar", "id=" + product)
+  action = (action == undefined ? 1 : action);
+  var precio = result[0]["price"] * action;
+  var cantidad = document.getElementById("cantidad" + product);
+  var total = document.getElementById("precio-total" + product);
+  if (action > 0) {
+    agregarCarrito(product);
+  } else if (action < 0) {
+    eliminarCarrito(product, false);
+  } else {
+    eliminarCarrito(product, true);
+  }
+  cantidad.innerHTML = parseInt(cantidad.innerHTML) + precio;
+  total.innerHTML = parseInt(total.innerHTML) + precio;
+  precioTotal(precio, action)
+}
+
+function eliminarCarrito(product_id, todo) {
+  var productos = new Array();
+  productos = JSON.parse(localStorage.getItem('carrito'));
+  if (!todo) {
+    productos.splice(productos.indexOf(product_id), 1);
+  } else {
+    productos = productos.filter(product => product != product_id);
+  }
+  if (productos.indexOf(product_id) == -1) {
+    document.getElementById("product" + product_id).style.display = "none"
+  }
+  localStorage.setItem('carrito', JSON.stringify(productos));
+}
+
+//-------------------------CHECKOUT----------------------//
+
+function irCheckout() {
+  
+  window.location.href = "./checkout.html?precioTotal=" + encodeURIComponent(precio_Total);
+}
+
+function getPrecio(){
+  var precioTotal = new URLSearchParams(window.location.search);
+  precioTotal = precioTotal.get("precioTotal");
+  console.log(precioTotal)
+  document.getElementById("precioTotal_checkout").innerHTML += " " + precioTotal;
+}
 
 
