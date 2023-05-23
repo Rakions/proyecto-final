@@ -99,6 +99,7 @@ function eliminarCarrito(product_id, todo) {
 //-------------------------CHECKOUT----------------------//
 
 function irCheckout() {
+  
   window.location.href = "./checkout.html?precioTotal=" + encodeURIComponent(precio_Total);
 }
 
