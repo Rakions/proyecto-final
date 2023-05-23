@@ -54,10 +54,19 @@ async function register(name, surname, email, password) {
 
   if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
+    let user = await conexion("usuarios/buscarEmail", "email=" + email);
     // login = true;
     // cambiarIconoLogin()
     localStorage.clear()
     localStorage.setItem("idToken", token())
+    let tokenKey = localStorage.getItem("idToken");
+    console.log(user)
+    let datosToken = {
+      "user_id": user[0]["user_id"],
+      "token": tokenKey
+    }
+    console.log(datos)
+    await conexionPost("sessions/crear", datosToken)
 
   } else {
     console.log("ya existe")

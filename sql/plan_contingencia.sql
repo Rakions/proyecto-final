@@ -6,7 +6,7 @@ ALTER TABLE order_details DROP CONSTRAINT fk_order_details_orderId;
 ALTER TABLE products DROP CONSTRAINT fk_products_categoryId;
 ALTER TABLE shop_products DROP CONSTRAINT fk_shop_products_shopId;
 ALTER TABLE shop_products DROP CONSTRAINT fk_shop_products_productId;
-ALTER TABLE sesiones DROP CONSTRAINT fk_sesiones_userId;
+ALTER TABLE sessions DROP CONSTRAINT fk_sesiones_userId;
 
 
 

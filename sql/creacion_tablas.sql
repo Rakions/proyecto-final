@@ -33,7 +33,8 @@ create table orders(
   shop_id number,
   order_date date,
   address varchar2(100),
-  total_price int
+  total_price int,
+  state VARCHAR(30)
 );
 
 create table orders_employees(
