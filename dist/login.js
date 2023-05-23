@@ -36,7 +36,7 @@ function submit() {
 }
 
 
-//-----------------------------Cambiar Loging------------------------------//
+//-----------------------------Cambiar Login------------------------------//
 
 async function cambiarIconoLogin() {
   if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length == 0) {
