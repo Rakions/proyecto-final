@@ -12,59 +12,42 @@
 </head>
 
 <body>
-    <section class="h-screen w-full flex bg-[var(--color-fondo)]">
-        <!-- --------------------------BOTON BARRA LATERAL MOVIL-------------------------- -->
-        <a href="#" class="absolute top-0 left-0 p-4 md:hidden" onclick="navbarDashboard()">
-           asdasd
-        </a>
-        <!-- --------------------------BARRA LATERAL-------------------------- -->
-        <div class="h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard pt-[5rem]">
+    <section class="h-screen w-full flex flex-col bg-[var(--color-fondo)]">        
+        <div class="w-full h-[100px] bg-[var(--color-oscuro)] flex items-center p-4">
             <ul>
-                <img src="../resources/logo.png" alt="" class="w-full p-4">
-                <a href="#">
-                    <li>Edit user info</li>
-                </a>
-                <a href="#">
-                    <li>Orders</li>
-                </a>
-                <a href="#">
-                    <li>Back to shopping</li>
-                </a>
+                <li>
+                    <img src="../resources/logo.png" alt="" class="h-[90px]">
+                </li>
             </ul>
         </div>
         <!-- --------------------------INFORMACION-------------------------- -->
         <div class="w-full user_info relative">
-            <!-- <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4">Hello, Omar</h1> -->
+            <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4">Hello, Omar</h1>
             <div class="info_obligatoria">
                 <div>
-                    <label for="nombre">Name: </label>
                     <input type="text" name="nombre" placeholder="Name...">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
                 <div>
-                    <label for="apellido">Surname: </label>
                     <input type="text" name="apellido" placeholder="Surname...">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
                 <div>
-                    <label for="email">Email: </label>
                     <input type="text" name="email" placeholder="Email...">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
-            </div>
-            <div class="info_obligatoria">
                 <div>
-                    <label for="password">Password: </label>
                     <input type="password" placeholder="Password" name="password">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
                 <div>
-                    <label for="username">Username: </label>
                     <input type="text" name="username" placeholder="Username...">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
                 <div>
-                    <label for="phone">Phone: </label>
                     <input type="number" placeholder="Phone..." min="0">
+                    <button class="edit_info_obligatoria">EDIT</button>
                 </div>
-            </div>
-            <div class="div_boton_info_user">
-                <button class="edit_info_obligatoria">EDIT</button>
             </div>
         </div>
     </section>
