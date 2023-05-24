@@ -9,14 +9,25 @@
     <link rel="stylesheet" href="estilos.css">
     <link rel="stylesheet" href="output.css">
     <script src="navbar.js"></script>
+    <script src="carrito.js"></script>
+    <script src="usuario.js"></script>
 </head>
 
 <body>
-    <section class="h-screen w-full flex flex-col bg-[var(--color-fondo)]">        
+    <section class="h-screen w-full flex flex-col bg-[var(--color-fondo)]">
         <div class="w-full h-[100px] bg-[var(--color-oscuro)] flex items-center p-4">
-            <ul>
+            <a href="index.html">
+                <img src="../resources/logo.png" alt="" class="h-[90px]">
+            </a>
+            <ul class="text-[var(--color-texto)] user_navbar_links">
                 <li>
-                    <img src="../resources/logo.png" alt="" class="h-[90px]">
+                    Edit Personal Information
+                </li>
+                <li>
+                    Orders
+                </li>
+                <li>
+                    <button onclick="logOut()">Log Out</button>
                 </li>
             </ul>
         </div>
@@ -24,30 +35,7 @@
         <div class="w-full user_info relative">
             <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4">Hello, Omar</h1>
             <div class="info_obligatoria">
-                <div>
-                    <input type="text" name="nombre" placeholder="Name...">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
-                <div>
-                    <input type="text" name="apellido" placeholder="Surname...">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
-                <div>
-                    <input type="text" name="email" placeholder="Email...">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
-                <div>
-                    <input type="password" placeholder="Password" name="password">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
-                <div>
-                    <input type="text" name="username" placeholder="Username...">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
-                <div>
-                    <input type="number" placeholder="Phone..." min="0">
-                    <button class="edit_info_obligatoria">EDIT</button>
-                </div>
+                
             </div>
         </div>
     </section>

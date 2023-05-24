@@ -523,6 +523,7 @@ th {
 .info_obligatoria>div{
   display: flex;
   flex-wrap: wrap;
+  margin-block: 0.5rem;
 }
 
 .info_obligatoria>div>input {
@@ -551,6 +552,34 @@ th {
 .edit_info_obligatoria:hover{
   background-color: var(--color-secundario);
   transform: scale(1.05);
+}
+
+.user_navbar_links{
+  margin-left: 2rem;
+}
+
+.user_navbar_links button{
+  color: #232323;
+  background-color: var(--color-fondo);
+  padding: 0.3rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.user_navbar_links button:hover{
+  background-color: var(--color-secundario);
+}
+
+.user_navbar_links li{
+  display: inline-block;
+  margin: 0px 1rem;
+  color: var(--color-texto);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.user_navbar_links li:hover{
+  color: var(--color-secundario);
 }
 
 @media (max-width: 600px) {
