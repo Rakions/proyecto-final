@@ -13,6 +13,11 @@ async function comprobarLogin(email, password) {
       alert("sesion iniciada")
       localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"])) 
       document.getElementById("formLogin").submit();
+      var last_connection = getDate();
+      let conexionJson = {
+        "last_connection": last_connection
+      }
+      conexionPut("usuarios/modificar/conexion",conexionJson);
     } else {
       alert("datos incorrectos");
     }
@@ -81,4 +86,13 @@ async function register(name, surname, email, password) {
   } else {
     alert.log("este correo ya existe")
   }
+}
+
+function getDate(){
+  var last_connection = new Date();
+  var year = last_connection.getFullYear();
+  var month = last_connection.getMonth();
+  var day = last_connection.getDate();
+  last_connection = year + "-" + month + "-" + day;
+  return last_connection;
 }
