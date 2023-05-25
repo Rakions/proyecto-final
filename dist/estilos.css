@@ -535,6 +535,8 @@ th {
   padding-left: 1rem;
   border: 1px solid var(--color-oscuro);
   margin-left: 1rem;
+  max-width: 300px;
+  width: 60%;
 }
 
 .user_info {
