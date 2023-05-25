@@ -1,109 +1,118 @@
-create table employees (
-  employee_id number not null PRIMARY key ,
-  employee_name varchar2(30),
-  employee_surname varchar2(100),
-  email varchar2(100),
-  password varchar2(100),
-  phone VARCHAR2(20),
-  salary number,
-  position varchar2(100),
-  hire_date date
+CREATE TABLE EMPLOYEES (
+  EMPLOYEE_ID NUMBER NOT NULL PRIMARY KEY,
+  EMPLOYEE_NAME VARCHAR2(30),
+  EMPLOYEE_SURNAME VARCHAR2(100),
+  EMAIL VARCHAR2(100),
+  PASSWORD VARCHAR2(100),
+  PHONE VARCHAR2(20),
+  SALARY NUMBER,
+  POSITION VARCHAR2(100),
+  HIRE_DATE DATE
 );
 
-create table cafe_users(
-  user_id number not null PRIMARY KEY,
-  user_name varchar2(30),
-  user_surname varchar2(50),
-  email varchar2(50),
-  password varchar2(50),
-  username varchar2(30),
-  phone varchar2(20),
-  last_connection date
+CREATE TABLE CAFE_USERS(
+  USER_ID NUMBER NOT NULL PRIMARY KEY,
+  USER_NAME VARCHAR2(30),
+  USER_SURNAME VARCHAR2(50),
+  EMAIL VARCHAR2(50),
+  PASSWORD VARCHAR2(50),
+  USERNAME VARCHAR2(30),
+  PHONE VARCHAR2(20),
+  LAST_CONNECTION DATE
 );
 
-create table orders(
-  orders_id number not null PRIMARY KEY,
-  user_id number,
-  shop_id number,
-  order_date date,
-  address varchar2(100),
-  state VARCHAR(30),
-  order_name varchar2(50),
-  order_surname varchar2(100)
-  order_state VARCHAR2(30)
+CREATE TABLE ORDERS(
+  ORDERS_ID NUMBER NOT NULL PRIMARY KEY,
+  USER_ID NUMBER,
+  SHOP_ID NUMBER,
+  ORDER_DATE DATE,
+  ADDRESS VARCHAR2(100),
+  STATE VARCHAR(30),
+  ORDER_NAME VARCHAR2(50),
+  ORDER_SURNAME VARCHAR2(100) ORDER_STATE VARCHAR2(30)
 );
 
-create table orders_employees(
-  employee_id number,
-  orders_id number
+CREATE TABLE ORDERS_EMPLOYEES(
+  EMPLOYEE_ID NUMBER,
+  ORDERS_ID NUMBER
 );
 
-create table shops(
-  shop_id number not null PRIMARY KEY,
-  shop_name varchar2(100),
-  location varchar2(50),
-  address varchar2(100),
-  phone varchar2(20),
-  email varchar2(100)
+CREATE TABLE SHOPS(
+  SHOP_ID NUMBER NOT NULL PRIMARY KEY,
+  SHOP_NAME VARCHAR2(100),
+  LOCATION VARCHAR2(50),
+  ADDRESS VARCHAR2(100),
+  PHONE VARCHAR2(20),
+  EMAIL VARCHAR2(100)
 );
 
-create table shop_products(
-  shop_id number,
-  product_id NUMBER
+CREATE TABLE SHOP_PRODUCTS(
+  SHOP_ID NUMBER,
+  PRODUCT_ID NUMBER
 );
 
-create table order_details(
-  order_details_id number not null PRIMARY KEY,
-  orders_id number,
-  product_id number,
-  quantity number
+CREATE TABLE ORDER_DETAILS(
+  ORDER_DETAILS_ID NUMBER NOT NULL PRIMARY KEY,
+  ORDERS_ID NUMBER,
+  PRODUCT_ID NUMBER,
+  QUANTITY NUMBER
 );
 
-create table products(
-  products_id number not null PRIMARY KEY,
-  product_name varchar2(20),
-  product_description varchar2(200),
-  stock number,
-  reviews number,
-  category_id number,
-  price number,
-  image_url varchar2(300)
+CREATE TABLE PRODUCTS(
+  PRODUCTS_ID NUMBER NOT NULL PRIMARY KEY,
+  PRODUCT_NAME VARCHAR2(20),
+  PRODUCT_DESCRIPTION VARCHAR2(200),
+  STOCK NUMBER,
+  REVIEWS NUMBER,
+  CATEGORY_ID NUMBER,
+  PRICE NUMBER,
+  IMAGE_URL VARCHAR2(300)
 );
 
-create table categories(
-  category_id number not null PRIMARY KEY,
-  category_name varchar2(30)
+CREATE TABLE CATEGORIES(
+  CATEGORY_ID NUMBER NOT NULL PRIMARY KEY,
+  CATEGORY_NAME VARCHAR2(30)
 );
 
-create table sessions(
-  user_id number,
-  token varchar2(100)
+CREATE TABLE SESSIONS(
+  USER_ID NUMBER,
+  TOKEN VARCHAR2(100)
 );
 
+ALTER TABLE ORDERS ADD CONSTRAINT FK_ORDERS_SHOPID FOREIGN KEY (SHOP_ID) REFERENCES SHOPS(SHOP_ID);
 
-alter table orders add CONSTRAINT fk_orders_shopId
-FOREIGN key (shop_id) REFERENCES shops(shop_id);
+ALTER TABLE ORDERS ADD CONSTRAINT FK_ORDERS_USERID FOREIGN KEY (USER_ID) REFERENCES CAFE_USERS(USER_ID);
 
-alter table orders add CONSTRAINT fk_orders_userId
-FOREIGN key (user_id) REFERENCES cafe_users(user_id);
+ALTER TABLE ORDERS_EMPLOYEES ADD CONSTRAINT FK_ORDERS_EMPLOYEES_EMPLOYEEID FOREIGN KEY (EMPLOYEE_ID) REFERENCES EMPLOYEES(EMPLOYEE_ID);
 
-alter table orders_employees add CONSTRAINT fk_orders_employees_employeeId
-FOREIGN key (employee_id) REFERENCES employees(employee_id);
+ALTER TABLE ORDERS_EMPLOYEES ADD CONSTRAINT FK_ORDER_EMPLOYEES_ORDERID FOREIGN KEY (ORDERS_ID) REFERENCES ORDERS(ORDERS_ID);
 
-alter table orders_employees add CONSTRAINT fk_order_employees_orderId
-FOREIGN key (orders_id) REFERENCES orders(orders_id);
+ALTER TABLE ORDER_DETAILS ADD CONSTRAINT FK_ORDER_DETAILS_ORDERID FOREIGN KEY (ORDERS_ID) REFERENCES ORDERS(ORDERS_ID);
 
-alter table order_details add CONSTRAINT fk_order_details_orderId
-FOREIGN key (orders_id) REFERENCES orders(orders_id);
+ALTER TABLE PRODUCTS ADD CONSTRAINT FK_PRODUCTS_CATEGORYID FOREIGN KEY (CATEGORY_ID) REFERENCES CATEGORIES(CATEGORY_ID);
 
-alter table products add CONSTRAINT fk_products_categoryId
-FOREIGN key (category_id) REFERENCES categories(category_id);
+ALTER TABLE SHOP_PRODUCTS ADD CONSTRAINT FK_SHOP_PRODUCTS_SHOPID FOREIGN KEY (SHOP_ID) REFERENCES SHOPS(SHOP_ID);
 
-alter table shop_products add CONSTRAINT fk_shop_products_shopId
-FOREIGN key (shop_id) REFERENCES shops(shop_id);
+ALTER TABLE SHOP_PRODUCTS ADD CONSTRAINT FK_SHOP_PRODUCTS_PRODUCTID FOREIGN KEY (PRODUCT_ID) REFERENCES PRODUCTS(PRODUCTS_ID);
 
-alter table shop_products add CONSTRAINT fk_shop_products_productId
-FOREIGN KEY (product_id) REFERENCES products(products_id);
+ALTER TABLE SESSIONS ADD CONSTRAINT FK_SESSIONS_USERID FOREIGN KEY (USER_ID) REFERENCES CAFE_USERS(USER_ID);
 
-alter table sessions add CONSTRAINT fk_sessions_userId
-FOREIGN KEY (user_id) REFERENCES cafe_users(user_id);
+INSERT INTO CAFE_USERS (
+  USER_ID,
+  USER_NAME,
+  USER_SURNAME,
+  EMAIL,
+  PASSWORD,
+  USERNAME,
+  PHONE,
+  LAST_CONNECTION
+) VALUES (
+  1,
+  "admin",
+  "admin",
+  "admin@gmail.com",
+  "6ReAz3LV9B8M",
+  "admin",
+  NULL,
+  NULL
+);
