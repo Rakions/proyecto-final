@@ -27,10 +27,10 @@ create table orders(
   shop_id number,
   order_date date,
   address varchar2(100),
-  total_price int,
   state VARCHAR(30),
   order_name varchar2(50),
   order_surname varchar2(100)
+  order_state VARCHAR2(30)
 );
 
 create table orders_employees(
@@ -53,6 +53,7 @@ create table shop_products(
 );
 
 create table order_details(
+  order_details_id number not null PRIMARY KEY,
   orders_id number,
   product_id number,
   quantity number

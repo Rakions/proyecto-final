@@ -7,8 +7,9 @@ let producto;
 let content;
 
 //Hace una consulta a la base de datos lo primero de todo
-addEventListener("load", () => {
-  getProducto();
+addEventListener("load", async() => {
+  await getProducto();
+  renderContent(1);
 });
 
 //Event listeners para cuando se hace click en los iconos de la barra izquierda
@@ -40,9 +41,8 @@ async function getProducto() {
 
 //Renderiza los elementos dependiendo de la categoria a la que pertenezcan
 async function renderContent(category_id) {
-  let categoria = category_id;
   for (let index = 0; index < producto.length; index++) {
-    renderCafes(index,categoria);
+    renderCafes(index,category_id);
   }
 }
 

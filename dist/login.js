@@ -23,7 +23,6 @@ async function comprobarLogin(email, password) {
     }
   } else {
     alert("no existo")
-    console.log("no existo");
   }
   cambiarIconoLogin();
 }
@@ -71,8 +70,6 @@ async function register(name, surname, email, password) {
   if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
     let user = await conexion("usuarios/buscarEmail", "email=" + email);
-    // login = true;
-    // cambiarIconoLogin()
     localStorage.clear()
     localStorage.setItem("idToken", token())
     let tokenKey = localStorage.getItem("idToken");
