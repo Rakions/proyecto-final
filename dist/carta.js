@@ -7,8 +7,9 @@ let producto;
 let content;
 
 //Hace una consulta a la base de datos lo primero de todo
-addEventListener("load", () => {
-  getProducto();
+addEventListener("load", async() => {
+  await getProducto();
+  renderContent(1);
 });
 
 //Event listeners para cuando se hace click en los iconos de la barra izquierda
