@@ -1,7 +1,6 @@
 addEventListener("DOMContentLoaded", async () => {
-    // await getUser();
-    // await renderUserDetails();
-    renderUserOrdes();
+    await getUser();
+    await renderUserDetails();
 
 })
 
@@ -11,24 +10,12 @@ async function getUser() {
     return user;
 }
 
-async function renderUserOrdes(){
-    var info_user = document.querySelector(".info_obligatoria");
-    var user = await getUser();
-    info_user.innerHTML += `
-    <table class="orders_info">
-        <tr>
-            <th>Order Number</th>
-            <th>Address</th>
-            <th>Total price</th>
-            <th>Order State</th>
-        </tr>
-    </table>`
-    console.log(await conexion("orders/buscarUser_id" , "id=" + user[0]["user_id"]));
-}
 
 async function renderUserDetails() {
     var user = await getUser();
     var info_user = document.querySelector(".info_obligatoria");
+    var nombre_persona = document.querySelector(".nombre_persona");
+    nombre_persona.innerHTML = `Hello, ${user[0]["user_name"]}`;
     info_user.innerHTML =
         `
             <div>
