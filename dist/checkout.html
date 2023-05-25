@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="output.css">
 </head>
 
-<body class="flex justify-center" onload="getPrecio()">
+<body class="flex justify-center" onload="getPrecio(); comprobarLastConnection()">
     <div class="wrapper">
         <div class="container">
             <div id="precioTotal_checkout" class="precioTotal_checkout">Total:</div>
-            <form action="" class="checkoutForm">
+            <form action="index.html" class="checkoutForm" id="checkoutForm" onsubmit="event.preventDefault(); pagar()">
                 <h1 class="self-center">
                     <i class="fas fa-shipping-fast"></i>
                     Shipping Details
@@ -22,29 +22,29 @@
                 <div class="name">
                     <div>
                         <label class="labelsForm" for="f-name">First Name</label>
-                        <input class="inputsForm" type="text" name="f-name">
+                        <input class="inputsForm" type="text" name="f-name" required>
                     </div>
                     <div>
                         <label class="labelsForm" for="l-name">Last Name</label>
-                        <input class="inputsForm" type="text" name="l-name">
+                        <input class="inputsForm" type="text" name="l-name" required>
                     </div>
                 </div>
                 <div class="street">
                     <label class="labelsForm" for="name">Street</label>
-                    <input class="inputsForm" type="text" name="address">
+                    <input class="inputsForm" type="text" id="address" name="address" required>
                 </div>
                 <div class="address-info">
                     <div>
                         <label class="labelsForm" for="city">City</label>
-                        <input class="inputsForm" type="text" name="city">
+                        <input class="inputsForm" type="text" id="city" name="city" required>
                     </div>
                     <div>
                         <label class="labelsForm" for="state">Floor</label>
-                        <input class="inputsForm" type="text" name="state">
+                        <input class="inputsForm" type="text" id="floor" name="floor" required>
                     </div>
                     <div>
                         <label class="labelsForm" for="zip">Zip</label>
-                        <input class="inputsForm" type="text" name="zip">
+                        <input class="inputsForm" type="text" id="zip" name="zip" required>
                     </div>
                 </div>
                 <h1 class="self-center">
@@ -52,16 +52,16 @@
                 </h1 class="self-center">
                 <div class="cc-num">
                     <label class="labelsForm" for="card-num">Credit Card No.</label>
-                    <input class="inputsForm" type="tel" name="card-num" placeholder="XXXX XXXX XXXX XXXX" pattern="(\d\d\d\d[ ]){3}(\d\d\d\d)">
+                    <input class="inputsForm" type="tel" name="card-num" placeholder="XXXX XXXX XXXX XXXX" pattern="(\d\d\d\d[ ]){3}(\d\d\d\d)" required>
                 </div>
                 <div class="cc-info">
                     <div>
                         <label class="labelsForm" for="card-num">Exp</label>
-                        <input class="inputsForm" type="text" name="expire" pattern="^(0[1-9]|[12]\d|3[0-1])\/(\d\d)$" placeholder="00/00">
+                        <input class="inputsForm" type="text" name="expire" pattern="^(0[1-9]|[12]\d|3[0-1])\/(\d\d)$" placeholder="00/00" required>
                     </div>
                     <div>
                         <label class="labelsForm" for="card-num">CVV</label>
-                        <input class="inputsForm" type="text" name="security" pattern="[0-9]{3}" placeholder="000">
+                        <input class="inputsForm" type="text" name="security" pattern="[0-9]{3}" placeholder="000" required>
                     </div>
                 </div>
                 <div class="btns">
