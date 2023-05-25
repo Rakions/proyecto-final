@@ -518,6 +518,9 @@ th {
 
 .info_obligatoria {
   padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .info_obligatoria>div{
@@ -597,4 +600,8 @@ th {
     left: 0;
     transform: translate(-100%);
   }
+}
+
+.orders_info th{
+  padding: 0px 3rem;
 }
