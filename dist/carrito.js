@@ -14,22 +14,32 @@ async function agregarCarrito(product_id) {
       await conexionPost("orders/crear", data)
       order = await buscarOrderAbierta(user[0]["user_id"])
     }
+    var orderPrecioTotal = order["total_price"];
+    console.log(orderTotal)
     var orderDetails = await conexion("orders_details/buscarOrderProduct", "orders_id=" + order["orders_id"] + "&product_id=" + product_id);
+    var product = await conexion("products/buscar", "id=" + product_id);
     if (orderDetails.length > 0) {
       var dataDetails = {
         "orders_id": order["orders_id"],
         "product_id": product_id,
         "quantity": (orderDetails[0]["quantity"]) + 1
       }
-      await conexionPut("orders_details/modificar/quantity", dataDetails)
+
+      await conexionPut("orders_details/modificar/quantity", dataDetails);
     } else {
       var dataDetails = {
         "orders_id": order["orders_id"],
         "product_id": product_id,
         "quantity": 1
       }
-      conexionPost("orders_details/crear", dataDetails)
+
+      await conexionPost("orders_details/crear", dataDetails)
     }
+    var orderTotal = {
+      "orders_id": order["orders_id"],
+      "total_price": orderPrecioTotal + (product[0]["price"])
+    }
+    await conexionPut("orders/modificar/total_price", orderTotal);
   } else {
     alert("Tienes que estar registrado para añadir productos al carrito")
   }
@@ -96,8 +106,12 @@ async function construirCarrito() {
 
 
 }
-function precioTotal(precio) {
-  document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + precio + "€";
+async function precioTotal(precio, cantidad) {
+  if (cantidad == undefined) {
+    document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + precio + "€";
+  } else {
+    document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + (precio * cantidad) + "€";
+  }
   document.getElementById("Total").innerHTML = document.getElementById("subtotal").innerHTML
 }
 
@@ -113,23 +127,41 @@ async function modificarCantidad(order, product, action) {
   } else if (action < 0) {
     await eliminarCarrito(product, false);
   } else {
+
+    var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
+
+    var cantidad = product["quantity"]
+    var total = productInfo[0]["price"] * cantidad;
+    order = (await conexion("orders/buscar", "id=" + order))[0]
+    var orderTotal = {
+      "orders_id": product["orders_id"],
+      "total_price": order["total_price"] - (total)
+    }
+    await conexionPut("orders/modificar/total_price", orderTotal);
+
+    precioTotal(productInfo[0]["price"] * -1, cantidad)
+
     await eliminarCarrito(product, true);
   }
 
-  product = (await conexion("orders_details/buscarOrderProduct", "orders_id=" + order + "&product_id=" + product["product_id"]))[0];
+  if (action != 0) {
+    product = (await conexion("orders_details/buscarOrderProduct", "orders_id=" + order + "&product_id=" + product["product_id"]))[0];
 
-  var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
+    var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
 
-  var cantidad = product["quantity"]
-  var total = productInfo[0]["price"] * cantidad;
+    var cantidad = product["quantity"]
+    var total = productInfo[0]["price"] * cantidad;
 
-  document.getElementById("cantidad" + [product["product_id"]]).innerHTML = cantidad
-  document.getElementById("precio-total" + [product["product_id"]]).innerHTML = total + "€"
-  precioTotal(productInfo[0]["price"] * action)
+    document.getElementById("cantidad" + [product["product_id"]]).innerHTML = cantidad
+    document.getElementById("precio-total" + [product["product_id"]]).innerHTML = total + "€"
+
+    precioTotal(productInfo[0]["price"] * action)
+
+  }
+
 }
 
 async function eliminarCarrito(product, todo) {
-
 
   if (todo) {
     var data = {
@@ -149,6 +181,15 @@ async function eliminarCarrito(product, todo) {
 
     document.getElementById("cantidad" + [product["product_id"]]).innerHTML = product["quantity"] - 1
     document.getElementById("precio-total" + [product["product_id"]]).innerHTML = productInfo[0]["price"] * product["quantity"];
+
+    var order = await conexion("orders/buscar", "id=" + product["orders_id"]);
+    var productData = await conexion("products/buscar", "id=" + product["product_id"])
+    var orderTotal = {
+      "orders_id": product["orders_id"],
+      "total_price": order[0]["total_price"] - (productData[0]["price"])
+    }
+    await conexionPut("orders/modificar/total_price", orderTotal);
+
     if (product["quantity"] - 1 <= 0) {
       var data = {
         "orders_id": product["orders_id"],
@@ -162,16 +203,31 @@ async function eliminarCarrito(product, todo) {
 
 //-------------------------CHECKOUT----------------------//
 
-function irCheckout() {
-
-  window.location.href = "./checkout.html?precioTotal=" + encodeURIComponent(precio_Total);
+async function irCheckout() {
+  window.location.href = "./checkout.html";
 }
 
-function getPrecio() {
-  var precioTotal = new URLSearchParams(window.location.search);
-  precioTotal = precioTotal.get("precioTotal");
-  console.log(precioTotal)
+async function getPrecio() {
+  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"));
+  var order = await buscarOrderAbierta(user[0]["user_id"]);
+  var precioTotal = order["total_price"]
   document.getElementById("precioTotal_checkout").innerHTML += " " + precioTotal;
+}
+
+async function pagar() {
+  var direccion = document.getElementById("address").value;
+  direccion += ", " + document.getElementById("city").value;
+  direccion += ", " + document.getElementById("floor").value;
+  direccion += ", " + document.getElementById("zip").value;
+
+  var fecha;
+  var date = new Date();
+  fecha = date.getFullYear;
+  fecha += "-" + date.getMonth;
+  fecha += "-" + date.getDay;
+  console.log(fecha);
+
+  // document.getElementById("checkoutForm").submit();
 }
 
 

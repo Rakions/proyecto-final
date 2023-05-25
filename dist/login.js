@@ -11,13 +11,10 @@ async function comprobarLogin(email, password) {
   if (data.length > 0) {
     if (data[0]["password"] == password) {
       alert("sesion iniciada")
-      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"])) 
+      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
+      comprobarLastConnection()
       document.getElementById("formLogin").submit();
-      var last_connection = getDate();
-      let conexionJson = {
-        "last_connection": last_connection
-      }
-      conexionPut("usuarios/modificar/conexion",conexionJson);
+
     } else {
       alert("datos incorrectos");
     }
@@ -51,6 +48,24 @@ async function cambiarIconoLogin() {
   }
 }
 
+async function comprobarLastConnection() {
+  if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length != 0) {
+  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+
+  var last_connection;
+  var date = new Date();
+  last_connection = date.getFullYear();
+  last_connection += "-" + (date.getUTCMonth() < 10? "0" + date.getUTCMonth() : date.getUTCMonth())
+  last_connection += "-" + date.getDate();
+  console.log(last_connection)
+  let conexionJson = {
+    "user_id": user[0]["user_id"],
+    "last_connection": last_connection
+  }
+  await conexionPut("usuarios/modificar/conexion", conexionJson);
+}
+}
+
 
 //-----------------------------Register------------------------------//
 
@@ -79,13 +94,14 @@ async function register(name, surname, email, password) {
     }
     await conexionPost("sessions/crear", datosToken)
     comprobarLogin(email, password);
+    document.getElementById("registerForm").submit();
 
   } else {
     alert.log("este correo ya existe")
   }
 }
 
-function getDate(){
+function getDate() {
   var last_connection = new Date();
   var year = last_connection.getFullYear();
   var month = last_connection.getMonth();

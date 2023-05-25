@@ -62,7 +62,8 @@
         flex items-center justify-center">
       <div class="w-full h-100">
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Log in to your account</h1>
-        <form class="mt-6" action="index.html" id="formLogin" onsubmit="event.preventDefault(); comprobarLogin(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);">
+        <form class="mt-6" action="index.html" id="formLogin"
+          onsubmit="event.preventDefault(); comprobarLogin(document.getElementById('loginEmail').value, document.getElementById('loginPassword').value);">
           <div>
             <label class="block text-gray-700">Email Address</label>
             <input type="email" name="" id="loginEmail" placeholder="Enter Email Address" <input type="text" name=""
@@ -98,7 +99,8 @@
         flex items-center justify-center">
       <div class="w-full h-100">
         <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">Register your account</h1>
-        <form class="mt-6" action="#" method="POST">
+        <form class="mt-6" action="#" method="POST" id="registerForm"
+          onsubmit="event.preventDefault(); register(document.getElementById('registerName').value, document.getElementById('registerSurname').value, document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">
           <div>
             <div class="flex w-full">
               <div class="w-1/2 pr-1">
@@ -128,9 +130,8 @@
             <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot
               Password?</a>
           </div>
-          <button type="button" class="w-full block bg-[var(--color-texto)] hover:bg-[var(--color-secundario)] focus:bg-indigo-400 text-white font-semibold rounded-lg
-              px-4 py-3 mt-6"
-            onclick="register(document.getElementById('registerName').value, document.getElementById('registerSurname').value, document.getElementById('registerEmail').value, document.getElementById('registerPassword').value)">
+          <button type="submit" class="w-full block bg-[var(--color-texto)] hover:bg-[var(--color-secundario)] focus:bg-indigo-400 text-white font-semibold rounded-lg
+              px-4 py-3 mt-6">
             Create Account</button>
         </form>
         <hr class="my-6 border-gray-300 w-full">
