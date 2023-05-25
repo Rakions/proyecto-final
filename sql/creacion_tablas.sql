@@ -28,7 +28,9 @@ create table orders(
   order_date date,
   address varchar2(100),
   total_price int,
-  state VARCHAR(30)
+  state VARCHAR(30),
+  order_name varchar2(50),
+  order_surname varchar2(100)
 );
 
 create table orders_employees(
