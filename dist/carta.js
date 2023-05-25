@@ -40,9 +40,8 @@ async function getProducto() {
 
 //Renderiza los elementos dependiendo de la categoria a la que pertenezcan
 async function renderContent(category_id) {
-  let categoria = category_id;
   for (let index = 0; index < producto.length; index++) {
-    renderCafes(index,categoria);
+    renderCafes(index,category_id);
   }
 }
 
