@@ -5,11 +5,22 @@ var modal = document.querySelector(".modal");
 
 
 
-function getIdUsuario(id){
+async function comprobarAdmin() {
+    user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+    if (user.length > 0) {
+        if (user[0]["token"] != "6d405aec62e3a170591c24736b7cbbc8") {
+            window.location.href = "./index.html"
+        }
+    }else{
+        window.location.href = "./index.html"
+    }
+}
+
+function getIdUsuario(id) {
     user_id = id;
 }
 
-function getIdProductos(id){
+function getIdProductos(id) {
     product_id = id;
 }
 
@@ -71,7 +82,7 @@ function toggleModal(caso) {
                     <button onclick="updateUser()" class="submit_cambios" >UPDATE</button>
                 </div>
             </div>
-                `            
+                `
             break;
         case "usuarios2":
             modal.innerHTML = `
@@ -95,7 +106,7 @@ function toggleModal(caso) {
                     <button onclick="addUser()" class="submit_cambios" >ADD</button>
                 </div>
             </div>
-                `   
+                `
             break;
         case "productos":
             modal.innerHTML = `
@@ -123,8 +134,8 @@ function toggleModal(caso) {
             </div>
             `
             break;
-            case "productos2":
-                modal.innerHTML = `
+        case "productos2":
+            modal.innerHTML = `
                 <div class="relative w-[500px] bg-green-300 flex flex-col justify-center items-center">
                     <button class="absolute top-0 right-0 mt-4 mr-4" onclick="toggleModal()">
                         X
@@ -148,18 +159,18 @@ function toggleModal(caso) {
                     </div>
                 </div>
                 `
-                break;
+            break;
     }
 }
 
 async function updateCategory() {
     var category_name = document.querySelector(".category_name");
     var nombrefinal = category_name.value;
-    var json ={
+    var json = {
         "category_id": category_id,
         "category_name": nombrefinal
     };
-    await conexionPut("categorias/modificar/nombre",json);
+    await conexionPut("categorias/modificar/nombre", json);
     clearScreen();
     cabeceraCategories();
     renderCategories();
@@ -169,10 +180,10 @@ async function updateCategory() {
 async function addCategory() {
     var category_name = document.querySelector(".category_name");
     var nombrefinal = category_name.value;
-    var json ={
+    var json = {
         "category_name": nombrefinal
     };
-    await conexionPost("categorias/crear",json);
+    await conexionPost("categorias/crear", json);
     toggleModal();
 }
 
@@ -192,7 +203,7 @@ async function updateUser() {
         "username": username.value,
         "phone": phone.value
     };
-    await conexionPut("usuarios/modificar/todo",json);
+    await conexionPut("usuarios/modificar/todo", json);
     clearScreen();
     cabeceraUsers();
     renderUsers();
@@ -214,11 +225,11 @@ async function addUser() {
         "username": username.value,
         "phone": phone.value
     };
-    await conexionPost("usuarios/crear",json);
+    await conexionPost("usuarios/crear", json);
     toggleModal();
 }
 
-async function updateProducts(){
+async function updateProducts() {
     var product_name = document.querySelector(".product_name");
     var product_description = document.querySelector(".product_description");
     var stock = document.querySelector(".stock");
@@ -236,11 +247,11 @@ async function updateProducts(){
         "price": price.value,
         "image_url": image_url.value
     }
-    await conexionPut("products/modificar/todo",json);
+    await conexionPut("products/modificar/todo", json);
     toggleModal();
 }
 
-async function addProducts(){
+async function addProducts() {
     var product_name = document.querySelector(".product_name");
     var product_description = document.querySelector(".product_description");
     var stock = document.querySelector(".stock");
@@ -251,46 +262,46 @@ async function addProducts(){
     var json = {
         "product_name": product_name.value,
         "product_description": product_description.value,
-        "stock": stock.value,
+        "stock": parseInt(stock.value),
         "reviews": reviews.value,
         "category_id": category_id.value,
-        "price": price.value,
+        "price": parseFloat(price.value),
         "image_url": image_url.value
     }
-    await conexionPost("products/crear",json);
+    await conexionPost("products/crear", json);
     clearScreen();
     cabeceraProductos();
     renderProducts();
     toggleModal();
 }
 
-async function borrarProducts(id){
+async function borrarProducts(id) {
     var datos = {
         "products_id": id
     }
-    await conexionDelete("products/eliminar",datos);
+    await conexionDelete("products/eliminar", datos);
     clearScreen();
     cabeceraProductos();
     renderProducts();
 }
 
-async function borrarUsers(id){
+async function borrarUsers(id) {
     var datos = {
         "user_id": id
     }
 
-    await conexionDelete("usuarios/eliminar",datos)
+    await conexionDelete("usuarios/eliminar", datos)
     clearScreen();
     cabeceraUsers();
     renderUsers();
 }
 
-async function borrarCategories(id){
+async function borrarCategories(id) {
     var datos = {
         "category_id": id
     }
 
-    await conexionDelete("categorias/eliminar",datos)
+    await conexionDelete("categorias/eliminar", datos)
     clearScreen();
     cabeceraCategories();
     renderCategories();

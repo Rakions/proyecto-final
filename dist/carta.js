@@ -2,6 +2,7 @@ let carta_content = document.querySelector(".carta-content");
 let cafes = document.querySelector(".cafes");
 let bebidas_frias = document.querySelector(".bebidas-frias");
 let te = document.querySelector(".te");
+let bocadillos = document.querySelector(".bocadillos");
 
 let producto;
 let content;
@@ -28,6 +29,11 @@ te.addEventListener("click",() =>{
   limpiarCarta();
   renderContent(3);  
 });
+bocadillos.addEventListener("click", () => {
+  bocadillos = document.querySelector(".bocadillos");
+  limpiarCarta();
+  renderContent(4);
+})
 
 //Funcion para limpiar la carta
 function limpiarCarta(){

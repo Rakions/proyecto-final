@@ -27,25 +27,15 @@ CREATE TABLE ORDERS(
   SHOP_ID NUMBER,
   ORDER_DATE DATE,
   ADDRESS VARCHAR2(100),
-  STATE VARCHAR(30),
   ORDER_NAME VARCHAR2(50),
-  ORDER_SURNAME VARCHAR2(100) ORDER_STATE VARCHAR2(30)
+  ORDER_SURNAME VARCHAR2(100),
+  TOTAL_PRICE NUMBER,
+  ORDER_STATE VARCHAR2(30)
 );
-
-
-create table orders(
-  orders_id number not null PRIMARY KEY,
-  user_id number,
-  shop_id number,
-  order_date date,
-  address varchar2(100),
-  total_price int,
-  state varchar2(30)
 
 CREATE TABLE ORDERS_EMPLOYEES(
   EMPLOYEE_ID NUMBER,
   ORDERS_ID NUMBER
-
 );
 
 CREATE TABLE SHOPS(
@@ -76,7 +66,7 @@ CREATE TABLE PRODUCTS(
   STOCK NUMBER,
   REVIEWS NUMBER,
   CATEGORY_ID NUMBER,
-  PRICE NUMBER,
+  PRICE FLOAT(126),
   IMAGE_URL VARCHAR2(300)
 );
 
@@ -119,11 +109,19 @@ INSERT INTO CAFE_USERS (
   LAST_CONNECTION
 ) VALUES (
   1,
-  "admin",
-  "admin",
-  "admin@gmail.com",
-  "6ReAz3LV9B8M",
-  "admin",
+  'admin',
+  'admin',
+  'admin@gmail.com',
+  '6ReAz3LV9B8M',
+  'admin',
   NULL,
   NULL
 );
+
+INSERT INTO SESSIONS (
+  USER_ID,
+  TOKEN
+) VALUES (
+  1,
+  '6d405aec62e3a170591c24736b7cbbc8'
+)
