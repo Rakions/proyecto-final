@@ -12,6 +12,9 @@
   <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
   <script src="conexion.js"></script>
   <script src="login.js"></script>
+  <script src="carrito.js"></script>
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
 </head>
 
 <body onload="cambiarIconoLogin(); comprobarLastConnection()">
@@ -24,26 +27,26 @@
       <nav>
         <ul class="flex text-[var(--color-texto)]">
           <a href="index.html">
-            <li class="inline-block mx-4 links">INICIO</li>
+            <li class="inline-block mx-4 links">MAIN</li>
           </a>
           <a href="carta.html">
-            <li class="inline-block mx-4 links">CARTA</li>
+            <li class="inline-block mx-4 links">MENU</li>
           </a>
           <a href="contact.html">
-            <li class="inline-block mx-4 links">CONTACTO</li>
+            <li class="inline-block mx-4 links">CONTACT</li>
           </a>
           <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
             <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
           </li>
         </ul>
       </nav>
-      <a href="./ajustesUsuario.html" style="display: none;" id="userIcon">
+      <a href="ajustesUsuario.html" style="display: none;" id="userIcon">
         <img src="../resources/circle-user-solid.svg" class="w-8 h-8">
       </a>
       <a href="carrito.html" style="display: none;" id="cartIcon">
         <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
       </a>
-      <a href="login.html" style="display: none;" id="botonLogin">
+      <a href=" login.html" style="display: none;" id="botonLogin">
         <button
           class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>
       </a>
@@ -52,20 +55,20 @@
   <div class="w-full py-4 bg-[var(--color-oscuro)] flex flex-col items-center justify-center header-movil md:hidden">
     <ul class="flex flex-col gap-[2rem] text-[var(--color-texto)]">
       <a href="index.html">
-        <li class="inline-block movil-links">INICIO</li>
+        <li class="inline-block movil-links">MAIN</li>
       </a>
       <a href="carta.html">
-        <li class="inline-block movil-links">CARTA</li>
+        <li class="inline-block movil-links">MENU</li>
       </a>
       <a href="contact.html">
-        <li class="inline-block movil-links">CONTACTO</li>
+        <li class="inline-block movil-links">CONTACT</li>
       </a>
     </ul>
   </div>
 
   <!----------------------------------BARRA DE BUSQUEDA---------------------------------->
   <section>
-    <div class="w-full h-screen md:relative flex md:block items-center justify-center p-4">
+    <div class="w-full h-screen md:relative flex md:block items-center justify-center p-4 index_foto">
       <div class="w-[50rem] h-[300px] md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
         <p class="text-xl uppercase mb-[1rem] float-right w-full md:w-[29rem]">
           Find your perfect coffee

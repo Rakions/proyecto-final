@@ -79,6 +79,12 @@ footer a:hover {
   transition: all 0.3s;
 }
 
+.index_foto{
+  background-image: url(../resources/fondo_index.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 #search-input {
   border-bottom: 1px solid var(--color-oscuro);
 }
@@ -97,6 +103,11 @@ footer a:hover {
   background-size: cover;
   background-repeat: no-repeat;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tarjetas_categorias:hover{
+  transform: scale(1.02);
 }
 
 .tarjetas_categorias:nth-child(1) {
