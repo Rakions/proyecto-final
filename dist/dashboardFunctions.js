@@ -240,7 +240,7 @@ async function updateProducts(){
     toggleModal();
 }
 
-async function updateProducts(){
+async function addProducts(){
     var product_name = document.querySelector(".product_name");
     var product_description = document.querySelector(".product_description");
     var stock = document.querySelector(".stock");
