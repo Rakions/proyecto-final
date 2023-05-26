@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="carrito.js"></script>
+    <script src="usuario.js"></script>
+    <script src="conexion.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="output.css">
+</head>
+
+<body>
+  <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between header">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
+    </div>
+    <div class="flex items-center">
+      <nav>
+        <ul class="flex text-[var(--color-texto)]">
+          <a href="index.html">
+            <li class="inline-block mx-4 links">INICIO</li>
+          </a>
+          <a href="carta.html">
+            <li class="inline-block mx-4 links">CARTA</li>
+          </a>
+          <a href="contact.html">
+            <li class="inline-block mx-4 links">CONTACTO</li>
+          </a>
+          <li class="mx-4 block md:hidden menu w-6 h-6 cursor-pointer">
+            <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
+          </li>
+        </ul>
+      </nav>
+      <img src="../resources/circle-user-solid.svg" class="w-8 h-8 hidden" id="userIcon">
+      <img src="../resources/cart-plus-solid.svg" class="w-8 h-8 hidden" id="cartIcon">
+      <a href="login.html" id="botonLogin">
+        <button
+          class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>
+      </a>
+    </div>
+  </header>
+  <div class="w-full py-4 bg-[var(--color-oscuro)] flex flex-col items-center justify-center header-movil md:hidden">
+    <ul class="flex flex-col gap-[2rem] text-[var(--color-texto)]">
+      <a href="index.html">
+        <li class="inline-block movil-links">INICIO</li>
+      </a>
+      <a href="carta.html">
+        <li class="inline-block movil-links">CARTA</li>
+      </a>
+      <a href="contact.html">
+        <li class="inline-block movil-links">CONTACTO</li>
+      </a>
+    </ul>
+  </div>
+    <section class="h-screen w-full flex flex-col items-center justify-center bg-[var(--color-fondo)] relative">
+        <!-- --------------------------INFORMACION-------------------------- -->
+        <h1 class="absolute top-0 left-0 text-[3rem] pt-4 pl-4 nombre_persona"></h1>
+        <div class="w-full h-full user_info relative">
+            <div class="info_obligatoria">
+                 <!--INFORMACION GENERADA DESDE JS-->
+            </div>
+        </div>
+    </section>
+    <footer
+    class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo" />
+    </div>
+    <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="navbar.js"></script>
+</body>
+
+</html>

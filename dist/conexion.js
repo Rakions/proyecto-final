@@ -13,7 +13,6 @@ async function conexion(ruta, datos) {
 async function conexionDelete(ruta,datos) {
 
     var rutaFinal = ("http://localhost:4000/API/" + ruta);
-    console.log(rutaFinal);
     await fetch(rutaFinal, {
         method: 'DELETE',
         headers: {
@@ -45,6 +44,3 @@ async function conexionPut(ruta, datos) {
         body: JSON.stringify(datos)
     }, { mode: 'no-cors' });
 }
-
-
-
