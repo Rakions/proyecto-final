@@ -11,8 +11,11 @@ async function comprobarLogin(email, password) {
   if (data.length > 0) {
     if (data[0]["password"] == password) {
       alert("sesion iniciada")
-      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"])) 
+      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
+      comprobarLastConnection()
+
       document.getElementById("formLogin").submit();
+
     } else {
       alert("datos incorrectos");
     }
@@ -35,7 +38,9 @@ function submit() {
 }
 
 
-//-----------------------------Cambiar Loging------------------------------//
+
+//-----------------------------Cambiar Login------------------------------//
+
 
 async function cambiarIconoLogin() {
   if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length == 0) {
@@ -44,6 +49,25 @@ async function cambiarIconoLogin() {
     document.getElementById("cartIcon").style.display = "block"
     document.getElementById("userIcon").style.display = "block"
   }
+}
+
+
+async function comprobarLastConnection() {
+  if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length != 0) {
+  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+
+  var last_connection;
+  var date = new Date();
+  last_connection = date.getFullYear();
+  last_connection += "-" + (date.getUTCMonth() < 10? "0" + date.getUTCMonth() : date.getUTCMonth())
+  last_connection += "-" + date.getDate();
+  console.log(last_connection)
+  let conexionJson = {
+    "user_id": user[0]["user_id"],
+    "last_connection": last_connection
+  }
+  await conexionPut("usuarios/modificar/conexion", conexionJson);
+}
 }
 
 
@@ -65,12 +89,8 @@ async function register(name, surname, email, password) {
   if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
     let user = await conexion("usuarios/buscarEmail", "email=" + email);
-    console.log(await conexion("usuarios/consultar"));
-    console.log(user);
-    // login = true;
-    // cambiarIconoLogin()
-    localStorage.clear();
-    localStorage.setItem("idToken", token());
+    localStorage.clear()
+    localStorage.setItem("idToken", token())
     let tokenKey = localStorage.getItem("idToken");
     let datosToken = {
       "user_id": user[0]["user_id"],
@@ -79,7 +99,19 @@ async function register(name, surname, email, password) {
     await conexionPost("sessions/crear", datosToken)
     comprobarLogin(email, password);
 
+    document.getElementById("registerForm").submit();
+
   } else {
-    alert("este correo ya existe")
+    alert.log("este correo ya existe")
   }
 }
+
+function getDate() {
+  var last_connection = new Date();
+  var year = last_connection.getFullYear();
+  var month = last_connection.getMonth();
+  var day = last_connection.getDate();
+  last_connection = year + "-" + month + "-" + day;
+  return last_connection;
+}
+
