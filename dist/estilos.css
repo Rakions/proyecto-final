@@ -412,6 +412,10 @@ footer a:hover {
   background-color: var(--color-fondo);
 }
 
+.carta-content img{
+  max-width: 270px;
+}
+
 .carta-content>a {
   transition: all 0.3s;
   position: relative;
