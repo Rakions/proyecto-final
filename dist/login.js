@@ -10,11 +10,16 @@ async function comprobarLogin(email, password) {
   var data = await conexion("usuarios/buscarEmail", ("email=" + email));
   if (data.length > 0) {
     if (data[0]["password"] == password) {
-      alert("sesion iniciada")
-      localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
-      comprobarLastConnection()
 
-      document.getElementById("formLogin").submit();
+      if (email == "admin@gmail.com") {
+        localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
+        window.location.href = "./dashboard.html"
+      } else {
+        alert("sesion iniciada")
+        localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
+        await comprobarLastConnection()
+        document.getElementById("formLogin").submit();
+      }
 
     } else {
       alert("datos incorrectos");
@@ -54,20 +59,19 @@ async function cambiarIconoLogin() {
 
 async function comprobarLastConnection() {
   if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length != 0) {
-  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+    var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
 
-  var last_connection;
-  var date = new Date();
-  last_connection = date.getFullYear();
-  last_connection += "-" + (date.getUTCMonth() < 10? "0" + date.getUTCMonth() : date.getUTCMonth())
-  last_connection += "-" + date.getDate();
-  console.log(last_connection)
-  let conexionJson = {
-    "user_id": user[0]["user_id"],
-    "last_connection": last_connection
+    var last_connection;
+    var date = new Date();
+    last_connection = date.getFullYear();
+    last_connection += "-" + (date.getUTCMonth() < 10 ? "0" + date.getUTCMonth() : date.getUTCMonth())
+    last_connection += "-" + date.getDate();
+    let conexionJson = {
+      "user_id": user[0]["user_id"],
+      "last_connection": last_connection
+    }
+    await conexionPut("usuarios/modificar/conexion", conexionJson);
   }
-  await conexionPut("usuarios/modificar/conexion", conexionJson);
-}
 }
 
 
@@ -102,7 +106,7 @@ async function register(name, surname, email, password) {
     document.getElementById("registerForm").submit();
 
   } else {
-    alert.log("este correo ya existe")
+    alert("este correo ya existe")
   }
 }
 

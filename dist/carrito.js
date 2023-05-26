@@ -8,6 +8,8 @@ async function agregarCarrito(product_id) {
         "shop_id": 1,
         "order_date": "",
         "address": "",
+        "order_name": "",
+        "order_surname": "",
         "total_price": "",
         "order_state": "open"
       }
@@ -15,7 +17,6 @@ async function agregarCarrito(product_id) {
       order = await buscarOrderAbierta(user[0]["user_id"])
     }
     var orderPrecioTotal = order["total_price"];
-    console.log(orderTotal)
     var orderDetails = await conexion("orders_details/buscarOrderProduct", "orders_id=" + order["orders_id"] + "&product_id=" + product_id);
     var product = await conexion("products/buscar", "id=" + product_id);
     if (orderDetails.length > 0) {
@@ -66,19 +67,21 @@ async function buscarOrderAbierta(user_id) {
 
 async function construirCarrito() {
 
+
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
   var order = await buscarOrderAbierta(user[0]["user_id"]);
-  var productos = await conexion("orders_details/buscar", "id=" + order["orders_id"])
-  if (productos.length > 0) {
-    productos.forEach(async function (product) {
+  if (order != "close") {
+    var productos = await conexion("orders_details/buscar", "id=" + order["orders_id"])
+    if (productos.length > 0) {
+      productos.forEach(async function (product) {
 
 
-      var productInfo = await conexion("products/buscar", ("id=" + product["product_id"]));
+        var productInfo = await conexion("products/buscar", ("id=" + product["product_id"]));
 
-      const carrito = document.getElementById("carrito-container");
+        const carrito = document.getElementById("carrito-container");
 
-      carrito.innerHTML +=
-        `
+        carrito.innerHTML +=
+          `
           <li class="grid grid-cols-3 w-full px-4 cart_item list1" id= product${product["product_id"]}>
             <div class="flex items-center">
               <img src=" ${productInfo[0]["image_url"]}">
@@ -99,8 +102,9 @@ async function construirCarrito() {
           </li>
           `
 
-      precioTotal(productInfo[0]["price"] * product["quantity"]);
-    });
+        precioTotal(productInfo[0]["price"] * product["quantity"]);
+      });
+    }
   }
 
 
@@ -215,6 +219,11 @@ async function getPrecio() {
 }
 
 async function pagar() {
+
+  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+  var order = await buscarOrderAbierta(user[0]["user_id"]);
+
+
   var direccion = document.getElementById("address").value;
   direccion += ", " + document.getElementById("city").value;
   direccion += ", " + document.getElementById("floor").value;
@@ -222,21 +231,51 @@ async function pagar() {
 
   var fecha;
   var date = new Date();
-  fecha = date.getFullYear;
-  fecha += "-" + date.getMonth;
-  fecha += "-" + date.getDay;
 
-  var nombre = document.getElementById("name");
-  var lastName = document.getElementById("l-name");
+  var fecha;
+  var date = new Date();
+  fecha = date.getFullYear();
+  fecha += "-" + (date.getUTCMonth() < 10 ? "0" + date.getUTCMonth() : date.getUTCMonth())
+  fecha += "-" + date.getDate();
 
-  fecha = {
-    "orders_id": 
+  console.log(fecha)
+
+  var name = document.getElementById("name").value;
+  var lastName = document.getElementById("l-name").value;
+
+  dataAddress = {
+    "orders_id": order["orders_id"],
+    "address": direccion
   }
 
+  dataFecha = {
+    "orders_id": order["orders_id"],
+    "order_date": fecha
+  }
 
-  await conexion("orders/modificar/address", )
-  
-  // document.getElementById("checkoutForm").submit();
+  dataName = {
+    "orders_id": order["orders_id"],
+    "order_name": name
+  }
+
+  dataSurname = {
+    "orders_id": order["orders_id"],
+    "order_surname": lastName
+  }
+
+  dataState = {
+    "orders_id": order["orders_id"],
+    "order_state": "completed"
+  }
+
+  console.log(dataAddress)
+  await conexionPut("orders/modificar/address", dataAddress)
+  await conexionPut("orders/modificar/order_date", dataFecha)
+  await conexionPut("orders/modificar/order_name", dataName)
+  await conexionPut("orders/modificar/order_surname", dataSurname)
+  await conexionPut("orders/modificar/order_state", dataState)
+
+  document.getElementById("checkoutForm").submit();
 }
 
 
