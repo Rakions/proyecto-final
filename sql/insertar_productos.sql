@@ -1,1 +1,0 @@
-insert into products values (1 ,'cafe' , 'cafe normal' , 20 , 5 , 1 , 2 , 'https://n9.cl/b2cey');

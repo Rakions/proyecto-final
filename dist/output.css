@@ -1102,6 +1102,10 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-\[var\(--color-oscuro\)\] {
+  color: var(--color-oscuro);
+}
+
 .opacity-0 {
   opacity: 0;
 }
