@@ -225,8 +225,17 @@ async function pagar() {
   fecha = date.getFullYear;
   fecha += "-" + date.getMonth;
   fecha += "-" + date.getDay;
-  console.log(fecha);
 
+  var nombre = document.getElementById("name");
+  var lastName = document.getElementById("l-name");
+
+  fecha = {
+    "orders_id": 
+  }
+
+
+  await conexion("orders/modificar/address", )
+  
   // document.getElementById("checkoutForm").submit();
 }
 
