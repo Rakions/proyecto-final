@@ -116,15 +116,15 @@ footer a:hover {
   transform: scale(1.02);
 }
 
-.tarjetas_categorias:nth-child(1) {
+#tarjetas_categorias1{
   background-image: url(../resources/foto_categorias1.jpg);
 }
 
-.tarjetas_categorias:nth-child(2) {
+#tarjetas_categorias2 {
   background-image: url(../resources/foto_categorias2.jpg);
 }
 
-.tarjetas_categorias:nth-child(3) {
+#tarjetas_categorias3 {
   background-image: url(../resources/foto_categorias3.jpg);
 }
 
