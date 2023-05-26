@@ -23,9 +23,6 @@ barraBusqueda.addEventListener("keyup", async function (event) {
           results.push(menuItem);
         }
       });
-    
-    console.log(results)
-    console.log(results.length)
     if (results.length == 0) {
       tablaOpciones.innerHTML = "No items found";
     } else {

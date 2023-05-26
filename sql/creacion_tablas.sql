@@ -32,9 +32,20 @@ CREATE TABLE ORDERS(
    ORDER_STATE VARCHAR2(30)
 );
 
+
+create table orders(
+  orders_id number not null PRIMARY KEY,
+  user_id number,
+  shop_id number,
+  order_date date,
+  address varchar2(100),
+  total_price int,
+  state varchar2(30)
+
 CREATE TABLE ORDERS_EMPLOYEES(
   EMPLOYEE_ID NUMBER,
   ORDERS_ID NUMBER
+
 );
 
 CREATE TABLE SHOPS(

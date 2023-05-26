@@ -155,7 +155,6 @@ function toggleModal(caso) {
 async function updateCategory() {
     var category_name = document.querySelector(".category_name");
     var nombrefinal = category_name.value;
-    console.log(nombrefinal);
     var json ={
         "category_id": category_id,
         "category_name": nombrefinal
@@ -241,7 +240,7 @@ async function updateProducts(){
     toggleModal();
 }
 
-async function updateProducts(){
+async function addProducts(){
     var product_name = document.querySelector(".product_name");
     var product_description = document.querySelector(".product_description");
     var stock = document.querySelector(".stock");

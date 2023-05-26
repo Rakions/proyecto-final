@@ -49,13 +49,12 @@ async function renderContent(category_id) {
 //Renderiza solo los productos con el id de la categoria que se le pasa en la variable 'categoria'
 function renderCafes(index,categoria){
   if (producto[index]["category_id"] == categoria) {
-    content = `<a href="#" onclick="agregarCarrito(${producto[index]["products_id"]})" <div class="h-[300px] w-[300px] flex items-center justify-center flex-col shadow-lg rounded-xl bg-[var(--color-oscuro)] text-[var(--color-texto)]">
+    carta_content.innerHTML += `<a href="#" onclick="agregarCarrito(${producto[index]["products_id"]})" <div class="h-[300px] w-[300px] flex items-center justify-center flex-col shadow-lg rounded-xl bg-[var(--color-oscuro)] text-[var(--color-texto)]">
     <img src="${producto[index]["image_url"]}" alt=""
       class="h-2/3 mb-4" />
     <p>${producto[index]["product_name"]}</p>
     <p>${producto[index]["price"] + "€"}</p>
     </div></a>`;
-    carta_content.innerHTML += content;
   }
 }
 

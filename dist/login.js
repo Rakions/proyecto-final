@@ -13,6 +13,7 @@ async function comprobarLogin(email, password) {
       alert("sesion iniciada")
       localStorage.setItem("idToken", ((await conexion("sessions/buscar", "user_id=" + data[0]["user_id"]))[0]["token"]))
       comprobarLastConnection()
+
       document.getElementById("formLogin").submit();
 
     } else {
@@ -37,7 +38,9 @@ function submit() {
 }
 
 
+
 //-----------------------------Cambiar Login------------------------------//
+
 
 async function cambiarIconoLogin() {
   if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length == 0) {
@@ -47,6 +50,7 @@ async function cambiarIconoLogin() {
     document.getElementById("userIcon").style.display = "block"
   }
 }
+
 
 async function comprobarLastConnection() {
   if ((await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))).length != 0) {
@@ -80,7 +84,7 @@ async function register(name, surname, email, password) {
     "last_connection": ""
   };
 
-  var comprobarCorreo = await conexion("usuarios/buscarEmail", "email=" + email)
+  var comprobarCorreo = await conexion("usuarios/buscarEmail", "email=" + email);
 
   if (comprobarCorreo.length == 0) {
     await conexionPost("usuarios/crear", datos);
@@ -94,6 +98,7 @@ async function register(name, surname, email, password) {
     }
     await conexionPost("sessions/crear", datosToken)
     comprobarLogin(email, password);
+
     document.getElementById("registerForm").submit();
 
   } else {
@@ -109,3 +114,4 @@ function getDate() {
   last_connection = year + "-" + month + "-" + day;
   return last_connection;
 }
+
