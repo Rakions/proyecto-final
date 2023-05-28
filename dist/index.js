@@ -1,7 +1,4 @@
-
-
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("hola");
     var top_products_content = document.querySelector(".top_products_content");
     var products = await conexion("products/consultar");
     for (let index = 0; index < 4; index++) {

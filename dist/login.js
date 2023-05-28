@@ -119,3 +119,8 @@ function getDate() {
   return last_connection;
 }
 
+function logOut(){
+  localStorage.removeItem("idToken")
+  location.reload();
+}
+
