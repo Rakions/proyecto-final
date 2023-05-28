@@ -841,7 +841,6 @@ th {
 }
 
 .dropbtn {
-  background-color: var(--color-secundario);
   color: white;
   padding: 0.5rem 1rem;
   font-size: 16px;

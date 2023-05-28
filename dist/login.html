@@ -12,10 +12,12 @@
   <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
   <script src="conexion.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)"
+    href="../resources/java-junction-website-favicon-color.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)"
+    href="../resources/java-junction-website-favicon-black.png">
 
-  <body onload="cambiarIconoLogin()">
+<body onload="cambiarIconoLogin()">
   <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between header">
     <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
       <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
@@ -38,7 +40,9 @@
         </ul>
       </nav>
       <div id="userIcon" style="display: none;" class="dropdown">
-        <button class="dropbtn">User</button>
+        <button class="dropbtn">
+          <img src="../resources/circle-user-solid.svg" alt="" class="w-8 h-8">
+        </button>
         <div class="dropdown-content">
           <a href="ajustesUsuario.html">User settings</a>
           <a href="#" onclick="logOut()">Log out</a>
@@ -155,44 +159,44 @@
   </section>
 
   <footer
-  class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
-  <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
-    <img src="../resources/logo.png" alt="" class="logo" />
-  </div>
-  <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
-    <div class="items-end">
-      <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-      <ul class="text-right mr-1">
-        <a href="">
-          <li>Inicio</li>
-        </a>
-        <a href="">
-          <li>Carta</li>
-        </a>
-        <a href="">
-          <li>Contacto</li>
-        </a>
-        <a href="">
-          <li>Ayuda</li>
-        </a>
-      </ul>
+    class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo" />
     </div>
-    <div class="items-end">
-      <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-      <ul class="text-right mr-1">
-        <a href="comiteEmpresa.html">
-          <li>committee</li>
-        </a>
-        <a href="contact.html">
-          <li>Contact</li>
-        </a>
-        <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
-          <li>Work with us</li>
-        </a>
-      </ul>
+    <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="comiteEmpresa.html">
+            <li>committee</li>
+          </a>
+          <a href="contact.html">
+            <li>Contact</li>
+          </a>
+          <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
+            <li>Work with us</li>
+          </a>
+        </ul>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
   <script src="navbar.js"></script>
   <script src="login.js"></script>
 </body>

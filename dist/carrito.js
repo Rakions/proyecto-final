@@ -1,7 +1,14 @@
+// Función asincrónica para agregar un producto al carrito
 async function agregarCarrito(product_id) {
+  // Obtener información del usuario actual
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
+
+  // Verificar si el usuario está registrado
   if (user.length > 0) {
+    // Buscar una orden abierta para el usuario
     var order = await buscarOrderAbierta(user[0]["user_id"]);
+
+    // Si no hay una orden abierta, crear una nueva
     if (order == "close") {
       var data = {
         "user_id": user[0]["user_id"],
@@ -13,12 +20,16 @@ async function agregarCarrito(product_id) {
         "total_price": "",
         "order_state": "open"
       }
+
       await conexionPost("orders/crear", data)
       order = await buscarOrderAbierta(user[0]["user_id"])
     }
+
     var orderPrecioTotal = order["total_price"];
     var orderDetails = await conexion("orders_details/buscarOrderProduct", "orders_id=" + order["orders_id"] + "&product_id=" + product_id);
     var product = await conexion("products/buscar", "id=" + product_id);
+
+    // Verificar si el producto ya está en los detalles de la orden
     if (orderDetails.length > 0) {
       var dataDetails = {
         "orders_id": order["orders_id"],
@@ -36,6 +47,8 @@ async function agregarCarrito(product_id) {
 
       await conexionPost("orders_details/crear", dataDetails)
     }
+
+    // Actualizar el precio total de la orden
     var orderTotal = {
       "orders_id": order["orders_id"],
       "total_price": orderPrecioTotal + (product[0]["price"])
@@ -46,32 +59,41 @@ async function agregarCarrito(product_id) {
   }
 }
 
-
+// Función asincrónica para buscar una orden abierta para un usuario específico
 async function buscarOrderAbierta(user_id) {
+  // Buscar todas las órdenes del usuario
   var orders = await conexion("orders/buscarUser_id", "id=" + user_id);
   var estado = "close";
   var i = 0;
+
+  // Buscar la primera orden abierta
   while (i < orders.length && estado != "open") {
     if (orders[i]["order_state"] == "open") {
       estado = orders[i]["order_state"];
     }
     i++;
   }
+
+  // Si se encontró una orden abierta, devolverla
   if (estado == "open") {
     i--;
     estado = orders[i];
   }
+
   return estado;
 }
 
 
+// Función asincrónica para construir el carrito
 async function construirCarrito() {
-
-
+  // Obtener información del usuario actual
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
   var order = await buscarOrderAbierta(user[0]["user_id"]);
-  if (order != "close") {
-    var productos = await conexion("orders_details/buscar", "id=" + order["orders_id"])
+
+  // Verificar si hay una ordenabierta para el usuario actual
+if (order != "close") {
+  // Buscar los productos en los detalles de la orden
+  var productos = await conexion("orders_details/buscar", "id=" + order["orders_id"])
     if (productos.length > 0) {
       productos.forEach(async function (product) {
 
@@ -110,6 +132,8 @@ async function construirCarrito() {
 
 
 }
+
+
 async function precioTotal(precio, cantidad) {
   if (cantidad == undefined) {
     document.getElementById("subtotal").innerHTML = parseFloat(document.getElementById("subtotal").innerHTML) + precio + "€";
