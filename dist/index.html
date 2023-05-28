@@ -14,8 +14,10 @@
   <script src="login.js"></script>
   <script src="carrito.js"></script>
   <script src="index.js"></script>
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)"
+    href="../resources/java-junction-website-favicon-color.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)"
+    href="../resources/java-junction-website-favicon-black.png">
 </head>
 
 <body onload="cambiarIconoLogin(); comprobarLastConnection()">
@@ -41,9 +43,13 @@
           </li>
         </ul>
       </nav>
-      <a href="ajustesUsuario.html" style="display: none;" id="userIcon">
-        <img src="../resources/circle-user-solid.svg" class="w-8 h-8">
-      </a>
+      <div id="userIcon" style="display: none;" class="dropdown">
+        <button class="dropbtn">User</button>
+        <div class="dropdown-content">
+          <a href="ajustesUsuario.html">User settings</a>
+          <a href="#" onclick="logOut()">Log out</a>
+        </div>
+      </div>
       <a href="carrito.html" style="display: none;" id="cartIcon">
         <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
       </a>
@@ -88,23 +94,25 @@
     <div class="w-[100%] h-[1000px] md:h-[350px] grid grid-cols-1 md:grid-cols-3 gap-4">
       <a href="carta.html">
         <div class="tarjetas_categorias" id="tarjetas_categorias1">
-        <h1>COFFEES</h1>
-        <p>Our best coffees</p>
-        <div class="fondo_tarjetas"></div>
-      </div>
-    </a>
+          <h1>COFFEES</h1>
+          <p>Our best coffees</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
       <a href="carta.html">
         <div class="tarjetas_categorias" id="tarjetas_categorias2">
-        <h1>COLD DRINKS</h1>
-        <p>Perfect for this summer!</p>
-        <div class="fondo_tarjetas"></div>
-      </div></a>
+          <h1>COLD DRINKS</h1>
+          <p>Perfect for this summer!</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
       <a href="carta.html">
         <div class="tarjetas_categorias" id="tarjetas_categorias3">
-        <h1>Sandwiches</h1>
-        <p>Our best sandwiches</p>
-        <div class="fondo_tarjetas"></div>
-      </div></a>
+          <h1>Sandwiches</h1>
+          <p>Our best sandwiches</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -116,7 +124,7 @@
     </div>
     <div
       class="w-full grid grid-cols-1 xl:grid-cols-4 lg:px-[7rem] md:grid-cols-2 top_products_content gap-[1rem] mt-[1rem]">
-      </div>
+    </div>
     </div>
   </section>
   <!----------------------------------FOOTER---------------------------------->
@@ -146,17 +154,14 @@
       <div class="items-end">
         <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
         <ul class="text-right mr-1">
-          <a href="">
-            <li>Inicio</li>
+          <a href="comiteEmpresa.html">
+            <li>committee</li>
           </a>
-          <a href="">
-            <li>Carta</li>
+          <a href="contact.html">
+            <li>Contact</li>
           </a>
-          <a href="">
-            <li>Contacto</li>
-          </a>
-          <a href="">
-            <li>Ayuda</li>
+          <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
+            <li>Work with us</li>
           </a>
         </ul>
       </div>

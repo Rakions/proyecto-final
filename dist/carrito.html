@@ -35,9 +35,13 @@
           </li>
         </ul>
       </nav>
-      <a href="./ajustesUsuario.html" style="display: none;" id="userIcon">
-        <img src="../resources/circle-user-solid.svg" class="w-8 h-8">
-      </a>
+      <div id="userIcon" style="display: none;" class="dropdown">
+        <button class="dropbtn">User</button>
+        <div class="dropdown-content">
+          <a href="ajustesUsuario.html">User settings</a>
+          <a href="#" onclick="logOut()">Log out</a>
+        </div>
+      </div>
       <a href="carrito.html" style="display: none;" id="cartIcon">
         <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
       </a>
