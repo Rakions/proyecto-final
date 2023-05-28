@@ -112,9 +112,9 @@ async function construirCarrito() {
 }
 async function precioTotal(precio, cantidad) {
   if (cantidad == undefined) {
-    document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + precio + "€";
+    document.getElementById("subtotal").innerHTML = parseFloat(document.getElementById("subtotal").innerHTML) + precio + "€";
   } else {
-    document.getElementById("subtotal").innerHTML = parseInt(document.getElementById("subtotal").innerHTML) + (precio * cantidad) + "€";
+    document.getElementById("subtotal").innerHTML = parseFloat(document.getElementById("subtotal").innerHTML) + (precio * cantidad) + "€";
   }
   document.getElementById("Total").innerHTML = document.getElementById("subtotal").innerHTML
 }
