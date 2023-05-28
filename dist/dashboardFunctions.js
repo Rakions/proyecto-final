@@ -237,6 +237,7 @@ async function updateProducts() {
     var category_id = document.querySelector(".category_id");
     var price = document.querySelector(".price");
     var image_url = document.querySelector(".image_url")
+    console.log(price.value);
     var json = {
         "products_id": product_id,
         "product_name": product_name.value,
@@ -244,9 +245,10 @@ async function updateProducts() {
         "stock": stock.value,
         "reviews": reviews.value,
         "category_id": category_id.value,
-        "price": price.value,
+        "price": parseFloat(price.value),
         "image_url": image_url.value
     }
+    console.log(json);
     await conexionPut("products/modificar/todo", json);
     toggleModal();
 }
@@ -265,9 +267,10 @@ async function addProducts() {
         "stock": parseInt(stock.value),
         "reviews": reviews.value,
         "category_id": category_id.value,
-        "price": parseFloat(price.value),
+        "price": price.value,
         "image_url": image_url.value
     }
+    
     await conexionPost("products/crear", json);
     clearScreen();
     cabeceraProductos();
