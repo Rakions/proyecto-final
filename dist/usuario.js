@@ -1,5 +1,5 @@
 addEventListener("DOMContentLoaded", async () => {
-    await getUser();
+    // await getUser();
     await renderUserDetails();
 
 })
@@ -15,6 +15,7 @@ async function renderUserDetails() {
     var user = await getUser();
     var info_user = document.querySelector(".info_obligatoria");
     var nombre_persona = document.querySelector(".nombre_persona");
+    console.log(user[0]);
     nombre_persona.innerHTML = `Hello, ${user[0]["user_name"]}`;
     info_user.innerHTML =
         `
