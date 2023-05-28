@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Junction</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
+    <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
+</head>
+
+<body class="flex justify-center" onload="getPrecio(); comprobarLastConnection()">
+    <div class="wrapper">
+        <div class="container">
+            <div id="precioTotal_checkout" class="precioTotal_checkout">Total:</div>
+            <form action="index.html" class="checkoutForm" id="checkoutForm" onsubmit="event.preventDefault(); pagar()">
+                <h1 class="self-center">
+                    <i class="fas fa-shipping-fast"></i>
+                    Shipping Details
+                </h1 class="self-center">
+                <div class="name">
+                    <div>
+                        <label class="labelsForm" for="f-name">First Name</label>
+                        <input class="inputsForm" type="text" id="name" name="f-name" required>
+                    </div>
+                    <div>
+                        <label class="labelsForm" for="l-name">Last Name</label>
+                        <input class="inputsForm" type="text" id="l-name" name="l-name" required>
+                    </div>
+                </div>
+                <div class="street">
+                    <label class="labelsForm" for="name">Street</label>
+                    <input class="inputsForm" type="text" id="address" name="address" required>
+                </div>
+                <div class="address-info">
+                    <div>
+                        <label class="labelsForm" for="city">City</label>
+                        <input class="inputsForm" type="text" id="city" name="city" required>
+                    </div>
+                    <div>
+                        <label class="labelsForm" for="state">Floor</label>
+                        <input class="inputsForm" type="text" id="floor" name="floor" required>
+                    </div>
+                    <div>
+                        <label class="labelsForm" for="zip">Zip</label>
+                        <input class="inputsForm" type="text" id="zip" name="zip" required>
+                    </div>
+                </div>
+                <h1 class="self-center">
+                    <i class="far fa-credit-card"></i> Payment Information
+                </h1 class="self-center">
+                <div class="cc-num">
+                    <label class="labelsForm" for="card-num">Credit Card No.</label>
+                    <input class="inputsForm" type="tel" name="card-num" placeholder="XXXX XXXX XXXX XXXX" pattern="(\d\d\d\d[ ]){3}(\d\d\d\d)" required>
+                </div>
+                <div class="cc-info">
+                    <div>
+                        <label class="labelsForm" for="card-num">Exp</label>
+                        <input class="inputsForm" type="text" name="expire" pattern="^(0[1-9]|[12]\d|3[0-1])\/(\d\d)$" placeholder="00/00" required>
+                    </div>
+                    <div>
+                        <label class="labelsForm" for="card-num">CVV</label>
+                        <input class="inputsForm" type="text" name="security" pattern="[0-9]{3}" placeholder="000" required>
+                    </div>
+                </div>
+                <div class="btns">
+                    <button type="submit">Purchase</button>
+                    <button type="button" onclick='window.location.replace("./carrito.html")'>Back to cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="navbar.js"></script>
+    <script src="conexion.js"></script>
+    <script src="carrito.js"></script>
+    <script src="login.js"></script>
+    
+</body>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
+    <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
+
+</head>
+
+<body class="flex" onload="comprobarAdmin()">
+    <div class="h-screen ">
+        <div class="hidden md:block h-full w-[250px] bg-[var(--color-oscuro)] navegacion_dashboard z-10 pt-[5rem]">
+            <ul>
+                <img src="../resources/logo.png" alt="" class="w-full p-4">
+                <a href="#" class="edit_products">
+                    <li>Edit products</li>
+                </a>
+                <a href="#" class="edit_users">
+                    <li>Edit users</li>
+                </a>
+                <a href="#" class="edit_categories">
+                    <li>Edit categories</li>
+                </a>
+                <a href="#" class="add_products">
+                    <li>Add products</li>
+                </a>
+                <a href="#" class="add_users">
+                    <li>Add users</li>
+                </a>
+                <a href="#" class="add_categories">
+                    <li>Add categories</li>
+                </a>
+            </ul>
+        </div>
+
+    </div>
+    <section class="w-full h-screen bg-[var(--color-oscuro)] p-4 overflow-scroll md:overflow-y-scroll">
+        <table class="w-full overflow-scroll dashboard_cabecera dashboard_list text-[var(--color-texto)]">
+
+        </table>
+    </section>
+    <div class="modal w-full h-full absolute top-0 left-0 flex items-center justify-center hidden">
+       
+    </div>
+    <script src="dashboardFunctions.js"></script>
+    <script src="conexion.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

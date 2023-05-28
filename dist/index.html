@@ -1,13 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="output.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Junction</title>
+  <link rel="stylesheet" href="output.css" />
+  <link rel="stylesheet" href="estilos.css" />
+  <script src="https://kit.fontawesome.com/9e87e4d4e8.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/cfbbaa12a2.js" crossorigin="anonymous"></script>
+  <script src="conexion.js"></script>
+  <script src="login.js"></script>
+  <script src="carrito.js"></script>
+  <script src="index.js"></script>
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)"
+    href="../resources/java-junction-website-favicon-color.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)"
+    href="../resources/java-junction-website-favicon-black.png">
 </head>
-<body>
-    
+
+<body onload="cambiarIconoLogin(); comprobarLastConnection()">
+  <!----------------------------------HEADER---------------------------------->
+  <header class="bg-[var(--color-oscuro)] w-full h-24 flex items-center p-4 justify-between header">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <a href="index.html"><img src="../resources/logo.png" alt="" class="logo" /></a>
+    </div>
+    <div class="flex items-center">
+      <nav>
+        <ul class="flex text-[var(--color-texto)]">
+          <a href="index.html">
+            <li class="inline-block mx-4 links">MAIN</li>
+          </a>
+          <a href="carta.html">
+            <li class="inline-block mx-4 links">MENU</li>
+          </a>
+          <a href="contact.html">
+            <li class="inline-block mx-4 links">CONTACT</li>
+          </a>
+          <li class="mx-4 hidden menu w-6 h-6 cursor-pointer">
+            <img src="../resources/bars-solid.svg" onclick="navbarMobile()" alt="" />
+          </li>
+        </ul>
+      </nav>
+      <div id="userIcon" style="display: none;" class="dropdown">
+        <button class="dropbtn">
+          <img src="../resources/circle-user-solid.svg" alt="" class="w-8 h-8">
+        </button>
+        <div class="dropdown-content">
+          <a href="ajustesUsuario.html">User settings</a>
+          <a href="#" onclick="logOut()">Log out</a>
+        </div>
+      </div>
+      <a href="carrito.html" style="display: none;" id="cartIcon">
+        <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
+      </a>
+      <a href=" login.html" style="display: none;" id="botonLogin">
+        <button
+          class="bg-[var(--color-secundario)]  w-full h-full border-black border-2 rounded-md px-4 transition-all flex items-center justify-center">LOGIN</button>
+      </a>
+    </div>
+  </header>
+  <div class="w-full py-4 bg-[var(--color-oscuro)] flex flex-col items-center justify-center header-movil md:hidden">
+    <ul class="flex flex-col gap-[2rem] text-[var(--color-texto)]">
+      <a href="index.html">
+        <li class="inline-block movil-links">MAIN</li>
+      </a>
+      <a href="carta.html">
+        <li class="inline-block movil-links">MENU</li>
+      </a>
+      <a href="contact.html">
+        <li class="inline-block movil-links">CONTACT</li>
+      </a>
+    </ul>
+  </div>
+
+  <!----------------------------------BARRA DE BUSQUEDA---------------------------------->
+  <section>
+    <div class="w-full h-screen md:relative flex md:block items-center justify-center p-4 index_foto">
+      <div class="w-[50rem] h-[300px] md:absolute bottom-44 right-20 pl-4 sm:block mt-80 flex flex-col">
+        <p class="text-xl uppercase mb-[1rem] float-right w-full md:w-[29rem]">
+          Find your perfect coffee
+        </p>
+        <input type="text" placeholder="Search..." class="float-right w-full md:w-[29rem] h-[3.5rem] pl-4"
+          id="search-input" />
+        <div class="w-full h-48 rounded-md bg-[var(--color-texto)] overflow-y-scroll flex flex-col"
+          style="visibility: hidden" id="search-results"></div>
+      </div>
+    </div>
+  </section>
+
+  <!----------------------------------TARJETA CATEGORÍAS---------------------------------->
+  <section class="w-full h-auto bg-[var(--color-fondo)] flex items-center justify-center flex-col p-[3rem]">
+    <h1 class="text-[1.5rem] sm:text-[2rem] mb-4">Top Categories</h1>
+    <div class="w-[100%] h-[1000px] md:h-[350px] grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a href="carta.html">
+        <div class="tarjetas_categorias" id="tarjetas_categorias1">
+          <h1>COFFEES</h1>
+          <p>Our best coffees</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
+      <a href="carta.html">
+        <div class="tarjetas_categorias" id="tarjetas_categorias2">
+          <h1>COLD DRINKS</h1>
+          <p>Perfect for this summer!</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
+      <a href="carta.html">
+        <div class="tarjetas_categorias" id="tarjetas_categorias3">
+          <h1>Sandwiches</h1>
+          <p>Our best sandwiches</p>
+          <div class="fondo_tarjetas"></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!----------------------------------TARJETAS PRODUCTOS---------------------------------->
+
+  <section class="w-full h-auto bg-[var(--color-fondo)] flex items-center justify-center flex-col p-[3rem]">
+    <div class="flex items-center justify-center flex-col top_products">
+      <h1 class="text-[1.5rem] sm:text-[2rem] mb-4">Top Products</h1>
+    </div>
+    <div
+      class="w-full grid grid-cols-1 xl:grid-cols-4 lg:px-[7rem] md:grid-cols-2 top_products_content gap-[1rem] mt-[1rem]">
+    </div>
+    </div>
+  </section>
+  <!----------------------------------FOOTER---------------------------------->
+  <footer
+    class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo" />
+    </div>
+    <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
+        <ul class="text-right mr-1">
+          <a href="comiteEmpresa.html">
+            <li>committee</li>
+          </a>
+          <a href="contact.html">
+            <li>Contact</li>
+          </a>
+          <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
+            <li>Work with us</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="navbar.js"></script>
+  <script src="./barraBusqueda.js"></script>
+  <script src="./login.js"></script>
+  <script src="./carrito.js"></script>
 </body>
+
 </html>
