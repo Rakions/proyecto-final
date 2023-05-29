@@ -13,8 +13,10 @@
   <script src="conexion.js"></script>
   <script src="login.js"></script>
   <script src="navbar.js"></script>
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)" href="../resources/java-junction-website-favicon-color.png">
-  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)" href="../resources/java-junction-website-favicon-black.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: dark)"
+    href="../resources/java-junction-website-favicon-color.png">
+  <link rel="icon" type="image/x-icon" media="(prefers-color-scheme: light)"
+    href="../resources/java-junction-website-favicon-black.png">
 
 </head>
 
@@ -49,6 +51,7 @@
           <a href="ajustesUsuario.html">User settings</a>
           <a href="#" onclick="logOut()">Log out</a>
         </div>
+      </div>
       <a href="carrito.html" style="display: none;" id="cartIcon">
         <img src="../resources/cart-shopping-solid.svg" class="w-8 h-8"">
       </a>
@@ -72,77 +75,68 @@
     </ul>
   </div>
   <!----------------------------------CARTA---------------------------------->
-  <section class="w-full h-screen flex md:flex-row flex-col">
+  <section class="w-full min-h-screen flex md:flex-row flex-col mb-4">
     <!----------------------------------PARTE IZQUIERDA---------------------------------->
-    <div class="bg-[var(--color-fondo)] h-[30%] md:h-full w-full md:w-[35%] relative flex items-center justify-center">
-      <div class="h-[150px] w-[150px] sm:h-[200px] sm:w-[200px] md:h-[300px] md:w-[300px]">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/A_small_cup_of_coffee.JPG" class="w-full h-full"
-          alt="">
-      </div>
-      <div
-        class="absolute bottom-0 md:top-0 right-0 h-[20px] md:h-full w-full md:w-[40px] bg-[var(--color-secundario)] flex items-center justify-center flex-row md:flex-col gap-[1rem] md:gap-[5rem]">
-        <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <a href="#" class="cafes"><img src="../resources/icono_cafe.png" alt="" /></a>
-        </div>
-        <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <a href="#" class="bebidas-frias" /><img src="../resources/icono_bebidas_frias.png" alt=""></a>
-        </div>
-        <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <a href="#" class="te"><img src="../resources/icono_te.png" alt="" /></a>
-        </div>
-        <div class="opciones-carta h-[30px] w-[30px] md:h-[50px] md:w-[50px]">
-          <a href="#"><img src="../resources/icono_bocadillo.png" alt="" class="bocadillos" /></a>
-        </div>
-      </div>
-    </div>
+
     <!----------------------------------PARTE DERECHA---------------------------------->
-    <div
-      class="bg-[var(--color-texto)] h-[70%] md:h-full w-full md:w-[65%] flex items-center justify-center relative carta-scroll">
-      <div
-        class="h-full w-full p-[3rem] md:p-[7rem] flex items-center justify-center flex-wrap gap-4 overflow-y-scroll carta-content">
+    <div class="w-full">
+      <div class="w-full flex items-center justify-center flex-col mt-[100px] mb-[100px]">
+        <h1 class="text-[60px]">COFFES</h1>
+        <div class="cafes flex flex-wrap items-center justify-center gap-4">
+        </div>
+      </div>
+      <div class="w-full flex items-center justify-center flex-col mt-[100px] mb-[100px]">
+        <h1 class="text-[60px]">COLD DRINKS</h1>
+        <div class="bebidas_frias flex flex-wrap items-center justify-center gap-4">
+        </div>
+      </div>
+      <div class="w-full flex items-center justify-center flex-col mt-[100px] mb-[100px]">
+        <h1 class="text-[60px]">TEA</h1>
+        <div class="te flex flex-wrap items-center justify-center gap-4">
+        </div>
       </div>
     </div>
   </section>
   <!-- ----------------------------------FOOTER---------------------------------- -->
   <footer
-  class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
-  <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
-    <img src="../resources/logo.png" alt="" class="logo" />
-  </div>
-  <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
-    <div class="items-end">
-      <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-      <ul class="text-right mr-1">
-        <a href="">
-          <li>Inicio</li>
-        </a>
-        <a href="">
-          <li>Carta</li>
-        </a>
-        <a href="">
-          <li>Contacto</li>
-        </a>
-        <a href="">
-          <li>Ayuda</li>
-        </a>
-      </ul>
+    class="w-full bg-[var(--color-oscuro)] p-4 flex items-center justify-center relative text-[var(--color-texto)]">
+    <div class="w-[150px] h-full ml-[10px] flex items-center justify-center">
+      <img src="../resources/logo.png" alt="" class="logo" />
     </div>
-    <div class="items-end">
-      <h1 class="text-right text-[1.3rem]">Lorem, ipsum</h1>
-      <ul class="text-right mr-1">
-        <a href="comiteEmpresa.html">
-          <li>committee</li>
-        </a>
-        <a href="contact.html">
-          <li>Contact</li>
-        </a>
-        <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
-          <li>Work with us</li>
-        </a>
-      </ul>
+    <div class="max-w-[50%] grid grid-cols-1 md:grid-cols-2 gap-[2rem] p-4">
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">Navigation</h1>
+        <ul class="text-right mr-1">
+          <a href="">
+            <li>Inicio</li>
+          </a>
+          <a href="">
+            <li>Carta</li>
+          </a>
+          <a href="">
+            <li>Contacto</li>
+          </a>
+          <a href="">
+            <li>Ayuda</li>
+          </a>
+        </ul>
+      </div>
+      <div class="items-end">
+        <h1 class="text-right text-[1.3rem]">About us</h1>
+        <ul class="text-right mr-1">
+          <a href="comiteEmpresa.html">
+            <li>Committee</li>
+          </a>
+          <a href="contact.html">
+            <li>Contact</li>
+          </a>
+          <a href="../resources/Oferta de empleo Desarrollo Web Ingles.pdf">
+            <li>Work with us</li>
+          </a>
+        </ul>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
   <script src="carta.js"></script>
   <script src="carrito.js"></script>
   <script src="login.js"></script>

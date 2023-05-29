@@ -36,7 +36,7 @@ async function comprobarLogin(email, password) {
       alert("datos incorrectos"); // Contraseña incorrecta
     }
   } else {
-    alert("no existo"); // El usuario no existe
+    alert("datos incorrectos"); // El usuario no existe
   }
   cambiarIconoLogin(); // Cambiar el ícono de inicio de sesión según el estado de inicio de sesión
 }

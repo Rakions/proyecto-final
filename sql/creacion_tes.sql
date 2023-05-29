@@ -9,3 +9,4 @@ VALUES ('Passion Fruit Tea', 'Delicious tea with the exotic flavor of passion fr
 
 INSERT INTO products (product_name, product_description, stock, reviews, category_id, price, image_url)
 VALUES ('Forest Berry Tea', 'A blend of various berries in a delightful tea', 100, 5, 2, 0, '../resources/frutos_del_bosque.png');
+
