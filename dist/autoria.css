@@ -1,0 +1,86 @@
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+  body {
+      font-family: 'Poppins';
+  }
+
+  input,
+  button {
+      border: solid black 1px;
+      border-radius: 1rem;
+  }
+
+  .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 15px;
+      width: 100%;
+  }
+
+  .tarjeta {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 50px;
+      height: 450px;
+      width: 250px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 1rem;
+  }
+
+  .parteArriba {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+      width: 100%;
+      height: 40%;
+      border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      position: relative;
+  }
+
+  .parteAbajo {
+      flex-direction: column;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      background-color: white;
+      width: 100%;
+      height: 60%;
+      position: relative;
+      border-bottom-left-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      border-top-right-radius: 1rem;
+      position: relative;
+  }
+
+  .parteAbajo>input {
+      color: green;
+      background-color: rgba(199, 212, 225, 0.693);
+      border: solid green 1px;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 20px;
+      width: 25%;
+      min-width: 50px;
+  }
+
+  .cafe {
+      border: solid white 3px;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+  }
+
+  .corazon {
+      display: flex;
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      width: 20px;
+  }

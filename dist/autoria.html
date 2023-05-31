@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>autoria</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='autoria.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='output.css'>
+</head>
+
+<body class="bg-slate-200">
+    <div class="flex justify-center items-center w-[100%] h-40">
+        <form>
+            <p>Dime tu nombre</p>
+            <input type="text" id="nombre">
+            <button type="button"
+                onclick="document.getElementById('saludo').innerHTML = 'hello ' + document.getElementById('nombre').value">submit</button>
+            <p id="saludo"></p>
+        </form>
+    </div>
+    <div class="menu">
+        <div class="tarjeta">
+            <div class="parteArriba">
+                <img class="corazon" src="../resources/like.png">
+                <img class="cafe"
+                    src="https://www.starbucks.es/sites/starbucks-es/files/styles/c06_cards_grid_560x321/public/2022-03/SBX-UK-MOP-Latte.jpg.webp ">
+            </div>
+            <div class="parteAbajo">
+                <h1>café expreso</h1>
+                <p>
+                    bebidas con los mejores granos de café 100% arábica, cuidadosamente seleccionados y tostados al más
+                    puro estilo Starbucks
+                </p>
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+        <div class="tarjeta">
+            <div class="parteArriba">
+                <img class="corazon" src="../resources/like.png">
+                <img class="cafe"
+                    src="https://www.starbucks.es/sites/starbucks-es/files/styles/c06_cards_grid_560x321/public/2022-03/SBX-UK-MOP-MatchaGreenTeaLatte.jpg.webp">
+            </div>
+            <div class="parteAbajo">
+                <h1>Té matcha</h1>
+                <p>
+                    Diferentes mezcas de té Teavana para tus mejores infusiones
+                </p>
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+        <div class="tarjeta">
+            <div class="parteArriba">
+                <img class="corazon" src="../resources/like.png">
+                <img class="cafe"
+                    src="https://www.starbucks.es/sites/starbucks-es/files/styles/c06_cards_grid_560x321/public/2022-03/SBX-UK-MOP-CaramelFrappuccino.jpg.webp">
+            </div>
+            <div class="parteAbajo">
+                <h1>Frapuccino</h1>
+                <p>
+                    bebidas refrescantes de hielo batido con una dulce base de crema starbucks, leches o bebidas
+                    vegetales y nata montada. Puedes elegir entre diferentes variedades de sabores
+                </p>
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+        <div class="tarjeta">
+            <div class="parteArriba">
+                <img class="corazon" src="../resources/like.png">
+                <img class="cafe"
+                    src="https://www.starbucks.es/sites/starbucks-es/files/styles/c06_cards_grid_560x321/public/2022-03/SBX-UK-MOP-Mocha.jpg.webp">
+            </div>
+            <div class="parteAbajo">
+                <h1>Chocolate</h1>
+                <p>
+                    Descubre nuestros chocolates y sus mejores combinaciones, calientes o frios... tu decides
+                </p>
+                <input type="button" value="Añadir">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
