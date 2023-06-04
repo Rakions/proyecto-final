@@ -1,83 +1,66 @@
 // Función asincrónica para agregar un producto al carrito
-async function agregarCarrito(product_id) {
+async function agregarCarrito(products_id) {
   // Obtener información del usuario actual
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
 
   // Verificar si el usuario está registrado
   if (user.length > 0) {
     // Buscar una orden abierta para el usuario
-    var order = await buscarOrderAbierta(user[0]["user_id"]);
+    var carrito = await buscarCarrito(user[0]["user_id"]);
 
     // Si no hay una orden abierta, crear una nueva
-    if (order == "close") {
+    if (carrito == "close") {
       var data = {
         "user_id": user[0]["user_id"],
-        "shop_id": 1,
-        "order_date": "",
-        "address": "",
-        "order_name": "",
-        "order_surname": "",
-        "total_price": "",
-        "order_state": "open"
+        "total_price": 0
       }
 
-      await conexionPost("orders/crear", data)
-      order = await buscarOrderAbierta(user[0]["user_id"])
+      await conexionPost("carts/crear", data)
+      carrito = await buscarCarrito(user[0]["user_id"])
     }
 
-    var orderPrecioTotal = order["total_price"];
-    var orderDetails = await conexion("orders_details/buscarOrderProduct", "orders_id=" + order["orders_id"] + "&product_id=" + product_id);
-    var product = await conexion("products/buscar", "id=" + product_id);
+    var carritoPrecioTotal = carrito["total_price"];
+    var carritoDetails = await conexion("carts_details/buscarCartProduct", "cart_id=" + carrito["cart_id"] + "&products_id=" + products_id);
+    var product = await conexion("products/buscar", "id=" + products_id);
 
     // Verificar si el producto ya está en los detalles de la orden
-    if (orderDetails.length > 0) {
+    if (carritoDetails.length > 0) {
       var dataDetails = {
-        "orders_id": order["orders_id"],
-        "product_id": product_id,
-        "quantity": (orderDetails[0]["quantity"]) + 1
+        "cart_id": carrito["cart_id"],
+        "products_id": products_id,
+        "quantity": (carritoDetails[0]["quantity"]) + 1
       }
 
-      await conexionPut("orders_details/modificar/quantity", dataDetails);
+      await conexionPut("carts_details/modificar/quantity", dataDetails);
     } else {
       var dataDetails = {
-        "orders_id": order["orders_id"],
-        "product_id": product_id,
+        "cart_id": carrito["cart_id"],
+        "products_id": products_id,
         "quantity": 1
       }
 
-      await conexionPost("orders_details/crear", dataDetails)
+      await conexionPost("carts_details/crear", dataDetails)
     }
 
     // Actualizar el precio total de la orden
-    var orderTotal = {
-      "orders_id": order["orders_id"],
-      "total_price": orderPrecioTotal + (product[0]["price"])
+    var cartTotal = {
+      "cart_id": carrito["cart_id"],
+      "total_price": carritoPrecioTotal + (product[0]["price"])
     }
-    await conexionPut("orders/modificar/total_price", orderTotal);
+    await conexionPut("carts/modificar/total_price", cartTotal);
   } else {
     alert("Tienes que estar registrado para añadir productos al carrito")
   }
 }
 
 // Función asincrónica para buscar una orden abierta para un usuario específico
-async function buscarOrderAbierta(user_id) {
+async function buscarCarrito(user_id) {
   // Buscar todas las órdenes del usuario
-  var orders = await conexion("orders/buscarUser_id", "id=" + user_id);
+  var carritos = await conexion("carts/buscarUser", "user_id=" + user_id);
   var estado = "close";
-  var i = 0;
 
-  // Buscar la primera orden abierta
-  while (i < orders.length && estado != "open") {
-    if (orders[i]["order_state"] == "open") {
-      estado = orders[i]["order_state"];
-    }
-    i++;
-  }
-
-  // Si se encontró una orden abierta, devolverla
-  if (estado == "open") {
-    i--;
-    estado = orders[i];
+  if (carritos.length > 0) {
+    estado = carritos[0]
   }
 
   return estado;
@@ -87,24 +70,24 @@ async function buscarOrderAbierta(user_id) {
 // Función asincrónica para construir el carrito
 async function construirCarrito() {
   // Obtener información del usuario actual
-  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
-  var order = await buscarOrderAbierta(user[0]["user_id"]);
+  var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"));
+  var cart = await buscarCarrito(user[0]["user_id"]);
 
   // Verificar si hay una ordenabierta para el usuario actual
-if (order != "close") {
-  // Buscar los productos en los detalles de la orden
-  var productos = await conexion("orders_details/buscar", "id=" + order["orders_id"])
+  if (cart != "close") {
+    // Buscar los productos en los detalles de la orden
+    var productos = await conexion("carts_details/buscar", "id=" + cart["cart_id"])
     if (productos.length > 0) {
       productos.forEach(async function (product) {
 
 
-        var productInfo = await conexion("products/buscar", ("id=" + product["product_id"]));
+        var productInfo = await conexion("products/buscar", ("id=" + product["products_id"]));
 
         const carrito = document.getElementById("carrito-container");
 
         carrito.innerHTML +=
           `
-          <li class="grid grid-cols-3 w-full px-4 cart_item list1" id= product${product["product_id"]}>
+          <li class="grid grid-cols-3 w-full px-4 cart_item list1" id= product${product["products_id"]}>
             <div class="flex items-center">
               <img src=" ${productInfo[0]["image_url"]}">
               <p class="max-w-[100px] ml-4 product_name">${productInfo[0]["product_name"]}</p>
@@ -112,14 +95,14 @@ if (order != "close") {
             <div class="flex items-center justify-evenly">
               <h1 class="item_price">${productInfo[0]["price"]}€</h1>
               <div>
-                <button class="w-4 text-xl" onclick="modificarCantidad(${product["orders_id"]}, ${product["product_id"]}, 1)">+</button>
-                <span class="product_amount1" id="cantidad${product["product_id"]}">${product["quantity"]}</span>
-                <button class="w-4 text-xl" onclick="modificarCantidad(${product["orders_id"]}, ${product["product_id"]}, (-1))">-</button>
+                <button class="w-4 text-xl" onclick="modificarCantidad(${product["cart_id"]}, ${product["products_id"]}, 1)">+</button>
+                <span class="product_amount1" id="cantidad${product["products_id"]}">${product["quantity"]}</span>
+                <button class="w-4 text-xl" onclick="modificarCantidad(${product["cart_id"]}, ${product["products_id"]}, (-1))">-</button>
               </div>
             </div>
             <div class="flex items-center justify-evenly">
-              <div id="precio-total${product["product_id"]}" class="text-center">${productInfo[0]["price"] * product["quantity"]}€</div>
-              <button onclick="modificarCantidad(${product["orders_id"]}, ${product["product_id"]}, 0)">X</button>
+              <div id="precio-total${product["products_id"]}" class="text-center">${Number((productInfo[0]["price"] * product["quantity"]).toFixed(2))}€</div>
+              <button onclick="modificarCantidad(${product["cart_id"]}, ${product["products_id"]}, 0)">X</button>
             </div>
           </li>
           `
@@ -135,6 +118,7 @@ if (order != "close") {
 
 
 async function precioTotal(precio, cantidad) {
+  precio = Number(precio.toFixed(2));
   if (cantidad == undefined) {
     document.getElementById("subtotal").innerHTML = parseFloat(document.getElementById("subtotal").innerHTML) + precio + "€";
   } else {
@@ -144,28 +128,28 @@ async function precioTotal(precio, cantidad) {
 }
 
 
-async function modificarCantidad(order, product, action) {
+async function modificarCantidad(cart, product, action) {
 
-  product = (await conexion("orders_details/buscarOrderProduct", "orders_id=" + order + "&product_id=" + product))[0];
+  product = (await conexion("carts_details/buscarCartProduct", "cart_id=" + cart + "&products_id=" + product))[0];
 
   action = (action == undefined ? 1 : action);
 
   if (action > 0) {
-    await agregarCarrito(product["product_id"]);
+    await agregarCarrito(product["products_id"]);
   } else if (action < 0) {
     await eliminarCarrito(product, false);
   } else {
 
-    var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
+    var productInfo = await conexion("products/buscar", "id=" + product["products_id"])
 
     var cantidad = product["quantity"]
     var total = productInfo[0]["price"] * cantidad;
-    order = (await conexion("orders/buscar", "id=" + order))[0]
-    var orderTotal = {
-      "orders_id": product["orders_id"],
-      "total_price": order["total_price"] - (total)
+    cart = (await conexion("carts/buscar", "id=" + cart))[0]
+    var cartTotal = {
+      "cart_id": product["cart_id"],
+      "total_price": cart["total_price"] - (total)
     }
-    await conexionPut("orders/modificar/total_price", orderTotal);
+    await conexionPut("carts/modificar/total_price", cartTotal);
 
     precioTotal(productInfo[0]["price"] * -1, cantidad)
 
@@ -173,15 +157,15 @@ async function modificarCantidad(order, product, action) {
   }
 
   if (action != 0) {
-    product = (await conexion("orders_details/buscarOrderProduct", "orders_id=" + order + "&product_id=" + product["product_id"]))[0];
+    product = (await conexion("carts_details/buscarCartProduct", "cart_id=" + cart + "&products_id=" + product["products_id"]))[0];
 
-    var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
+    var productInfo = await conexion("products/buscar", "id=" + product["products_id"])
 
     var cantidad = product["quantity"]
-    var total = productInfo[0]["price"] * cantidad;
+    var total = Number((productInfo[0]["price"] * cantidad).toFixed(2));
 
-    document.getElementById("cantidad" + [product["product_id"]]).innerHTML = cantidad
-    document.getElementById("precio-total" + [product["product_id"]]).innerHTML = total + "€"
+    document.getElementById("cantidad" + [product["products_id"]]).innerHTML = cantidad
+    document.getElementById("precio-total" + [product["products_id"]]).innerHTML = total + "€"
 
     precioTotal(productInfo[0]["price"] * action)
 
@@ -193,38 +177,38 @@ async function eliminarCarrito(product, todo) {
 
   if (todo) {
     var data = {
-      "orders_id": product["orders_id"],
-      "product_id": product["product_id"]
+      "cart_id": product["cart_id"],
+      "products_id": product["products_id"]
     }
-    await conexionDelete("orders_details/eliminar", data);
-    document.getElementById("product" + product["product_id"]).style.display = "none"
+    await conexionDelete("carts_details/eliminar", data);
+    document.getElementById("product" + product["products_id"]).style.display = "none"
   } else {
     var dataDetails = {
-      "orders_id": product["orders_id"],
-      "product_id": product["product_id"],
+      "cart_id": product["cart_id"],
+      "products_id": product["products_id"],
       "quantity": (product["quantity"]) - 1
     }
-    conexionPut("orders_details/modificar/quantity", dataDetails);
-    var productInfo = await conexion("products/buscar", "id=" + product["product_id"])
+    conexionPut("carts_details/modificar/quantity", dataDetails);
+    var productInfo = await conexion("products/buscar", "id=" + product["products_id"])
 
-    document.getElementById("cantidad" + [product["product_id"]]).innerHTML = product["quantity"] - 1
-    document.getElementById("precio-total" + [product["product_id"]]).innerHTML = productInfo[0]["price"] * product["quantity"];
+    document.getElementById("cantidad" + [product["products_id"]]).innerHTML = product["quantity"] - 1
+    document.getElementById("precio-total" + [product["products_id"]]).innerHTML = productInfo[0]["price"] * product["quantity"];
 
-    var order = await conexion("orders/buscar", "id=" + product["orders_id"]);
-    var productData = await conexion("products/buscar", "id=" + product["product_id"])
-    var orderTotal = {
-      "orders_id": product["orders_id"],
-      "total_price": order[0]["total_price"] - (productData[0]["price"])
+    var cart = await conexion("carts/buscar", "id=" + product["cart_id"]);
+    var productData = await conexion("products/buscar", "id=" + product["products_id"])
+    var cartTotal = {
+      "cart_id": product["cart_id"],
+      "total_price": cart[0]["total_price"] - (productData[0]["price"])
     }
-    await conexionPut("orders/modificar/total_price", orderTotal);
+    await conexionPut("carts/modificar/total_price", cartTotal);
 
     if (product["quantity"] - 1 <= 0) {
       var data = {
-        "orders_id": product["orders_id"],
-        "product_id": product["product_id"]
+        "cart_id": product["cart_id"],
+        "products_id": product["products_id"]
       }
-      await conexionDelete("orders_details/eliminar", data);
-      document.getElementById("product" + product["product_id"]).style.display = "none"
+      await conexionDelete("carts_details/eliminar", data);
+      document.getElementById("product" + product["products_id"]).style.display = "none"
     }
   }
 }
@@ -237,15 +221,15 @@ async function irCheckout() {
 
 async function getPrecio() {
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"));
-  var order = await buscarOrderAbierta(user[0]["user_id"]);
-  var precioTotal = order["total_price"]
+  var cart = await buscarCarrito(user[0]["user_id"]);
+  var precioTotal = cart["total_price"]
   document.getElementById("precioTotal_checkout").innerHTML += " " + precioTotal;
 }
 
 async function pagar() {
 
   var user = await conexion("sessions/buscarToken", "token=" + localStorage.getItem("idToken"))
-  var order = await buscarOrderAbierta(user[0]["user_id"]);
+  var cart = await buscarCarrito(user[0]["user_id"]);
 
 
   var direccion = document.getElementById("address").value;
@@ -255,49 +239,51 @@ async function pagar() {
 
   var fecha;
   var date = new Date();
-
-  var fecha;
-  var date = new Date();
   fecha = date.getFullYear();
   fecha += "-" + (date.getUTCMonth() < 10 ? "0" + date.getUTCMonth() : date.getUTCMonth())
   fecha += "-" + date.getDate();
 
-  console.log(fecha)
-
   var name = document.getElementById("name").value;
   var lastName = document.getElementById("l-name").value;
 
-  dataAddress = {
-    "orders_id": order["orders_id"],
-    "address": direccion
+  var data = {
+    "USER_ID": user[0]["user_id"],
+    "SHOP_ID": 1,
+    "ORDER_DATE": fecha,
+    "ADDRESS": direccion,
+    "ORDER_NAME": name,
+    "ORDER_SURNAME": lastName,
+    "TOTAL_PRICE": cart["total_price"],
+    "ORDER_STATE": "completed"
   }
 
-  dataFecha = {
-    "orders_id": order["orders_id"],
-    "order_date": fecha
-  }
+  order_id = await conexionPost("orders/crear", data)
 
-  dataName = {
-    "orders_id": order["orders_id"],
-    "order_name": name
-  }
+  console.log(order_id);
 
-  dataSurname = {
-    "orders_id": order["orders_id"],
-    "order_surname": lastName
-  }
 
-  dataState = {
-    "orders_id": order["orders_id"],
-    "order_state": "completed"
-  }
+  cartDetails = await conexion("carts_details/buscar", "id=" + cart["cart_id"]);
 
-  console.log(dataAddress)
-  await conexionPut("orders/modificar/address", dataAddress)
-  await conexionPut("orders/modificar/order_date", dataFecha)
-  await conexionPut("orders/modificar/order_name", dataName)
-  await conexionPut("orders/modificar/order_surname", dataSurname)
-  await conexionPut("orders/modificar/order_state", dataState)
+  cartDetails.forEach(async function (product) {
+    var dataDetails = {
+      "orders_id": order_id,
+      "product_id": product["products_id"],
+      "quantity": product["quantity"]
+    }
+
+    await conexionPost("orders_details/crear", dataDetails);
+
+    var dataDelete = {
+      "orders_id": order_id,
+      "product_id": product["products_id"]
+    }
+
+    await conexionDelete("carts_details/eliminar", dataDelete)
+  });
+  var deleteCarrito = {
+    "cart_id": cart["cart_id"]
+  }
+  await conexionDelete("carts/eliminar", deleteCarrito)
 
   document.getElementById("checkoutForm").submit();
 }

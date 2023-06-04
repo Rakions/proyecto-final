@@ -76,7 +76,7 @@ async function comprobarLastConnection() {
     var date = new Date();
     last_connection = date.getFullYear();
     last_connection += "-" + (date.getUTCMonth() < 10 ? "0" + date.getUTCMonth() : date.getUTCMonth());
-    last_connection += "-" + date.getDate();
+    last_connection += "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
 
     let conexionJson = {
       "user_id": user[0]["user_id"],
