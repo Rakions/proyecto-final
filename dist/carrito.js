@@ -241,51 +241,83 @@ async function pagar() {
   var date = new Date();
   fecha = date.getFullYear();
   fecha += "-" + (date.getUTCMonth() < 10 ? "0" + date.getUTCMonth() : date.getUTCMonth())
-  fecha += "-" + date.getDate();
+  fecha += "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
 
   var name = document.getElementById("name").value;
   var lastName = document.getElementById("l-name").value;
 
+  // var data = {
+  //   "USER_ID": user[0]["user_id"],
+  //   "SHOP_ID": 1,
+  //   "ORDER_DATE": fecha,
+  //   "ADDRESS": direccion,
+  //   "ORDER_NAME": name,
+  //   "ORDER_SURNAME": lastName,
+  //   "TOTAL_PRICE": cart["total_price"],
+  //   "ORDER_STATE": "completed"
+  // }
   var data = {
-    "USER_ID": user[0]["user_id"],
-    "SHOP_ID": 1,
-    "ORDER_DATE": fecha,
-    "ADDRESS": direccion,
-    "ORDER_NAME": name,
-    "ORDER_SURNAME": lastName,
-    "TOTAL_PRICE": cart["total_price"],
-    "ORDER_STATE": "completed"
+    "user_id": user[0]["user_id"],
+    "shop_id": 1,
+    "order_date": fecha,
+    "address": direccion,
+    "order_name": name,
+    "order_surname": lastName,
+    "total_price": cart["total_price"],
+    "order_state": "open"
   }
 
-  order_id = await conexionPost("orders/crear", data)
 
-  console.log(order_id);
+  await conexionPost("orders/crear", data)
+
+
+  //buscar la order recien creada
+  var orders = await conexion("orders/consultar");
+  var order_id;
+
+  for (i = 0; i < orders.length; i++) {
+    if (orders[i]["order_state"] == "open") {
+      order_id = orders[i]["orders_id"];
+      break;
+    }
+  }
+
+  console.log(order_id)
 
 
   cartDetails = await conexion("carts_details/buscar", "id=" + cart["cart_id"]);
 
   cartDetails.forEach(async function (product) {
-    var dataDetails = {
-      "orders_id": order_id,
-      "product_id": product["products_id"],
-      "quantity": product["quantity"]
-    }
-
-    await conexionPost("orders_details/crear", dataDetails);
-
-    var dataDelete = {
-      "orders_id": order_id,
-      "product_id": product["products_id"]
-    }
-
-    await conexionDelete("carts_details/eliminar", dataDelete)
+    await moverObjetos(product, order_id);
   });
   var deleteCarrito = {
     "cart_id": cart["cart_id"]
   }
   await conexionDelete("carts/eliminar", deleteCarrito)
 
+  var modificarState = {
+    "orders_id": order_id,
+    "order_state": "completed"
+  }
+
+  await conexionPut ("orders/modificar/order_state", modificarState)
+
   document.getElementById("checkoutForm").submit();
 }
 
 
+async function moverObjetos(product, order_id) {
+  var dataDetails = {
+    "orders_id": order_id,
+    "product_id": product["product_id"],
+    "quantity": product["quantity"]
+  }
+  var dataDelete = {
+    "cart_id": product["cart_id"],
+    "products_id": product["products_id"]
+  }
+
+  await conexionDelete("carts_details/eliminar", dataDelete);
+  console.log("hola")
+  await conexionPost("orders_details/crear", dataDetails);
+}
