@@ -1,0 +1,1 @@
+insert into shops (shop_name,location,address,phone,email) values ('Tienda 1','Zaragoza','Avenida Zaragoza',123456,'tienda1@gmail.com');
